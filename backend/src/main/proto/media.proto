@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.mediaservice";
+
+service MediaService {
+  rpc UploadVideo (VideoChunk) returns (UploadResponse);
+  rpc GetVideoList (Empty) returns (VideoList);
+  rpc GetVideo (VideoRequest) returns (VideoResponse);
+}
+
+message VideoChunk {
+  string filename = 1;
+  bytes data = 2;
+  string client_id = 3;
+}
+
+message UploadResponse {
+  string status = 1;
+  string message = 2;
+  string video_id = 3;
+}
+
+message Empty {}
+
+message VideoList {
+  repeated VideoInfo videos = 1;
+}
+
+message VideoInfo {
+  string id = 1;
+  string filename = 2;
+  string upload_time = 3;
+  int64 size = 4;
+}
+
+message VideoRequest {
+  string video_id = 1;
+}
+
+message VideoResponse {
+  string filename = 1;
+  bytes data = 2;
+  string status = 3;
+}
