@@ -90,10 +90,11 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
                 .setFilename(chunk.getFilename()) 
                 .setUploadTime(new Date().toString()) 
                 .setSize(chunk.getData().size()) 
+                .setClientId(chunk.getClientId())
                 .build();
             
             videoStore.put(chunk.getFilename(), videoInfo); 
-            System.out.println("Processed video: " + chunk.getFilename());
+            System.out.println("Processed video from client: " + chunk.getClientId() + " - " + chunk.getFilename());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -44,17 +44,23 @@ public class ProducerClient {
         System.out.println("Enter client ID:"); 
         String clientId = scanner.nextLine(); 
 
-        while (true) {
-            System.out.println("Enter video file path (or 'quit' to exit):"); 
-            String filePath = scanner.nextLine(); 
+        try {
+            while (true) {
+                System.out.println("Enter video file path (or 'quit' to exit):"); 
+                String filePath = scanner.nextLine(); 
 
-            if ("quit".equalsIgnoreCase(filePath)) {
-                break;
-            } 
-
-            client.uploadVideo(filePath, clientId);
+                if ("quit".equalsIgnoreCase(filePath)) {
+                    break;
+                }
+                client.uploadVideo(filePath, clientId);
+            }
+        } catch (Exception e) {
+            System.out.println("Program terminated.");
+        } finally {
+            scanner.close(); 
+            client.channel.shutdown(); 
         }
 
-        scanner.close();
+        System.out.println("Producer client stopped.");
     }
 }

@@ -31,7 +31,8 @@ message VideoInfo {
   string id = 1;
   string filename = 2;
   string upload_time = 3;
-  int64 size = 4;
+  int64 size = 4; 
+  string client_id = 5;
 }
 
 message VideoRequest {

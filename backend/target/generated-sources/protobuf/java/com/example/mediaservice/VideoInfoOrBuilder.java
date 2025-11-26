@@ -48,4 +48,16 @@ public interface VideoInfoOrBuilder extends
    * @return The size.
    */
   long getSize();
+
+  /**
+   * <code>string client_id = 5;</code>
+   * @return The clientId.
+   */
+  java.lang.String getClientId();
+  /**
+   * <code>string client_id = 5;</code>
+   * @return The bytes for clientId.
+   */
+  com.google.protobuf.ByteString
+      getClientIdBytes();
 }
