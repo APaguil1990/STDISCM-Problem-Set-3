@@ -1,66 +1,184 @@
 package com.example.mediaservice;
 
-import io.grpc.ManagedChannel; 
-import io.grpc.ManagedChannelBuilder; 
-import java.io.IOException; 
-import java.nio.file.Files; 
-import java.nio.file.Path; 
-import java.nio.file.Paths; 
-import java.util.Scanner; 
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.logging.*;
 
 public class ProducerClient {
-    private final ManagedChannel channel; 
-    private final MediaServiceGrpc.MediaServiceBlockingStub blockingStub; 
+    private final ManagedChannel channel;
+    private final MediaServiceGrpc.MediaServiceBlockingStub blockingStub;
+    private final Logger logger;
+    private final String clientId;
+    private final ExecutorService threadPool;
 
-    public ProducerClient(String host, int port) {
-        this.channel = ManagedChannelBuilder.forAddress(host, port) 
-            .usePlaintext() 
-            .build(); 
+    public ProducerClient(String host, int port, String clientId, int producerThreads) {
+        this.channel = ManagedChannelBuilder.forAddress(host, port)
+            .usePlaintext()
+            .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
-    } 
+        this.clientId = clientId;
+        this.threadPool = Executors.newFixedThreadPool(producerThreads);
+        
+        // Setup file logging
+        this.logger = setupLogger(clientId);
+    }
 
-    public void uploadVideo(String filePath, String clientId) {
+    private Logger setupLogger(String clientId) {
         try {
-            Path path = Paths.get(filePath); 
-            byte[] data = Files.readAllBytes(path); 
-            String filename = path.getFileName().toString(); 
-
-            VideoChunk request = VideoChunk.newBuilder() 
-                .setFilename(filename) 
-                .setData(com.google.protobuf.ByteString.copyFrom(data)) 
-                .setClientId(clientId) 
-                .build(); 
-
-            UploadResponse response = blockingStub.uploadVideo(request); 
-            System.out.println("Upload response: " + response.getStatus() + " - " + response.getMessage());
+            Logger logger = Logger.getLogger("ProducerClient-" + clientId);
+            FileHandler fileHandler = new FileHandler("producer_" + clientId + "_log.txt");
+            fileHandler.setFormatter(new SimpleFormatter() {
+                @Override
+                public String format(LogRecord record) {
+                    return String.format("[%1$tF %1$tT] [%2$s] %3$s %4$s%n",
+                            new Date(record.getMillis()),
+                            Thread.currentThread().getName(),
+                            record.getMessage(),
+                            record.getThrown() != null ? " - Error: " + record.getThrown().getMessage() : "");
+                }
+            });
+            logger.addHandler(fileHandler);
+            logger.setUseParentHandlers(false);
+            return logger;
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Failed to setup logger: " + e.getMessage());
+            return Logger.getGlobal();
         }
     }
 
-    public static void main(String[] args) {
-        ProducerClient client = new ProducerClient("localhost", 9090); 
-        Scanner scanner = new Scanner(System.in); 
-        System.out.println("Enter client ID:"); 
-        String clientId = scanner.nextLine(); 
-
-        try {
-            while (true) {
-                System.out.println("Enter video file path (or 'quit' to exit):"); 
-                String filePath = scanner.nextLine(); 
-
-                if ("quit".equalsIgnoreCase(filePath)) {
-                    break;
+    public void uploadVideo(String filePath) {
+        threadPool.submit(() -> {
+            String filename = Paths.get(filePath).getFileName().toString();
+            logger.info("File: " + filename + " Status: Uploading");
+            
+            try (FileInputStream fis = new FileInputStream(filePath);
+                 BufferedInputStream bis = new BufferedInputStream(fis)) {
+                
+                byte[] buffer = new byte[1024 * 1024]; // 1MB chunks
+                int bytesRead;
+                ByteArrayOutputStream fileData = new ByteArrayOutputStream();
+                
+                while ((bytesRead = bis.read(buffer)) != -1) {
+                    fileData.write(buffer, 0, bytesRead);
                 }
-                client.uploadVideo(filePath, clientId);
-            }
-        } catch (Exception e) {
-            System.out.println("Program terminated.");
-        } finally {
-            scanner.close(); 
-            client.channel.shutdown(); 
-        }
+                
+                VideoChunk request = VideoChunk.newBuilder()
+                    .setFilename(filename)
+                    .setData(com.google.protobuf.ByteString.copyFrom(fileData.toByteArray()))
+                    .setClientId(clientId)
+                    .build();
 
-        System.out.println("Producer client stopped.");
+                UploadResponse response = blockingStub.uploadVideo(request);
+                String status = response.getStatus();
+                
+                if ("QUEUED".equals(status)) {
+                    logger.info("File: " + filename + " Status: Done");
+                } else {
+                    logger.info("File: " + filename + " Status: Failed - " + response.getMessage());
+                }
+                
+            } catch (IOException e) {
+                logger.info("File: " + filename + " Status: Failed - " + e.getMessage());
+            } catch (Exception e) {
+                logger.info("File: " + filename + " Status: Failed - Connection error");
+            }
+        });
+    }
+
+    public void scanAndUploadFolder(String folderPath, String[] extensions) {
+        try {
+            Path folder = Paths.get(folderPath);
+            if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+                System.out.println("Invalid folder: " + folderPath);
+                return;
+            }
+            
+            Files.walk(folder)
+                .filter(Files::isRegularFile)
+                .filter(path -> {
+                    String filename = path.getFileName().toString().toLowerCase();
+                    return Arrays.stream(extensions).anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
+                })
+                .forEach(path -> uploadVideo(path.toString()));
+                
+        } catch (IOException e) {
+            System.err.println("Error scanning folder: " + e.getMessage());
+        }
+    }
+
+    public void shutdown() {
+        threadPool.shutdown();
+        try {
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+        channel.shutdown();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Input validation
+        int producerThreads = getValidatedInput(scanner, "Enter number of producer threads (p): ", 1);
+        int consumerThreads = getValidatedInput(scanner, "Enter number of consumer threads (c): ", 1);
+        int queueSize = getValidatedInput(scanner, "Enter queue size (q): ", 1);
+        
+        System.out.println("Enter target IP address:");
+        String targetIp = scanner.nextLine().trim();
+        if (targetIp.isEmpty()) {
+            targetIp = "localhost";
+        }
+        
+        // Create producer instances
+        List<ProducerClient> producers = new ArrayList<>();
+        String[] videoExtensions = {".mp4", ".avi", ".mov", ".mkv"};
+        
+        for (int i = 0; i < producerThreads; i++) {
+            System.out.println("Enter folder path for producer thread " + (i + 1) + ":");
+            String folderPath = scanner.nextLine().trim();
+            
+            ProducerClient producer = new ProducerClient(targetIp, 9090, "producer-" + (i + 1), 1);
+            producers.add(producer);
+            
+            // Start scanning in background
+            final int threadNum = i;
+            new Thread(() -> {
+                producer.scanAndUploadFolder(folderPath, videoExtensions);
+            }).start();
+        }
+        
+        System.out.println("Producers started. Press 'q' to quit.");
+        while (!scanner.nextLine().equalsIgnoreCase("q")) {
+            // Keep running until user quits
+        }
+        
+        // Shutdown
+        producers.forEach(ProducerClient::shutdown);
+        scanner.close();
+        System.out.println("All producers stopped.");
+    }
+    
+    private static int getValidatedInput(Scanner scanner, String prompt, int minValue) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int value = Integer.parseInt(scanner.nextLine());
+                if (value >= minValue) {
+                    return value;
+                } else {
+                    System.out.println("Value must be at least " + minValue);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+            }
+        }
     }
 }
