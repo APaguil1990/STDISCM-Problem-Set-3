@@ -157,6 +157,13 @@ public class MediaServer {
                 
                 // Serve from videos directory
                 java.nio.file.Path filePath = Paths.get("./videos", filename);
+
+                if (filename.startsWith("previews/")) {
+                    String previewFilename = filename.substring("previews/".length()); 
+                    filePath = Paths.get("./videos/previews", previewFilename);
+                } else {
+                    filePath = Paths.get("./videos", filename);
+                }
                 
                 if (Files.exists(filePath)) {
                     exchange.getResponseHeaders().set("Content-Type", getContentType(filename));

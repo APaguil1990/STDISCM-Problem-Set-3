@@ -140,6 +140,58 @@ public class ProducerClient {
         }
     } 
 
+    public void cleanupDuplicateVideos() {
+        try {
+            Path videosDir = Paths.get("./videos"); 
+            if (!Files.exists(videosDir)) {
+                return; 
+            } 
+
+            Map<String, List<Path>> fileGroups = new HashMap<>(); 
+
+            // Group files by base name 
+            Files.list(videosDir) 
+                .filter(Files::isRegularFile)
+                .forEach(file -> {
+                    String filename = file.getFileName().toString(); 
+                    String baseName = getBaseFileName(filename); 
+                    fileGroups.computeIfAbsent(baseName, k -> new ArrayList<>()).add(file);
+                }); 
+            
+            // Remove duplicates, only keep original 
+            int removedCount = 0; 
+            for (Map.Entry<String, List<Path>> entry : fileGroups.entrySet()) {
+                List<Path> duplicates = entry.getValue(); 
+                if (duplicates.size() > 1) {
+                    duplicates.sort((p1, p2) -> {
+                        try {
+                            return Files.getLastModifiedTime(p1).compareTo(Files.getLastModifiedTime(p2)); 
+                        } catch (IOException e) {
+                            return 0; 
+                        }
+                    }); 
+
+                    // Keep the first (oldest file), remove rest 
+                    for (int i = 1; i < duplicates.size(); i++) {
+                        try {
+                            Files.delete(duplicates.get(i)); 
+                            removedCount++; 
+                            System.out.println("Removed duplicate: " + duplicates.get(i).getFileName());
+                        } catch (IOException e) {
+                            System.err.println("Failed to remove duplicate: " + duplicates.get(i).getFileName());
+                        }
+                    }
+                }
+
+                if (removedCount > 0) {
+                    System.out.println("Removed " + removedCount + " duplicate files"); 
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error cleaning up duplicates: " + e.getMessage());
+        }
+    }
+
     // Get base filename 
     private String getBaseFileName(String filename) {
         String nameWithoutExt = filename.replaceFirst("[.][^.]+$", ""); 
@@ -162,6 +214,27 @@ public class ProducerClient {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose operation:"); 
+        System.out.println("1 - Upload vidoes with multiple producers"); 
+        System.out.println("2 - Clean up duplicate videos in storage");
+        System.out.println("3 - Clean up duplicates THEN upload videos");
+        System.out.println("Enter choice (1, 2, or 3): "); 
+
+        String choice = scanner.nextLine().trim();
+
+        // Handle cleanup operations first 
+        if ("2".equals(choice) || "3".equals(choice)) {
+            ProducerClient cleanupClient = new ProducerClient("localhost", 9090, "cleanup-client", 1); 
+            cleanupClient.cleanupDuplicateVideos(); 
+
+            if ("2".equals(choice)) {
+                cleanupClient.shutdown(); 
+                scanner.close(); 
+                return; 
+            } 
+            cleanupClient.shutdown();
+        }
         
         // Input validation
         int producerThreads = getValidatedInput(scanner, "Enter number of producer threads (p): ", 1);

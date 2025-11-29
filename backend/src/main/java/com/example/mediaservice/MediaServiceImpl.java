@@ -180,28 +180,79 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         try {
             String filename = videoPath.getFileName().toString();
             String previewName = filename.substring(0, filename.lastIndexOf('.')) + "_preview.mp4";
-            Path previewPath = storageDir.resolve("previews").resolve(previewName);
-            
-            // FFmpeg command to generate 10-second preview
-            ProcessBuilder pb = new ProcessBuilder(
-                "ffmpeg", "-i", videoPath.toString(),
-                "-ss", "0", "-t", "10", // 10-second preview from start
-                "-c", "copy", // Copy streams without re-encoding if possible
-                previewPath.toString(),
-                "-y" // Overwrite output file
-            );
-            
-            Process process = pb.start();
-            int exitCode = process.waitFor();
-            
+            Path previewsDir = storageDir.resolve("previews");
+            Path previewPath = storageDir.resolve("previews").resolve(previewName); 
+
+            // Ensure previews directory exists 
+            Files.createDirectories(previewsDir);
+
+            // FFmpeg comand to generate 10-second preview 
+            List<String> ffmpegCommand = new ArrayList<>(); 
+            ffmpegCommand.add("ffmpeg");
+            ffmpegCommand.add("-i");
+            ffmpegCommand.add(videoPath.toAbsolutePath().toString());
+            ffmpegCommand.add("-ss");
+            ffmpegCommand.add("00:00:00");
+            ffmpegCommand.add("-t");
+            ffmpegCommand.add("10");
+            ffmpegCommand.add("-c:v");
+            ffmpegCommand.add("libx264");
+            ffmpegCommand.add("-c:a");
+            ffmpegCommand.add("aac");
+            ffmpegCommand.add("-y"); 
+            ffmpegCommand.add(previewPath.toAbsolutePath().toString()); 
+
+            ProcessBuilder pb = new ProcessBuilder(ffmpegCommand); 
+            pb.redirectErrorStream(true); 
+
+            Process process = pb.start(); 
+
+            // Read process output for dubug 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream())); 
+            StringBuilder output = new StringBuilder(); 
+            String line; 
+            while ((line = reader.readLine()) != null) {
+                output.append(line).append("\n");
+            } 
+
+            int exitCode = process.waitFor(); 
+
             if (exitCode == 0) {
                 logger.info("Consumer " + consumerId + " generated preview: " + previewName);
             } else {
-                logger.warning("Consumer " + consumerId + " FFmpeg failed for: " + filename);
+                logger.warning("Consumer " + consumerId + " FFmpeg failed for: " + filename + " with exit code " + exitCode + "\nOutput: " + output.toString());
+                createFallbackPreview(videoPath, previewPath, consumerId);
             }
+            
+            // // FFmpeg command to generate 10-second preview
+            // ProcessBuilder pb = new ProcessBuilder(
+            //     "ffmpeg", "-i", videoPath.toString(),
+            //     "-ss", "0", "-t", "10", // 10-second preview from start
+            //     "-c", "copy", // Copy streams without re-encoding if possible
+            //     previewPath.toString(),
+            //     "-y" // Overwrite output file
+            // );
+            
+            // Process process = pb.start();
+            // int exitCode = process.waitFor();
+            
+            // if (exitCode == 0) {
+            //     logger.info("Consumer " + consumerId + " generated preview: " + previewName);
+            // } else {
+            //     logger.warning("Consumer " + consumerId + " FFmpeg failed for: " + filename);
+            // }
             
         } catch (Exception e) {
             logger.warning("Consumer " + consumerId + " preview generation failed: " + e.getMessage());
+        }
+    }
+
+    private void createFallbackPreview(Path videoPath, Path previewPath, int consumerId) {
+        try {
+            Files.copy(videoPath, previewPath, StandardCopyOption.REPLACE_EXISTING); 
+            logger.info("Consumer " + consumerId + " created fallback preview: " + previewPath.getFileName());
+        } catch (IOException e) {
+            logger.warning("Consumer " + consumerId + " fallback preview also failed: " + e.getMessage());
         }
     }
 
