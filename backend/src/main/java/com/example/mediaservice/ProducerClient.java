@@ -96,18 +96,55 @@ public class ProducerClient {
                 System.out.println("Invalid folder: " + folderPath);
                 return;
             }
+
+            Map<String,Path> uniqueFiles = new HashMap<>(); 
             
-            Files.walk(folder)
-                .filter(Files::isRegularFile)
+            // Files.walk(folder)
+            //     .filter(Files::isRegularFile)
+            //     .filter(path -> {
+            //         String filename = path.getFileName().toString().toLowerCase();
+            //         return Arrays.stream(extensions).anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
+            //     })
+            //     .forEach(path -> uploadVideo(path.toString())); 
+
+            Files.walk(folder) 
+                .filter(Files::isRegularFile) 
                 .filter(path -> {
-                    String filename = path.getFileName().toString().toLowerCase();
+                    String filename = path.getFileName().toString().toLowerCase(); 
                     return Arrays.stream(extensions).anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
-                })
-                .forEach(path -> uploadVideo(path.toString()));
+                }) 
+                .forEach(path -> {
+                    String filename = path.getFileName().toString(); 
+                    String baseName = getBaseFileName(filename); 
+
+                    // Check if we already have file with base name 
+                    if (uniqueFiles.containsKey(baseName)) {
+                        System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
+
+                        try {
+                            Files.delete(path); 
+                            System.out.println("Deleted duplicate file: " + filename);
+                        } catch (IOException e) {
+                            System.err.println("Failed to delete duplicate: " + filename);
+                        }
+                    } else {
+                        uniqueFiles.put(baseName, path); 
+                        uploadVideo(path.toString());
+                    }
+                });
+
+                System.out.println("Found " + uniqueFiles.size() + " unique videos in " + folderPath);
                 
         } catch (IOException e) {
             System.err.println("Error scanning folder: " + e.getMessage());
         }
+    } 
+
+    // Get base filename 
+    private String getBaseFileName(String filename) {
+        String nameWithoutExt = filename.replaceFirst("[.][^.]+$", ""); 
+        String baseName = nameWithoutExt.replaceAll("\\s*\\(\\d+\\)$", ""); 
+        return baseName.toLowerCase();
     }
 
     public void shutdown() {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
-    const videoUrl = `http://${serverIp}:${serverPort}/content/videos/${video.filename}`;
+    const videoUrl = `http://${serverIp}:${serverPort}/content/${video.filename}`;
 
     return (
         <div className="video-player">
@@ -11,12 +11,14 @@ const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
             
             <div className="player-container">
                 <h2>{video.filename}</h2>
-                <video 
-                    controls 
-                    autoPlay 
-                    className="main-video"
-                    src={videoUrl}
-                />
+                <div className="video-wrapper">
+                    <video 
+                        controls 
+                        autoPlay 
+                        className="main-video"
+                        src={videoUrl}
+                    />
+                </div>
                 
                 <div className="video-details">
                     <p><strong>ID:</strong> {video.id}</p>
