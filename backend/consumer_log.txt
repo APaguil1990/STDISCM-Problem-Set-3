@@ -1,122 +1,122 @@
-Nov 29, 2025 4:00:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 15SecMusic.mp4
-Nov 29, 2025 4:00:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
-Nov 29, 2025 4:00:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 30SecondAnimation.mp4
-Nov 29, 2025 4:00:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: BGMusic.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: BGMusicBossFight.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: G Sounds - adventure time 2.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: GhostStories.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: Rainy Day [short 30 sec animation].mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: SunsetDrone.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: télos _ 30 Second Animated Short.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on_preview.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: 15SecMusic_preview.mp4
-Nov 29, 2025 4:00:45 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: 15SecMusic.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: 30SecondAnimation_preview.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:18 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: 30SecondAnimation.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: BGMusic_preview.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: BGMusic.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: G_Sounds_-_adventure_time_2_preview.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: G_Sounds_-_adventure_time_2.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: BGMusicBossFight_preview.mp4
-Nov 29, 2025 4:00:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: BGMusicBossFight.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: GhostStories_preview.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: GhostStories.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: Rainy_Day__short_30_sec_animation__preview.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:19 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: Rainy_Day__short_30_sec_animation_.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:20 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: SunsetDrone_preview.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:20 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: SunsetDrone.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:20 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: t_los___30_Second_Animated_Short_preview.mp4
-Nov 29, 2025 4:00:47 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:20 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: t_los___30_Second_Animated_Short.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 15SecMusic.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: 30SecondAnimation.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: BGMusic.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: BGMusicBossFight.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: G Sounds - adventure time 2.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: GhostStories.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: Rainy Day [short 30 sec animation].mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: SunsetDrone.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Nov 29, 2025 4:13:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: télos _ 30 Second Animated Short.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on(2)_preview.mp4
-Nov 29, 2025 4:00:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: 30_seconds_of_a_spider_animation_that_i_m_working_on(2).mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: 15SecMusic(2)_preview.mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: 15SecMusic(2).mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: 30SecondAnimation(2)_preview.mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:25 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: 30SecondAnimation(2).mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: BGMusic(2)_preview.mp4
-Nov 29, 2025 4:00:50 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: BGMusic(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: G_Sounds_-_adventure_time_2(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: G_Sounds_-_adventure_time_2(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: BGMusicBossFight(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: BGMusicBossFight(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: GhostStories(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: GhostStories(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: Rainy_Day__short_30_sec_animation_(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 processed: Rainy_Day__short_30_sec_animation_(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: SunsetDrone(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 processed: SunsetDrone(2).mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Nov 29, 2025 4:13:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: t_los___30_Second_Animated_Short(2)_preview.mp4
-Nov 29, 2025 4:00:51 PM com.example.mediaservice.MediaServiceImpl processVideo
+Nov 29, 2025 4:13:27 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 processed: t_los___30_Second_Animated_Short(2).mp4
-Nov 29, 2025 4:02:38 PM com.example.mediaservice.MediaServiceImpl lambda$0
+Nov 29, 2025 4:14:36 PM com.example.mediaservice.MediaServiceImpl lambda$0
 INFO: Shutdown initiated - closing resources
