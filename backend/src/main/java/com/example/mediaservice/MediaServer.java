@@ -10,6 +10,8 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MediaServer {
     private final int grpcPort;
@@ -113,8 +115,9 @@ public class MediaServer {
                     exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
                     exchange.getResponseHeaders().set("Content-Type", "application/json");
                     
-                    // Return mock data or implement actual video list
-                    String response = "[{\"id\":\"1\",\"filename\":\"video1.mp4\",\"size\":1024000}]";
+                    // Get actual videos from MediaService using the getter
+                    List<VideoInfo> videoList = new ArrayList<>(mediaService.getVideoStore().values());
+                    String response = convertVideoListToJson(videoList);
                     
                     exchange.sendResponseHeaders(200, response.getBytes().length);
                     OutputStream os = exchange.getResponseBody();
@@ -125,6 +128,24 @@ public class MediaServer {
                 e.printStackTrace();
             }
         }
+        
+        private String convertVideoListToJson(List<VideoInfo> videos) {
+            StringBuilder json = new StringBuilder("[");
+            for (int i = 0; i < videos.size(); i++) {
+                VideoInfo video = videos.get(i);
+                json.append(String.format(
+                    "{\"id\":\"%s\",\"filename\":\"%s\",\"upload_time\":\"%s\",\"size\":%d,\"client_id\":\"%s\"}",
+                    video.getId(), 
+                    video.getFilename(),  // Fixed: getFilename() not getFileName()
+                    video.getUploadTime(), 
+                    video.getSize(),
+                    video.getClientId()
+                ));
+                if (i < videos.size() - 1) json.append(",");
+            }
+            json.append("]");
+            return json.toString();
+        }
     }
 
     class StaticContentHandler implements HttpHandler {
@@ -134,6 +155,7 @@ public class MediaServer {
                 String path = exchange.getRequestURI().getPath();
                 String filename = path.substring("/content/".length());
                 
+                // Serve from videos directory
                 java.nio.file.Path filePath = Paths.get("./videos", filename);
                 
                 if (Files.exists(filePath)) {
@@ -141,7 +163,7 @@ public class MediaServer {
                     exchange.sendResponseHeaders(200, Files.size(filePath));
                     Files.copy(filePath, exchange.getResponseBody());
                 } else {
-                    String response = "File not found";
+                    String response = "File not found: " + filename;
                     exchange.sendResponseHeaders(404, response.getBytes().length);
                     exchange.getResponseBody().write(response.getBytes());
                 }

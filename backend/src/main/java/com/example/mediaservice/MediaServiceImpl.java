@@ -13,7 +13,23 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
     private final Path storageDir;
     private final int consumerThreads;
     private final ExecutorService consumerExecutor;
-    private final Logger logger;
+    private final Logger logger; 
+
+    public Map<String, VideoInfo> getVideoStore() {
+        return videoStore; 
+    } 
+
+    // public int getQueueSize() {
+    //     return videoQueue.size();
+    // } 
+
+    // public int getMaxQueueSize() {
+    //     return videoQueue.getCapacity(); 
+    // } 
+
+    // public int getDroppedCount() {
+    //     return videoQueue.getDroppedCount();
+    // }
 
     public MediaServiceImpl(int maxQueueSize, int consumerThreads, String storagePath) {
         this.videoQueue = new BoundedQueue<>(maxQueueSize);

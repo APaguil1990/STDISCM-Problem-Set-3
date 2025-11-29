@@ -36,7 +36,7 @@ const VideoGrid = ({ videos, onVideoSelect, serverIp, serverPort }) => {
     )
 }
 
-const VideoCard = ({ video, onSelect, isDuplicate, serverIp, serverPort }) => {
+const VideoCard = ({ video, onSelect, serverIp, serverPort }) => {
     const [isHovered, setIsHovered] = React.useState(false);
 
     const handleMouseEnter = () => {
@@ -48,18 +48,16 @@ const VideoCard = ({ video, onSelect, isDuplicate, serverIp, serverPort }) => {
     };
 
     // Construct URLs for video content
-    const videoUrl = `http://${serverIp}:${serverPort}/content/videos/${video.filename}`;
-    const previewUrl = `http://${serverIp}:${serverPort}/content/previews/${video.filename.replace('.mp4', '_preview.mp4')}`;
+    const videoUrl = `http://${serverIp}:${serverPort}/content/${video.filename}`;
+    const previewUrl = `http://${serverIp}:${serverPort}/content/${video.filename.replace('.mp4', '_preview.mp4')}`;
 
     return (
         <div 
-            className={`video-card ${isDuplicate ? 'duplicate' : ''}`}
+            className="video-card"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={() => onSelect(video)}
         >
-            {isDuplicate && <div className="duplicate-badge">DUPLICATE</div>}
-            
             <div className="video-thumbnail">
                 {isHovered ? (
                     <div className="video-preview">
@@ -68,6 +66,10 @@ const VideoCard = ({ video, onSelect, isDuplicate, serverIp, serverPort }) => {
                             autoPlay
                             muted
                             loop
+                            onError={(e) => {
+                                console.log('Preview not available:', previewUrl);
+                                // Fallback to placeholder if preview doesn't exist
+                            }}
                         />
                         <div className="preview-label">10s Preview</div>
                     </div>
