@@ -18,6 +18,11 @@ public class ProducerClient {
     public ProducerClient(String host, int port, String clientId, int producerThreads) {
         this.channel = ManagedChannelBuilder.forAddress(host, port)
             .usePlaintext()
+            .maxInboundMessageSize(100 * 1024 * 1024)
+            .keepAliveTime(30, TimeUnit.SECONDS)
+            .keepAliveTimeout(10, TimeUnit.SECONDS)
+            .keepAliveWithoutCalls(true)
+            .idleTimeout(5, TimeUnit.MINUTES)
             .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
         this.clientId = clientId;
@@ -55,9 +60,7 @@ public class ProducerClient {
             String filename = Paths.get(filePath).getFileName().toString();
             logger.info("File: " + filename + " Status: Uploading");
             
-            try (FileInputStream fis = new FileInputStream(filePath);
-                 BufferedInputStream bis = new BufferedInputStream(fis)) {
-                
+            try (FileInputStream fis = new FileInputStream(filePath); BufferedInputStream bis = new BufferedInputStream(fis)) {
                 byte[] buffer = new byte[1024 * 1024]; // 1MB chunks
                 int bytesRead;
                 ByteArrayOutputStream fileData = new ByteArrayOutputStream();
@@ -72,19 +75,40 @@ public class ProducerClient {
                     .setClientId(clientId)
                     .build();
 
-                UploadResponse response = blockingStub.uploadVideo(request);
+                // Add deadline and better error handling
+                UploadResponse response;
+                try {
+                    response = blockingStub
+                        .withDeadlineAfter(60, TimeUnit.SECONDS)  // 60 second timeout
+                        .uploadVideo(request);
+                } catch (io.grpc.StatusRuntimeException e) {
+                    // Check if it's a timeout or other gRPC error
+                    if (e.getStatus().getCode() == io.grpc.Status.Code.DEADLINE_EXCEEDED) {
+                        logger.info("File: " + filename + " Status: Upload timed out (check if video was stored)");
+                    } else if (e.getStatus().getCode() == io.grpc.Status.Code.UNAVAILABLE) {
+                        logger.info("File: " + filename + " Status: Server unavailable");
+                    } else {
+                        logger.info("File: " + filename + " Status: gRPC error - " + e.getStatus());
+                    }
+                    return;
+                }
+                
                 String status = response.getStatus();
                 
                 if ("QUEUED".equals(status)) {
-                    logger.info("File: " + filename + " Status: Done");
+                    logger.info("File: " + filename + " Status: Successfully queued (ID: " + response.getVideoId() + ")");
+                } else if ("DROPPED".equals(status)) {
+                    logger.info("File: " + filename + " Status: Dropped - " + response.getMessage());
+                } else if ("ERROR".equals(status)) {
+                    logger.info("File: " + filename + " Status: Server error - " + response.getMessage());
                 } else {
-                    logger.info("File: " + filename + " Status: Failed - " + response.getMessage());
+                    logger.info("File: " + filename + " Status: Server returned - " + status + " - " + response.getMessage());
                 }
                 
             } catch (IOException e) {
-                logger.info("File: " + filename + " Status: Failed - " + e.getMessage());
+                logger.info("File: " + filename + " Status: Failed to read file - " + e.getMessage());
             } catch (Exception e) {
-                logger.info("File: " + filename + " Status: Failed - Connection error");
+                logger.info("File: " + filename + " Status: Unexpected error - " + e.getClass().getSimpleName() + ": " + e.getMessage());
             }
         });
     }
@@ -99,14 +123,6 @@ public class ProducerClient {
 
             Map<String,Path> uniqueFiles = new HashMap<>(); 
             
-            // Files.walk(folder)
-            //     .filter(Files::isRegularFile)
-            //     .filter(path -> {
-            //         String filename = path.getFileName().toString().toLowerCase();
-            //         return Arrays.stream(extensions).anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
-            //     })
-            //     .forEach(path -> uploadVideo(path.toString())); 
-
             Files.walk(folder) 
                 .filter(Files::isRegularFile) 
                 .filter(path -> {
@@ -214,7 +230,6 @@ public class ProducerClient {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Choose operation:"); 
         System.out.println("1 - Upload vidoes with multiple producers"); 
         System.out.println("2 - Clean up duplicate videos in storage");

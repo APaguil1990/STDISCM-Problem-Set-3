@@ -1,0 +1,24 @@
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Successfully queued (ID: 9c6c2cc5-b8d4-4366-a96d-390c1333269b) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Successfully queued (ID: 7cf8ac13-7b08-4ad2-8190-06e3ca39b16b) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Successfully queued (ID: f064ee6b-9406-45b4-a562-6223ba1a3137) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: BGMusic.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: BGMusic.mp4 Status: Successfully queued (ID: 258d9d12-df13-41a6-847d-eff50745548e) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Successfully queued (ID: 4b0aeeea-cb45-44a9-aef2-9e4f1af24f5c) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Successfully queued (ID: 79e28cb0-6009-4e6f-9f3d-bc0e4c5736b8) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Successfully queued (ID: 05bffbb4-73e8-4d88-95e6-1a402cb609d8) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: GhostStories.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: GhostStories.mp4 Status: Successfully queued (ID: ea66252b-5b33-4f14-978d-d81f003446f7) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Successfully queued (ID: 6a5fc4ac-ae79-4faf-b32c-768058c5342a) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Successfully queued (ID: 8ad84b97-77a9-42bf-9846-37db53b009ec) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Uploading 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Successfully queued (ID: 0583506d-3a2c-4976-859e-690dbdfd96c3) 
+[2025-12-06 04:13:54] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Uploading 
+[2025-12-06 04:13:55] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Successfully queued (ID: d4f02c18-01da-4e62-8f25-2bb0e94d5f79) 

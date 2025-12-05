@@ -101,30 +101,46 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
 
     @Override
     public void uploadVideo(VideoChunk request, StreamObserver<UploadResponse> responseObserver) {
-        VideoMetadata metadata = new VideoMetadata(
-            UUID.randomUUID().toString(),
-            request.getFilename(),
-            request.getClientId(),
-            request.getData().toByteArray()
-        );
+        String videoId = UUID.randomUUID().toString(); 
+        String processedFilename = videoId + "_" + request.getFilename(); 
 
-        boolean queued = videoQueue.enqueue(metadata);
-        
-        if (queued) {
+        try {
+            VideoMetadata metadata = new VideoMetadata(
+                UUID.randomUUID().toString(),
+                request.getFilename(),
+                request.getClientId(),
+                request.getData().toByteArray()
+            );
+
+            boolean queued = videoQueue.enqueue(metadata);
+
+            if (queued) {
+                // Send response BEFORE processing video 
+                responseObserver.onNext(UploadResponse.newBuilder()
+                    .setStatus("QUEUED")
+                    .setMessage("Video added to queue")
+                    .setVideoId(videoId)
+                    .build()); 
+                responseObserver.onCompleted();
+                logger.info("Video queued: " + request.getFilename() + " from client: " + request.getClientId());
+            } else {
+                // Queue is full - send immediate response 
+                responseObserver.onNext(UploadResponse.newBuilder()
+                    .setStatus("DROPPED")
+                    .setMessage("Queue is full")
+                    .build());
+                responseObserver.onCompleted();
+                logger.info("Video dropped (queue full): " + request.getFilename());
+            }
+        } catch (Exception e) {
+            // Send error response if something goes wrong
             responseObserver.onNext(UploadResponse.newBuilder()
-                .setStatus("QUEUED")
-                .setMessage("Video added to queue")
-                .setVideoId(metadata.getId())
+                .setStatus("ERROR")
+                .setMessage("Server error: " + e.getMessage())
                 .build());
-            logger.info("Video queued: " + metadata.getFilename());
-        } else {
-            responseObserver.onNext(UploadResponse.newBuilder()
-                .setStatus("DROPPED")
-                .setMessage("Queue is full")
-                .build());
-            logger.info("Video dropped (queue full): " + metadata.getFilename());
+            responseObserver.onCompleted(); 
+            logger.severe("Error processing uploads " + e.getMessage());
         }
-        responseObserver.onCompleted();
     }
 
     private void processVideo(VideoMetadata metadata, int consumerId) {
