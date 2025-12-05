@@ -1,24 +1,24 @@
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: BGMusic.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: BGMusic.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Failed - Connection error 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: GhostStories.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: GhostStories.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Done 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Uploading 
-[2025-11-29 16:13:17] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Failed - Connection error 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 15SecMusic.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: 30SecondAnimation.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: BGMusic.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: BGMusic.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: BGMusicBossFight.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Failed - Connection error 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: G Sounds - adventure time 2.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: GhostStories.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: GhostStories.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: SunsetDrone.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Done 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Uploading 
+[2025-12-05 11:38:10] [pool-5-thread-1] File: You Say Run Goes With Everything - Helldivers 2.mp4 Status: Failed - Connection error 
