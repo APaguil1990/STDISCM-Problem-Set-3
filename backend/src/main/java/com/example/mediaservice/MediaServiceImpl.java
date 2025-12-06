@@ -37,17 +37,17 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         this.consumerThreads = consumerThreads;
         this.storageDir = Paths.get(storagePath);
         this.consumerExecutor = Executors.newFixedThreadPool(consumerThreads);
-        
+
         // Setup logging
         this.logger = setupLogger();
-        
+
         try {
             Files.createDirectories(storageDir);
             Files.createDirectories(storageDir.resolve("previews"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         startConsumers();
         setupShutdownHook();
     }
@@ -138,7 +138,8 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             
             // Generate preview using FFmpeg
             generatePreview(filePath, consumerId);
-            
+            compressVideo(filePath, consumerId);
+
             // Store metadata
             VideoInfo videoInfo = VideoInfo.newBuilder()
                 .setId(metadata.getId())
@@ -156,6 +157,50 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         }
     }
 
+
+    private void compressVideo(Path inputPath, int consumerId) {
+        try {
+            String filename = inputPath.getFileName().toString();
+            // Create a filename for compressed version
+            String compressedName = "compressed_" + filename;
+            Path compressedPath = storageDir.resolve(compressedName);
+
+           List<String> ffmpegCommand = new ArrayList<>();
+                   ffmpegCommand.add("ffmpeg");
+                   ffmpegCommand.add("-i");
+                   ffmpegCommand.add(inputPath.toAbsolutePath().toString());
+                   ffmpegCommand.add("-vcodec");
+                   ffmpegCommand.add("libx264");
+                   ffmpegCommand.add("-crf");
+                   ffmpegCommand.add("28"); // Higher number = more compression (lower quality)
+                   ffmpegCommand.add("-preset");
+                   ffmpegCommand.add("fast"); // Compress fast
+                   ffmpegCommand.add("-y");   // Overwrite if file exists
+                   ffmpegCommand.add(compressedPath.toAbsolutePath().toString());
+
+           ProcessBuilder pb = new ProcessBuilder(ffmpegCommand);
+           pb.redirectErrorStream(true);
+
+           Process process = pb.start();
+
+           BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+           StringBuilder output = new StringBuilder();
+           String line;
+           while ((line = reader.readLine()) != null) {
+               output.append(line).append("\n");
+           }
+
+           int exitCode = process.waitFor();
+
+           if (exitCode == 0) {
+               logger.info("Consumer " + consumerId + " compressed video: " + compressedFilename);
+           } else {
+               logger.warning("Consumer " + consumerId + " Compression failed with code " + exitCode + "\nOutput: " + output.toString());
+           }
+        } catch (Exception e) {
+            logger.warning("Consumer " + consumerId + " compression exception: " + e.getMessage());
+        }
+    }
     private String getSafeFilename(String filename) {
         String baseName = filename.replaceAll("[^a-zA-Z0-9.-]", "_");
         Path filePath = storageDir.resolve(baseName);

@@ -122,10 +122,10 @@ public class ProducerClient {
                         System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
 
                         try {
-                            Files.delete(path); 
-                            System.out.println("Deleted duplicate file: " + filename);
+//                             Files.delete(path);
+                            System.out.println("Duplicate file: " + filename);
                         } catch (IOException e) {
-                            System.err.println("Failed to delete duplicate: " + filename);
+                            System.err.println("Duplicate: " + filename);
                         }
                     } else {
                         uniqueFiles.put(baseName, path); 

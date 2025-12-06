@@ -4,19 +4,26 @@ option java_multiple_files = true;
 option java_package = "com.example.mediaservice";
 
 service MediaService {
-  rpc UploadVideo (VideoChunk) returns (UploadResponse);
+  rpc UploadVideo (stream VideoChunk) returns (UploadResponse);
   rpc GetVideoList (Empty) returns (VideoList);
   rpc GetVideo (VideoRequest) returns (VideoResponse);
 }
 
 message VideoChunk {
+  // First message contains metadata, subsequent contain data
+  oneof payload {
+    VideoMetadata meta = 1;
+    bytes content = 2;
+  }
+}
+
+message VideoMetadata {
   string filename = 1;
-  bytes data = 2;
-  string client_id = 3;
+  string client_id = 2;
 }
 
 message UploadResponse {
-  string status = 1;
+  string status = 1; // "SUCCESS", "QUEUED", "DROPPED", "FAILED"
   string message = 2;
   string video_id = 3;
 }
