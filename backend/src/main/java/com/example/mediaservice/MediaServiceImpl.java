@@ -5,10 +5,10 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.*;
 import java.util.logging.*;
 
 public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
-    // Changed generic type to QueuedVideo
     private final BoundedQueue<QueuedVideo> videoQueue;
     private final Map<String, VideoInfo> videoStore;
     private final Path storageDir;
@@ -75,7 +75,6 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             consumerExecutor.submit(() -> {
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
-                        // Changed to QueuedVideo
                         QueuedVideo videoItem = videoQueue.dequeue();
                         processVideo(videoItem, consumerId);
                     } catch (InterruptedException e) {
@@ -88,7 +87,8 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             });
         }
     }
-@Override
+
+    @Override
     public void uploadVideo(VideoChunk request, StreamObserver<UploadResponse> responseObserver) {
         // Create the internal representation
         QueuedVideo videoItem = new QueuedVideo(
@@ -125,30 +125,26 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         responseObserver.onCompleted();
     }
 
-    // Changed parameter to QueuedVideo
     private void processVideo(QueuedVideo videoItem, int consumerId) {
+        String safeFilename = null;
         try {
-            // Handle filename collisions
-            String safeFilename = getSafeFilename(videoItem.getFilename());
+            safeFilename = getSafeFilename(videoItem.getFilename());
             Path filePath = storageDir.resolve(safeFilename);
 
+            logger.info("Consumer " + consumerId + " START processing: " + safeFilename);
+            
             // Write video file
             Files.write(filePath, videoItem.getData());
-
+            logger.info("Consumer " + consumerId + " wrote file: " + safeFilename);
+            
             // 1. Generate preview
             generatePreview(filePath, consumerId);
-
-            // 2. Compress Video (Bonus Feature)
-            compressVideo(filePath, consumerId);
-            long compressedSize = 0;
-            try {
-                Path compressedPath = storageDir.resolve("compressed_" + safeFilename);
-                if (Files.exists(compressedPath)) {
-                    compressedSize = Files.size(compressedPath);
-                }
-            } catch (IOException e) {
-                logger.warning("Could not determine compressed size");
-            }
+            logger.info("Consumer " + consumerId + " generated preview for: " + safeFilename);
+            
+            // 2. Skip compression for now - comment this out
+            // compressVideo(filePath, consumerId);
+            // logger.info("Consumer " + consumerId + " compressed video: " + safeFilename);
+            
             // Store metadata
             VideoInfo videoInfo = VideoInfo.newBuilder()
                 .setId(videoItem.getId())
@@ -156,14 +152,16 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
                 .setUploadTime(new Date().toString())
                 .setSize(videoItem.getData().length)
                 .setClientId(videoItem.getClientId())
-                .setCompressedSize(compressedSize)
+                .setCompressedSize(0) // Set to 0 since we're not compressing
                 .build();
 
             videoStore.put(videoItem.getId(), videoInfo);
-            logger.info("Consumer " + consumerId + " processed: " + safeFilename);
-
+            logger.info("Consumer " + consumerId + " COMPLETED processing: " + safeFilename + " (ID: " + videoItem.getId() + ")");
+            
         } catch (Exception e) {
-            logger.warning("Consumer " + consumerId + " failed to process: " + videoItem.getFilename() + " - " + e.getMessage());
+            logger.severe("Consumer " + consumerId + " FAILED to process: " + 
+                         (safeFilename != null ? safeFilename : videoItem.getFilename()) + 
+                         " - Error: " + e.getMessage());
         }
     }
 
@@ -288,9 +286,8 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         }
     }
 
-@Override
+    @Override
     public void getQueueStatus(Empty request, StreamObserver<QueueStatus> responseObserver) {
-        // Check if queue is full (capacity - size <= 0)
         boolean isFull = getQueueSize() >= getMaxQueueSize();
 
         QueueStatus status = QueueStatus.newBuilder()
@@ -302,7 +299,6 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         responseObserver.onNext(status);
         responseObserver.onCompleted();
     }
-
 
     public int getQueueSize() { return videoQueue.size(); }
     public int getMaxQueueSize() { return videoQueue.getCapacity(); }
@@ -361,4 +357,69 @@ class QueuedVideo {
     public String getFilename() { return filename; }
     public String getClientId() { return clientId; }
     public byte[] getData() { return data; }
+}
+
+// BoundedQueue class - MUST BE ADDED
+class BoundedQueue<T> {
+    private final List<T> queue;
+    private final int capacity;
+    private final ReentrantLock lock;
+    private final Semaphore emptySlots;
+    private final Semaphore filledSlots;
+    private int droppedCount;
+
+    public BoundedQueue(int capacity) {
+        this.capacity = capacity;
+        this.queue = new ArrayList<>(capacity);
+        this.lock = new ReentrantLock();
+        this.emptySlots = new Semaphore(capacity);
+        this.filledSlots = new Semaphore(0);
+        this.droppedCount = 0;
+    }
+
+    public boolean enqueue(T item) {
+        // Try to acquire without blocking - leaky bucket behavior
+        if (!emptySlots.tryAcquire()) {
+            droppedCount++;
+            return false;
+        }
+        
+        lock.lock();
+        try {
+            queue.add(item);
+            filledSlots.release();
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public T dequeue() throws InterruptedException {
+        filledSlots.acquire();
+        lock.lock();
+        try {
+            T item = queue.remove(0);
+            emptySlots.release();
+            return item;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int size() {
+        lock.lock();
+        try {
+            return queue.size();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int getDroppedCount() {
+        return droppedCount;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
 }
