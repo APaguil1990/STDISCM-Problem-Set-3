@@ -9,14 +9,15 @@ service MediaService {
   rpc GetVideo (VideoRequest) returns (VideoResponse);
 }
 
+// Simplified to match ProducerClient.java logic
 message VideoChunk {
   string filename = 1;
-  bytes data = 2;
-  string client_id = 3;
+  string client_id = 2;
+  bytes data = 3;
 }
 
 message UploadResponse {
-  string status = 1;
+  string status = 1; // "SUCCESS", "QUEUED", "DROPPED", "FAILED"
   string message = 2;
   string video_id = 3;
 }
@@ -33,6 +34,7 @@ message VideoInfo {
   string upload_time = 3;
   int64 size = 4; 
   string client_id = 5;
+  int64 compressed_size = 6;
 }
 
 message VideoRequest {

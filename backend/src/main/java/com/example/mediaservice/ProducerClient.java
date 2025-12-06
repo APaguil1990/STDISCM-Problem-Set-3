@@ -17,8 +17,9 @@ public class ProducerClient {
 
     public ProducerClient(String host, int port, String clientId, int producerThreads) {
         this.channel = ManagedChannelBuilder.forAddress(host, port)
-            .usePlaintext()
-            .build();
+                    .usePlaintext()
+                    .maxInboundMessageSize(50 * 1024 * 1024)
+                    .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
         this.clientId = clientId;
         this.threadPool = Executors.newFixedThreadPool(producerThreads);
@@ -121,12 +122,12 @@ public class ProducerClient {
                     if (uniqueFiles.containsKey(baseName)) {
                         System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
 
-                        try {
-//                             Files.delete(path);
-                            System.out.println("Duplicate file: " + filename);
-                        } catch (IOException e) {
-                            System.err.println("Duplicate: " + filename);
-                        }
+//                         try {
+// //                             Files.delete(path);
+//                             System.out.println("Duplicate file: " + filename);
+//                         } catch (IOException e) {
+//                             System.err.println("Duplicate: " + filename);
+//                         }
                     } else {
                         uniqueFiles.put(baseName, path); 
                         uploadVideo(path.toString());
@@ -216,7 +217,7 @@ public class ProducerClient {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose operation:"); 
-        System.out.println("1 - Upload vidoes with multiple producers"); 
+        System.out.println("1 - Upload videos with multiple producers");
         System.out.println("2 - Clean up duplicate videos in storage");
         System.out.println("3 - Clean up duplicates THEN upload videos");
         System.out.println("Enter choice (1, 2, or 3): "); 

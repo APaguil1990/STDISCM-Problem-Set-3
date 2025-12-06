@@ -25,22 +25,23 @@ public class MediaServer {
         this.httpPort = httpPort;
         this.mediaService = new MediaServiceImpl(maxQueueSize, consumerThreads, "./videos");
         this.grpcServer = ServerBuilder.forPort(grpcPort)
-            .addService(mediaService)
-            .build();
+                    .addService(mediaService)
+                    .maxInboundMessageSize(50 * 1024 * 1024) // Allow 50MB uploads
+                    .build();
         this.httpServer = createHttpServer();
     }
 
     private HttpServer createHttpServer() {
         try {
             HttpServer server = HttpServer.create(new InetSocketAddress(httpPort), 0);
-            
+
             // API endpoints
             server.createContext("/api/stats", new StatsHandler());
             server.createContext("/api/videos", new VideosHandler());
-            
+
             // Static content serving
             server.createContext("/content/", new StaticContentHandler());
-            
+
             server.setExecutor(null);
             return server;
         } catch (IOException e) {
@@ -51,7 +52,7 @@ public class MediaServer {
     public void start() throws IOException {
         grpcServer.start();
         httpServer.start();
-        
+
         System.out.println("Media Server started:");
         System.out.println("gRPC Server on port: " + grpcPort + " (0.0.0.0)");
         System.out.println("HTTP Server on port: " + httpPort);
@@ -88,14 +89,14 @@ public class MediaServer {
                     // Set CORS headers
                     exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
                     exchange.getResponseHeaders().set("Content-Type", "application/json");
-                    
+
                     String response = String.format(
                         "{\"queueSize\": %d, \"maxQueue\": %d, \"droppedCount\": %d}",
                         mediaService.getQueueSize(),
                         mediaService.getMaxQueueSize(),
                         mediaService.getDroppedCount()
                     );
-                    
+
                     exchange.sendResponseHeaders(200, response.getBytes().length);
                     OutputStream os = exchange.getResponseBody();
                     os.write(response.getBytes());
@@ -114,11 +115,11 @@ public class MediaServer {
                 if ("GET".equals(exchange.getRequestMethod())) {
                     exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
                     exchange.getResponseHeaders().set("Content-Type", "application/json");
-                    
+
                     // Get actual videos from MediaService using the getter
                     List<VideoInfo> videoList = new ArrayList<>(mediaService.getVideoStore().values());
                     String response = convertVideoListToJson(videoList);
-                    
+
                     exchange.sendResponseHeaders(200, response.getBytes().length);
                     OutputStream os = exchange.getResponseBody();
                     os.write(response.getBytes());
@@ -128,23 +129,29 @@ public class MediaServer {
                 e.printStackTrace();
             }
         }
-        
+
         private String convertVideoListToJson(List<VideoInfo> videos) {
             StringBuilder json = new StringBuilder("[");
             for (int i = 0; i < videos.size(); i++) {
                 VideoInfo video = videos.get(i);
-                json.append(String.format(
-                    "{\"id\":\"%s\",\"filename\":\"%s\",\"upload_time\":\"%s\",\"size\":%d,\"client_id\":\"%s\"}",
-                    video.getId(), 
-                    video.getFilename(),  // Fixed: getFilename() not getFileName()
-                    video.getUploadTime(), 
-                    video.getSize(),
-                    video.getClientId()
-                ));
-                if (i < videos.size() - 1) json.append(",");
-            }
-            json.append("]");
-            return json.toString();
+
+                                // Simplified string formatting to avoid syntax errors
+                                String jsonEntry = String.format(
+                                    "{\"id\":\"%s\",\"filename\":\"%s\",\"upload_time\":\"%s\",\"size\":%d,\"client_id\":\"%s\",\"compressed_size\":%d}",
+                                    video.getId(),
+                                    video.getFilename(),
+                                    video.getUploadTime(),
+                                    video.getSize(),
+                                    video.getClientId(),
+                                    video.getCompressedSize()
+                                );
+
+                                json.append(jsonEntry);
+
+                                if (i < videos.size() - 1) json.append(",");
+                            }
+                            json.append("]");
+                            return json.toString();
         }
     }
 
@@ -154,18 +161,19 @@ public class MediaServer {
             try {
                 String path = exchange.getRequestURI().getPath();
                 String filename = path.substring("/content/".length());
-                
+
                 // Serve from videos directory
                 java.nio.file.Path filePath = Paths.get("./videos", filename);
 
                 if (filename.startsWith("previews/")) {
-                    String previewFilename = filename.substring("previews/".length()); 
+                    String previewFilename = filename.substring("previews/".length());
                     filePath = Paths.get("./videos/previews", previewFilename);
                 } else {
                     filePath = Paths.get("./videos", filename);
                 }
-                
+
                 if (Files.exists(filePath)) {
+                    exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*"); // Allow video player access
                     exchange.getResponseHeaders().set("Content-Type", getContentType(filename));
                     exchange.sendResponseHeaders(200, Files.size(filePath));
                     Files.copy(filePath, exchange.getResponseBody());

@@ -4,7 +4,182 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e24139-2325-406d-a563-ded5cd41a771" name="Changes" comment="" />
+    <list default="true" id="c3e24139-2325-406d-a563-ded5cd41a771" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/repomix-output.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-00-41-00-06-38_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-06-39-00-15-08_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-15-09-00-17-27_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-17-28-00-20-11_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-20-12-00-22-02_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-22-03-00-25-48_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-25-49-00-29-02_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-29-03-00-32-55_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-32-56-00-36-56_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-36-57-00-39-53_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-39-54-00-44-50_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-44-51-00-49-02_crop.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-videos/clip0901_00-49-03-00-57-42_crop.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/consumer_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/consumer_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/producer_producer-1_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/producer_producer-1_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/MediaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/MediaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/MediaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/MediaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/ProducerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/ProducerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/proto/media.proto" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/proto/media.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/Media.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/Media.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$StaticContentHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$StaticContentHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$StatsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$StatsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$VideosHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer$VideosHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/MediaServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/ProducerClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/ProducerClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/ProducerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/ProducerClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/UploadResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunkOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoChunkOrBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfoOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoInfoOrBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/mediaservice/VideoMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/media.proto" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/media.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/grpc-java/com/example/mediaservice/MediaServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/grpc-java/com/example/mediaservice/MediaServiceGrpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/EmptyOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/EmptyOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/Media.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/UploadResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/UploadResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/UploadResponseOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/UploadResponseOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoChunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoChunk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoChunkOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoChunkOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoInfoOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoInfoOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoListOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoListOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoRequestOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoRequestOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoResponseOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/protobuf/java/com/example/mediaservice/VideoResponseOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/any.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/api.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/compiler/plugin.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/descriptor.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/duration.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/empty.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/field_mask.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/source_context.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/struct.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/timestamp.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/type.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/1644a73faeb25a98c24fce9bee9e745a/google/protobuf/wrappers.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/annotations.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/auth.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/backend.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/billing.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/client.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/config_change.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/consumer.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/context.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/control.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/distribution.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/documentation.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/endpoint.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/field_behavior.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/http.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/httpbody.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/label.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/launch_stage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/log.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/logging.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/metric.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/monitored_resource.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/monitoring.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/quota.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/resource.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/service.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/source_info.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/system_parameter.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/api/usage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/cloud/audit/audit_log.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/geo/type/viewport.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/logging/type/http_request.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/logging/type/log_severity.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/longrunning/operations.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/rpc/code.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/rpc/context/attribute_context.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/rpc/error_details.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/rpc/status.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/calendar_period.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/color.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/date.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/datetime.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/dayofweek.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/expr.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/fraction.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/latlng.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/money.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/postal_address.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/quaternion.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type/timeofday.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/15SecMusic(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/15SecMusic.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/30SecondAnimation(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/30SecondAnimation.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/30_seconds_of_a_spider_animation_that_i_m_working_on(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/30_seconds_of_a_spider_animation_that_i_m_working_on.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusic(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusic.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusicBossFight(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusicBossFight.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/G_Sounds_-_adventure_time_2(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/G_Sounds_-_adventure_time_2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/GhostStories(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/GhostStories.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/Rainy_Day__short_30_sec_animation_(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/Rainy_Day__short_30_sec_animation_.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/SunsetDrone(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/SunsetDrone.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation_(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation_(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation__preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short(1)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short(2)_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short_preview.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/t_los___30_Second_Animated_Short(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/videos/t_los___30_Second_Animated_Short.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/VideoGrid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/VideoGrid.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/VideoPlayer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/VideoPlayer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,28 +196,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.main.jsx.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Archer&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/peter/Documents/Github/STDISCM-Problem-Set-3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/peter/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/24.11.1/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.main.jsx.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "fix",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/peter/Documents/Github/STDISCM-Problem-Set-3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Users/peter/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/24.11.1/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "build.tools",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
