@@ -1,7 +1,10 @@
 package com.example.mediaservice;
 
+import io.grpc.ConnectivityState;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import java.io.*;
 import java.nio.file.*;
@@ -11,14 +14,15 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.*;
 import java.util.Properties;
 
 public class ProducerClient {
     private final ManagedChannel channel;
-    private final MediaServiceGrpc.MediaServiceBlockingStub blockingStub;
-    private final MediaServiceGrpc.MediaServiceStub asyncStub;
     private final Logger logger;
     private final String clientId;
     private final ExecutorService threadPool;
@@ -27,19 +31,51 @@ public class ProducerClient {
     private final long fileStabilityCheckDuration;
     private final Set<Path> processedFiles;
     private final Set<Path> filesInProgress;
+    
+    // Robustness enhancements
+    private final AtomicBoolean isShuttingDown;
+    private final AtomicInteger activeUploads;
+    private final CountDownLatch shutdownLatch;
+    private final String host;
+    private final int port;
+    private volatile MediaServiceGrpc.MediaServiceBlockingStub blockingStub;
+    private volatile MediaServiceGrpc.MediaServiceStub asyncStub;
+    
+    // Configuration values
+    private final int maxRetryAttempts;
+    private final long retryBackoffInitialMs;
+    private final double retryBackoffMultiplier;
+    private final long retryBackoffMaxMs;
+    private final long gracefulShutdownTimeoutSeconds;
+    private final long forceShutdownTimeoutSeconds;
+    private final int queueCheckRetryMaxAttempts;
+    private final long queueCheckRetryDelayMs;
+    private final long queueWaitTimeoutSeconds;
+    private final long reconnectBackoffInitialMs;
+    private final long reconnectBackoffMaxMs;
+    
+    // Metrics
+    private final AtomicLong uploadSuccessCount;
+    private final AtomicLong uploadFailureCount;
+    private final AtomicLong retryCount;
+    private final AtomicInteger connectionStateChanges;
+    
+    // WatchService recovery
+    private final Map<String, Thread> watchThreads;
+    private final Map<String, AtomicBoolean> watchActiveFlags;
 
     public ProducerClient(String host, int port, String clientId, int producerThreads) {
-        this.channel = ManagedChannelBuilder.forAddress(host, port)
-            .usePlaintext()
-            .maxInboundMessageSize(100 * 1024 * 1024)
-            // REMOVE keepalive settings to avoid warnings
-            .build();
-        this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
-        this.asyncStub = MediaServiceGrpc.newStub(channel);
+        this.host = host;
+        this.port = port;
         this.clientId = clientId;
         this.threadPool = Executors.newFixedThreadPool(producerThreads);
         this.processedFiles = ConcurrentHashMap.newKeySet();
         this.filesInProgress = ConcurrentHashMap.newKeySet();
+        this.isShuttingDown = new AtomicBoolean(false);
+        this.activeUploads = new AtomicInteger(0);
+        this.shutdownLatch = new CountDownLatch(1);
+        this.watchThreads = new ConcurrentHashMap<>();
+        this.watchActiveFlags = new ConcurrentHashMap<>();
         
         // Load configuration
         Properties config = loadConfig();
@@ -47,8 +83,46 @@ public class ProducerClient {
         this.fileStabilityCheckInterval = Long.parseLong(config.getProperty("file.stability.check.interval", "500"));
         this.fileStabilityCheckDuration = Long.parseLong(config.getProperty("file.stability.check.duration", "2000"));
         
+        // Retry configuration
+        this.maxRetryAttempts = Integer.parseInt(config.getProperty("upload.retry.max.attempts", "3"));
+        this.retryBackoffInitialMs = Long.parseLong(config.getProperty("upload.retry.backoff.initial.ms", "1000"));
+        this.retryBackoffMultiplier = Double.parseDouble(config.getProperty("upload.retry.backoff.multiplier", "2.0"));
+        this.retryBackoffMaxMs = Long.parseLong(config.getProperty("upload.retry.backoff.max.ms", "30000"));
+        
+        // Shutdown configuration
+        this.gracefulShutdownTimeoutSeconds = Long.parseLong(config.getProperty("shutdown.graceful.timeout.seconds", "300"));
+        this.forceShutdownTimeoutSeconds = Long.parseLong(config.getProperty("shutdown.force.timeout.seconds", "30"));
+        
+        // Queue check configuration
+        this.queueCheckRetryMaxAttempts = Integer.parseInt(config.getProperty("queue.check.retry.max.attempts", "5"));
+        this.queueCheckRetryDelayMs = Long.parseLong(config.getProperty("queue.check.retry.delay.ms", "1000"));
+        this.queueWaitTimeoutSeconds = Long.parseLong(config.getProperty("queue.wait.timeout.seconds", "300"));
+        
+        // Connection configuration
+        this.reconnectBackoffInitialMs = Long.parseLong(config.getProperty("grpc.reconnect.backoff.initial.ms", "1000"));
+        this.reconnectBackoffMaxMs = Long.parseLong(config.getProperty("grpc.reconnect.backoff.max.ms", "60000"));
+        
+        // Metrics initialization
+        this.uploadSuccessCount = new AtomicLong(0);
+        this.uploadFailureCount = new AtomicLong(0);
+        this.retryCount = new AtomicLong(0);
+        this.connectionStateChanges = new AtomicInteger(0);
+        
         // Setup file logging
         this.logger = setupLogger(clientId);
+        
+        // Build channel with enhanced configuration
+        this.channel = buildManagedChannel(host, port, config);
+        this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
+        this.asyncStub = MediaServiceGrpc.newStub(channel);
+        
+        // Setup channel state monitoring
+        setupChannelStateMonitoring();
+        
+        // Setup graceful shutdown hook
+        setupShutdownHook();
+        
+        logger.info("ProducerClient initialized: " + clientId + " connecting to " + host + ":" + port);
     }
 
     private Properties loadConfig() {
@@ -88,78 +162,252 @@ public class ProducerClient {
             return Logger.getGlobal();
         }
     }
-
-    public void uploadVideo(String filePath) {
-        threadPool.submit(() -> {
-            String filename = Paths.get(filePath).getFileName().toString();
-
-            // Check queue status before uploading
-            while (true) {
+    
+    private ManagedChannel buildManagedChannel(String host, int port, Properties config) {
+        ManagedChannelBuilder<?> builder = ManagedChannelBuilder.forAddress(host, port)
+            .usePlaintext()
+            .maxInboundMessageSize(100 * 1024 * 1024);
+        
+        // Configure keepalive if specified
+        try {
+            long keepaliveTime = Long.parseLong(config.getProperty("grpc.keepalive.time.sec", "30"));
+            long keepaliveTimeout = Long.parseLong(config.getProperty("grpc.keepalive.timeout.sec", "5"));
+            boolean keepaliveWithoutCalls = Boolean.parseBoolean(config.getProperty("grpc.keepalive.without.calls.enabled", "true"));
+            
+            builder.keepAliveTime(keepaliveTime, TimeUnit.SECONDS)
+                   .keepAliveTimeout(keepaliveTimeout, TimeUnit.SECONDS)
+                   .keepAliveWithoutCalls(keepaliveWithoutCalls);
+        } catch (Exception e) {
+            logger.warning("Failed to configure keepalive settings: " + e.getMessage());
+        }
+        
+        return builder.build();
+    }
+    
+    private void setupChannelStateMonitoring() {
+        // Monitor channel state changes in a background thread
+        Thread monitorThread = new Thread(() -> {
+            ConnectivityState lastState = null;
+            while (!isShuttingDown.get() && !Thread.currentThread().isInterrupted()) {
+                try {
+                    ConnectivityState currentState = channel.getState(false);
+                    if (lastState != null && !currentState.equals(lastState)) {
+                        connectionStateChanges.incrementAndGet();
+                        logger.info("Channel state changed from " + lastState + " to " + currentState);
+                        
+                        if (currentState == ConnectivityState.TRANSIENT_FAILURE || 
+                            currentState == ConnectivityState.SHUTDOWN) {
+                            logger.warning("Channel in failure state: " + currentState + ". Attempting recovery...");
+                            attemptReconnection();
+                        }
+                    }
+                    lastState = currentState;
+                    Thread.sleep(5000); // Check every 5 seconds
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                } catch (Exception e) {
+                    logger.warning("Error monitoring channel state: " + e.getMessage());
+                }
+            }
+        }, "ChannelMonitor-" + clientId);
+        monitorThread.setDaemon(true);
+        monitorThread.start();
+    }
+    
+    private void attemptReconnection() {
+        logger.info("Attempting to reconnect channel...");
+        // gRPC channel should automatically reconnect, but we can trigger it
+        if (channel.getState(false) == ConnectivityState.TRANSIENT_FAILURE) {
+            channel.resetConnectBackoff();
+        }
+    }
+    
+    private void setupShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            logger.info("Shutdown hook triggered - initiating graceful shutdown");
+            shutdown();
+        }, "ShutdownHook-" + clientId));
+    }
+    
+    private void waitForQueueAvailable(String filename, long timeoutSeconds) throws InterruptedException {
+        long startTime = System.currentTimeMillis();
+        long timeoutMs = timeoutSeconds * 1000;
+        int attempt = 0;
+        
+        while (!isShuttingDown.get()) {
+            if (System.currentTimeMillis() - startTime > timeoutMs) {
+                throw new InterruptedException("Timeout waiting for queue to become available");
+            }
+            
+            boolean success = false;
+            for (int i = 0; i < queueCheckRetryMaxAttempts; i++) {
                 try {
                     QueueStatus status = blockingStub.getQueueStatus(Empty.getDefaultInstance());
                     if (!status.getIsFull()) {
-                        break; // Queue has space, proceed to upload
+                        success = true;
+                        break;
                     }
-                    // If full, wait 2 seconds and try again
-                    logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + "). Waiting to upload: " + filename);
-                    Thread.sleep(2000);
+                    logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + 
+                               "). Waiting to upload: " + filename);
                 } catch (Exception e) {
-                    logger.warning("Failed to check queue status: " + e.getMessage());
-                    break; // If check fails, try uploading anyway or exit
+                    logger.warning("Failed to check queue status (attempt " + (i + 1) + "/" + 
+                                 queueCheckRetryMaxAttempts + "): " + e.getMessage());
+                    if (i < queueCheckRetryMaxAttempts - 1) {
+                        Thread.sleep(queueCheckRetryDelayMs);
+                    }
                 }
             }
             
-            logger.info("File: " + filename + " Status: Uploading");
+            if (success) {
+                break;
+            }
             
-            try (FileInputStream fis = new FileInputStream(filePath); BufferedInputStream bis = new BufferedInputStream(fis)) {
-                byte[] buffer = new byte[1024 * 1024]; // 1MB chunks
-                int bytesRead;
-                ByteArrayOutputStream fileData = new ByteArrayOutputStream();
-                
-                while ((bytesRead = bis.read(buffer)) != -1) {
-                    fileData.write(buffer, 0, bytesRead);
-                }
-                
-                VideoChunk request = VideoChunk.newBuilder()
-                    .setFilename(filename)
-                    .setData(com.google.protobuf.ByteString.copyFrom(fileData.toByteArray()))
-                    .setClientId(clientId)
-                    .build();
-
-                // Add deadline and better error handling
-                UploadResponse response;
-                try {
-                    response = blockingStub
-                        .withDeadlineAfter(60, TimeUnit.SECONDS)  // 60 second timeout
-                        .uploadVideo(request);
-                } catch (io.grpc.StatusRuntimeException e) {
-                    // Check if it's a timeout or other gRPC error
-                    if (e.getStatus().getCode() == io.grpc.Status.Code.DEADLINE_EXCEEDED) {
-                        logger.info("File: " + filename + " Status: Upload timed out (check if video was stored)");
-                    } else if (e.getStatus().getCode() == io.grpc.Status.Code.UNAVAILABLE) {
-                        logger.info("File: " + filename + " Status: Server unavailable");
-                    } else {
-                        logger.info("File: " + filename + " Status: gRPC error - " + e.getStatus());
+            attempt++;
+            long backoffMs = Math.min(retryBackoffInitialMs * (long)Math.pow(retryBackoffMultiplier, attempt), retryBackoffMaxMs);
+            Thread.sleep(Math.min(backoffMs, 2000)); // Cap at 2 seconds for queue checks
+        }
+    }
+    
+    private <T> T executeWithRetry(String operationName, java.util.function.Supplier<T> operation, 
+                                   java.util.function.Predicate<T> isSuccess) {
+        int attempt = 0;
+        Exception lastException = null;
+        
+        while (attempt < maxRetryAttempts && !isShuttingDown.get()) {
+            try {
+                T result = operation.get();
+                if (isSuccess == null || isSuccess.test(result)) {
+                    if (attempt > 0) {
+                        logger.info(operationName + " succeeded after " + attempt + " retry attempts");
                     }
+                    return result;
+                }
+            } catch (Exception e) {
+                lastException = e;
+                retryCount.incrementAndGet();
+                attempt++;
+                
+                if (attempt < maxRetryAttempts && isRetryableError(e)) {
+                    long backoffMs = calculateBackoff(attempt);
+                    logger.warning(operationName + " failed (attempt " + attempt + "/" + maxRetryAttempts + 
+                                 "): " + e.getMessage() + ". Retrying in " + backoffMs + "ms");
+                    try {
+                        Thread.sleep(backoffMs);
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        throw new RuntimeException("Operation interrupted", ie);
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        
+        uploadFailureCount.incrementAndGet();
+        if (lastException != null) {
+            logger.severe(operationName + " failed after " + attempt + " attempts: " + lastException.getMessage());
+        }
+        return null;
+    }
+    
+    private boolean isRetryableError(Exception e) {
+        if (e instanceof StatusRuntimeException) {
+            StatusRuntimeException sre = (StatusRuntimeException) e;
+            Status.Code code = sre.getStatus().getCode();
+            return code == Status.Code.UNAVAILABLE || 
+                   code == Status.Code.DEADLINE_EXCEEDED ||
+                   code == Status.Code.RESOURCE_EXHAUSTED ||
+                   code == Status.Code.INTERNAL;
+        }
+        return e instanceof IOException || e instanceof InterruptedException;
+    }
+    
+    private long calculateBackoff(int attempt) {
+        long backoff = (long)(retryBackoffInitialMs * Math.pow(retryBackoffMultiplier, attempt - 1));
+        return Math.min(backoff, retryBackoffMaxMs);
+    }
+
+    public void uploadVideo(String filePath) {
+        if (isShuttingDown.get()) {
+            logger.warning("Shutdown in progress, skipping upload: " + filePath);
+            return;
+        }
+        
+        threadPool.submit(() -> {
+            activeUploads.incrementAndGet();
+            try {
+                String filename = Paths.get(filePath).getFileName().toString();
+                
+                // Wait for queue to become available with timeout
+                try {
+                    waitForQueueAvailable(filename, queueWaitTimeoutSeconds);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    logger.warning("Interrupted while waiting for queue: " + filename);
                     return;
                 }
-
-                String status = response.getStatus();
                 
-                if ("QUEUED".equals(status)) {
-                    logger.info("File: " + filename + " Status: Successfully queued (ID: " + response.getVideoId() + ")");
-                } else if ("DROPPED".equals(status)) {
-                    logger.info("File: " + filename + " Status: Dropped - " + response.getMessage());
-                } else if ("ERROR".equals(status)) {
-                    logger.info("File: " + filename + " Status: Server error - " + response.getMessage());
-                } else {
-                    logger.info("File: " + filename + " Status: Server returned - " + status + " - " + response.getMessage());
+                if (isShuttingDown.get()) {
+                    logger.warning("Shutdown in progress, aborting upload: " + filename);
+                    return;
                 }
                 
-            } catch (IOException e) {
-                logger.info("File: " + filename + " Status: Failed to read file - " + e.getMessage());
+                logger.info("File: " + filename + " Status: Uploading");
+                
+                // Use retry wrapper for upload
+                UploadResponse response = executeWithRetry(
+                    "Upload " + filename,
+                    () -> {
+                        try (FileInputStream fis = new FileInputStream(filePath); 
+                             BufferedInputStream bis = new BufferedInputStream(fis)) {
+                            byte[] buffer = new byte[1024 * 1024]; // 1MB chunks
+                            int bytesRead;
+                            ByteArrayOutputStream fileData = new ByteArrayOutputStream();
+                            
+                            while ((bytesRead = bis.read(buffer)) != -1) {
+                                fileData.write(buffer, 0, bytesRead);
+                            }
+                            
+                            VideoChunk request = VideoChunk.newBuilder()
+                                .setFilename(filename)
+                                .setData(com.google.protobuf.ByteString.copyFrom(fileData.toByteArray()))
+                                .setClientId(clientId)
+                                .build();
+                            
+                            return blockingStub
+                                .withDeadlineAfter(60, TimeUnit.SECONDS)
+                                .uploadVideo(request);
+                        }
+                    },
+                    (r) -> r != null && ("QUEUED".equals(r.getStatus()) || "DROPPED".equals(r.getStatus()))
+                );
+                
+                if (response != null) {
+                    String status = response.getStatus();
+                    
+                    if ("QUEUED".equals(status)) {
+                        uploadSuccessCount.incrementAndGet();
+                        logger.info("File: " + filename + " Status: Successfully queued (ID: " + response.getVideoId() + ")");
+                    } else if ("DROPPED".equals(status)) {
+                        logger.warning("File: " + filename + " Status: Dropped - " + response.getMessage());
+                    } else if ("ERROR".equals(status)) {
+                        uploadFailureCount.incrementAndGet();
+                        logger.warning("File: " + filename + " Status: Server error - " + response.getMessage());
+                    } else {
+                        logger.info("File: " + filename + " Status: Server returned - " + status + " - " + response.getMessage());
+                    }
+                } else {
+                    uploadFailureCount.incrementAndGet();
+                    logger.warning("File: " + filename + " Status: Upload failed after retries");
+                }
+                
             } catch (Exception e) {
-                logger.info("File: " + filename + " Status: Unexpected error - " + e.getClass().getSimpleName() + ": " + e.getMessage());
+                uploadFailureCount.incrementAndGet();
+                logger.severe("File: " + filePath + " Status: Unexpected error - " + 
+                            e.getClass().getSimpleName() + ": " + e.getMessage());
+            } finally {
+                activeUploads.decrementAndGet();
             }
         });
     }
@@ -214,29 +462,36 @@ public class ProducerClient {
      * Upload video using gRPC client-side streaming
      */
     public void uploadVideoStreaming(String filePath) {
+        if (isShuttingDown.get()) {
+            logger.warning("Shutdown in progress, skipping streaming upload: " + filePath);
+            return;
+        }
+        
         threadPool.submit(() -> {
+            activeUploads.incrementAndGet();
             Path path = Paths.get(filePath);
             String filename = path.getFileName().toString();
 
             // Check if already processed
             if (processedFiles.contains(path.toAbsolutePath())) {
                 logger.info("File already processed, skipping: " + filename);
+                activeUploads.decrementAndGet();
                 return;
             }
 
-            // Check queue status before uploading
-            while (true) {
-                try {
-                    QueueStatus status = blockingStub.getQueueStatus(Empty.getDefaultInstance());
-                    if (!status.getIsFull()) {
-                        break; // Queue has space, proceed to upload
-                    }
-                    logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + "). Waiting to upload: " + filename);
-                    Thread.sleep(2000);
-                } catch (Exception e) {
-                    logger.warning("Failed to check queue status: " + e.getMessage());
-                    break;
-                }
+            // Check queue status before uploading with robust waiting
+            try {
+                waitForQueueAvailable(filename, queueWaitTimeoutSeconds);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                logger.warning("Interrupted while waiting for queue: " + filename);
+                return;
+            }
+            
+            if (isShuttingDown.get()) {
+                logger.warning("Shutdown in progress, aborting streaming upload: " + filename);
+                filesInProgress.remove(path.toAbsolutePath());
+                return;
             }
 
             logger.info("File: " + filename + " Status: Streaming upload started");
@@ -304,15 +559,18 @@ public class ProducerClient {
                     
                     if ("QUEUED".equals(uploadStatus.get())) {
                         processedFiles.add(absolutePath);
+                        uploadSuccessCount.incrementAndGet();
                         logger.info("File: " + filename + " Status: Successfully queued via streaming");
                     } else if ("DROPPED".equals(uploadStatus.get())) {
-                        logger.info("File: " + filename + " Status: Dropped - " + uploadMessage.get());
+                        logger.warning("File: " + filename + " Status: Dropped - " + uploadMessage.get());
                     } else {
-                        logger.info("File: " + filename + " Status: " + uploadStatus.get() + " - " + uploadMessage.get());
+                        uploadFailureCount.incrementAndGet();
+                        logger.warning("File: " + filename + " Status: " + uploadStatus.get() + " - " + uploadMessage.get());
                     }
                 }
 
             } catch (IOException e) {
+                uploadFailureCount.incrementAndGet();
                 logger.warning("File: " + filename + " Status: Failed to read file - " + e.getMessage());
                 filesInProgress.remove(path.toAbsolutePath());
                 requestObserver.onError(io.grpc.Status.INTERNAL.withDescription("File read error: " + e.getMessage()).asException());
@@ -322,15 +580,18 @@ public class ProducerClient {
                 filesInProgress.remove(path.toAbsolutePath());
                 requestObserver.onError(io.grpc.Status.CANCELLED.withDescription("Upload interrupted").asException());
             } catch (Exception e) {
+                uploadFailureCount.incrementAndGet();
                 logger.warning("File: " + filename + " Status: Unexpected error - " + e.getClass().getSimpleName() + ": " + e.getMessage());
                 filesInProgress.remove(path.toAbsolutePath());
                 requestObserver.onError(io.grpc.Status.INTERNAL.withDescription("Unexpected error: " + e.getMessage()).asException());
+            } finally {
+                activeUploads.decrementAndGet();
             }
         });
     }
 
     /**
-     * Watch a folder for new files and upload them using streaming
+     * Watch a folder for new files and upload them using streaming with recovery
      */
     public void watchFolder(String folderPath, String[] extensions) {
         Path folder = Paths.get(folderPath);
@@ -339,80 +600,140 @@ public class ProducerClient {
             return;
         }
 
-        threadPool.submit(() -> {
-            try {
-                WatchService watchService = FileSystems.getDefault().newWatchService();
-                folder.register(watchService, 
-                    StandardWatchEventKinds.ENTRY_CREATE,
-                    StandardWatchEventKinds.ENTRY_MODIFY);
+        AtomicBoolean watchActive = new AtomicBoolean(true);
+        watchActiveFlags.put(folderPath, watchActive);
+        
+        Thread watchThread = new Thread(() -> {
+            logger.info("Started watching folder: " + folderPath);
+            int consecutiveFailures = 0;
+            long reconnectBackoff = reconnectBackoffInitialMs;
+            
+            while (watchActive.get() && !isShuttingDown.get() && !Thread.currentThread().isInterrupted()) {
+                try {
+                    // Verify folder still exists
+                    if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+                        logger.warning("Folder no longer exists or is not a directory: " + folderPath);
+                        // Wait and retry - folder might be temporarily unavailable
+                        Thread.sleep(reconnectBackoff);
+                        reconnectBackoff = Math.min(reconnectBackoff * 2, reconnectBackoffMaxMs);
+                        continue;
+                    }
+                    
+                    reconnectBackoff = reconnectBackoffInitialMs; // Reset on success
+                    consecutiveFailures = 0;
+                    
+                    WatchService watchService = FileSystems.getDefault().newWatchService();
+                    folder.register(watchService, 
+                        StandardWatchEventKinds.ENTRY_CREATE,
+                        StandardWatchEventKinds.ENTRY_MODIFY);
 
-                logger.info("Started watching folder: " + folderPath);
+                    logger.info("Watching folder: " + folderPath + " (registered with WatchService)");
 
-                while (!Thread.currentThread().isInterrupted()) {
-                    WatchKey key;
+                    while (watchActive.get() && !isShuttingDown.get() && !Thread.currentThread().isInterrupted()) {
+                        WatchKey key;
+                        try {
+                            key = watchService.take();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            break;
+                        }
+
+                        for (WatchEvent<?> event : key.pollEvents()) {
+                            WatchEvent.Kind<?> kind = event.kind();
+
+                            if (kind == StandardWatchEventKinds.OVERFLOW) {
+                                logger.warning("WatchService overflow for folder: " + folderPath);
+                                continue;
+                            }
+
+                            @SuppressWarnings("unchecked")
+                            WatchEvent<Path> ev = (WatchEvent<Path>) event;
+                            Path fileName = ev.context();
+                            Path fullPath = folder.resolve(fileName);
+
+                            // Check if it's a video file
+                            String filename = fileName.toString().toLowerCase();
+                            boolean isVideoFile = Arrays.stream(extensions)
+                                .anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
+
+                            if (isVideoFile && Files.isRegularFile(fullPath)) {
+                                Path absolutePath = fullPath.toAbsolutePath();
+                                
+                                // Skip if already processed or in progress
+                                if (processedFiles.contains(absolutePath) || filesInProgress.contains(absolutePath)) {
+                                    logger.info("File already processed or in progress, skipping: " + fileName);
+                                    continue;
+                                }
+                                
+                                // Wait for file to be complete
+                                if (waitForFileComplete(fullPath)) {
+                                    // Double-check after waiting (file might have been processed by another event)
+                                    if (!processedFiles.contains(absolutePath) && !filesInProgress.contains(absolutePath)) {
+                                        filesInProgress.add(absolutePath);
+                                        logger.info("New file detected: " + fileName);
+                                        uploadVideoStreaming(fullPath.toString());
+                                    } else {
+                                        logger.info("File was processed while waiting, skipping: " + fileName);
+                                    }
+                                } else {
+                                    logger.warning("File did not stabilize, skipping: " + fileName);
+                                }
+                            }
+                        }
+
+                        boolean valid = key.reset();
+                        if (!valid) {
+                            logger.warning("Watch key no longer valid for: " + folderPath + ". Re-registering...");
+                            break; // Break inner loop to re-register
+                        }
+                    }
+
+                    watchService.close();
+                    
+                    if (!watchActive.get() || isShuttingDown.get()) {
+                        break; // Exit outer loop
+                    }
+                    
+                    // Watch key became invalid, wait before re-registering
+                    logger.info("Re-registering watch for folder: " + folderPath);
+                    Thread.sleep(1000);
+                    
+                } catch (IOException e) {
+                    consecutiveFailures++;
+                    logger.warning("Error watching folder " + folderPath + " (failure " + consecutiveFailures + "): " + e.getMessage());
+                    
+                    if (consecutiveFailures >= 5) {
+                        logger.severe("Too many consecutive failures watching folder " + folderPath + ". Backing off...");
+                        try {
+                            Thread.sleep(reconnectBackoff);
+                            reconnectBackoff = Math.min(reconnectBackoff * 2, reconnectBackoffMaxMs);
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                            break;
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                } catch (Exception e) {
+                    consecutiveFailures++;
+                    logger.severe("Unexpected error watching folder " + folderPath + ": " + e.getMessage());
                     try {
-                        key = watchService.take();
-                    } catch (InterruptedException e) {
+                        Thread.sleep(reconnectBackoff);
+                        reconnectBackoff = Math.min(reconnectBackoff * 2, reconnectBackoffMaxMs);
+                    } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
                         break;
                     }
-
-                    for (WatchEvent<?> event : key.pollEvents()) {
-                        WatchEvent.Kind<?> kind = event.kind();
-
-                        if (kind == StandardWatchEventKinds.OVERFLOW) {
-                            logger.warning("WatchService overflow for folder: " + folderPath);
-                            continue;
-                        }
-
-                        @SuppressWarnings("unchecked")
-                        WatchEvent<Path> ev = (WatchEvent<Path>) event;
-                        Path fileName = ev.context();
-                        Path fullPath = folder.resolve(fileName);
-
-                        // Check if it's a video file
-                        String filename = fileName.toString().toLowerCase();
-                        boolean isVideoFile = Arrays.stream(extensions)
-                            .anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
-
-                        if (isVideoFile && Files.isRegularFile(fullPath)) {
-                            Path absolutePath = fullPath.toAbsolutePath();
-                            
-                            // Skip if already processed or in progress
-                            if (processedFiles.contains(absolutePath) || filesInProgress.contains(absolutePath)) {
-                                logger.info("File already processed or in progress, skipping: " + fileName);
-                                continue;
-                            }
-                            
-                            // Wait for file to be complete
-                            if (waitForFileComplete(fullPath)) {
-                                // Double-check after waiting (file might have been processed by another event)
-                                if (!processedFiles.contains(absolutePath) && !filesInProgress.contains(absolutePath)) {
-                                    filesInProgress.add(absolutePath);
-                                    logger.info("New file detected: " + fileName);
-                                    uploadVideoStreaming(fullPath.toString());
-                                } else {
-                                    logger.info("File was processed while waiting, skipping: " + fileName);
-                                }
-                            } else {
-                                logger.warning("File did not stabilize, skipping: " + fileName);
-                            }
-                        }
-                    }
-
-                    boolean valid = key.reset();
-                    if (!valid) {
-                        logger.warning("Watch key no longer valid for: " + folderPath);
-                        break;
-                    }
                 }
-
-                watchService.close();
-                logger.info("Stopped watching folder: " + folderPath);
-            } catch (IOException e) {
-                logger.severe("Error watching folder " + folderPath + ": " + e.getMessage());
             }
-        });
+            
+            logger.info("Stopped watching folder: " + folderPath);
+        }, "FolderWatcher-" + folderPath);
+        
+        watchThread.setDaemon(true);
+        watchThread.start();
+        watchThreads.put(folderPath, watchThread);
     }
 
     public void scanAndUploadFolder(String folderPath, String[] extensions) {
@@ -546,17 +867,80 @@ public class ProducerClient {
         return new ArrayList<>(uniqueFiles.values());
     }
 
+    public boolean isShuttingDown() {
+        return isShuttingDown.get();
+    }
+    
     public void shutdown() {
+        if (isShuttingDown.getAndSet(true)) {
+            logger.info("Shutdown already in progress");
+            return;
+        }
+        
+        logger.info("Initiating graceful shutdown...");
+        logger.info("Active uploads: " + activeUploads.get());
+        logger.info("Metrics - Success: " + uploadSuccessCount.get() + 
+                   ", Failures: " + uploadFailureCount.get() + 
+                   ", Retries: " + retryCount.get() +
+                   ", Connection state changes: " + connectionStateChanges.get());
+        
+        // Stop all watch threads
+        for (Map.Entry<String, AtomicBoolean> entry : watchActiveFlags.entrySet()) {
+            entry.getValue().set(false);
+        }
+        
+        // Wait for active uploads to complete (graceful period)
+        long gracefulTimeoutMs = gracefulShutdownTimeoutSeconds * 1000;
+        long startTime = System.currentTimeMillis();
+        
+        while (activeUploads.get() > 0 && (System.currentTimeMillis() - startTime) < gracefulTimeoutMs) {
+            try {
+                logger.info("Waiting for " + activeUploads.get() + " active upload(s) to complete...");
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+        
+        if (activeUploads.get() > 0) {
+            logger.warning("Graceful shutdown timeout reached. " + activeUploads.get() + " upload(s) still in progress.");
+        } else {
+            logger.info("All uploads completed gracefully");
+        }
+        
+        // Shutdown thread pool gracefully
         threadPool.shutdown();
         try {
-            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+            if (!threadPool.awaitTermination(forceShutdownTimeoutSeconds, TimeUnit.SECONDS)) {
+                logger.warning("Thread pool did not terminate gracefully, forcing shutdown");
                 threadPool.shutdownNow();
+                if (!threadPool.awaitTermination(forceShutdownTimeoutSeconds, TimeUnit.SECONDS)) {
+                    logger.severe("Thread pool did not terminate after force shutdown");
+                }
             }
         } catch (InterruptedException e) {
             threadPool.shutdownNow();
             Thread.currentThread().interrupt();
         }
+        
+        // Shutdown gRPC channel gracefully
         channel.shutdown();
+        try {
+            if (!channel.awaitTermination(forceShutdownTimeoutSeconds, TimeUnit.SECONDS)) {
+                logger.warning("Channel did not terminate gracefully, forcing shutdown");
+                channel.shutdownNow();
+                if (!channel.awaitTermination(forceShutdownTimeoutSeconds, TimeUnit.SECONDS)) {
+                    logger.severe("Channel did not terminate after force shutdown");
+                }
+            }
+        } catch (InterruptedException e) {
+            channel.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+        
+        shutdownLatch.countDown();
+        logger.info("Shutdown completed");
     }
 
     public static void main(String[] args) {
@@ -673,7 +1057,7 @@ public class ProducerClient {
             
             System.out.println("\n=== STARTING CONTINUOUS MONITORING ===");
             System.out.println("Monitoring " + validFolders.size() + " folder(s) for new video files...");
-            System.out.println("Press 'q' and Enter to stop monitoring");
+            System.out.println("Press 'q' and Enter to stop monitoring gracefully");
             
             // Start watching each folder
             for (String folderPath : validFolders) {
@@ -683,23 +1067,32 @@ public class ProducerClient {
             // Wait for user to quit
             Thread monitorThread = new Thread(() -> {
                 Scanner inputScanner = new Scanner(System.in);
-                while (true) {
-                    String input = inputScanner.nextLine().trim();
-                    if ("q".equalsIgnoreCase(input)) {
-                        System.out.println("Stopping monitoring...");
-                        producer.shutdown();
-                        System.exit(0);
+                while (!producer.isShuttingDown()) {
+                    try {
+                        String input = inputScanner.nextLine().trim();
+                        if ("q".equalsIgnoreCase(input) || "quit".equalsIgnoreCase(input)) {
+                            System.out.println("Stopping monitoring gracefully...");
+                            producer.shutdown();
+                            break;
+                        }
+                    } catch (Exception e) {
+                        break;
                     }
                 }
             });
             monitorThread.setDaemon(true);
             monitorThread.start();
             
-            // Keep main thread alive
+            // Keep main thread alive and wait for shutdown
             try {
-                monitorThread.join();
+                while (!producer.isShuttingDown()) {
+                    Thread.sleep(1000);
+                }
+                producer.shutdownLatch.await();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                System.out.println("Interrupted, shutting down...");
+                producer.shutdown();
             }
             
             scanner.close();
@@ -827,7 +1220,50 @@ public class ProducerClient {
         }
         
         if (allFiles.isEmpty()) {
-            System.out.println("No videos found in any folder. Exiting.");
+            System.out.println("No videos found in any folder.");
+            System.out.println("The producer will continue running and monitor for new videos.");
+            System.out.println("Press 'q' and Enter to exit, or wait for new videos to appear.");
+            
+            // Create a minimal producer to continue monitoring
+            ProducerClient producer = new ProducerClient(targetIp, defaultTargetPort, "monitor-client", 2);
+            String[] videoExtensions = {".mp4", ".avi", ".mov", ".mkv"};
+            
+            // Start watching all valid folders
+            for (String folderPath : folderPaths) {
+                producer.watchFolder(folderPath, videoExtensions);
+            }
+            
+            System.out.println("\n=== CONTINUOUS MONITORING MODE (Empty folders) ===");
+            System.out.println("Monitoring folders for new video files...");
+            System.out.println("Press 'q' and Enter to stop monitoring gracefully");
+            
+            // Wait for user to quit or new files
+            Thread monitorThread = new Thread(() -> {
+                Scanner inputScanner = new Scanner(System.in);
+                while (!producer.isShuttingDown()) {
+                    try {
+                        String input = inputScanner.nextLine().trim();
+                        if ("q".equalsIgnoreCase(input) || "quit".equalsIgnoreCase(input)) {
+                            System.out.println("Stopping monitoring gracefully...");
+                            producer.shutdown();
+                            break;
+                        }
+                    } catch (Exception e) {
+                        break;
+                    }
+                }
+            });
+            monitorThread.setDaemon(true);
+            monitorThread.start();
+            
+            // Wait for shutdown
+            try {
+                producer.shutdownLatch.await();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                producer.shutdown();
+            }
+            
             scanner.close();
             return;
         }
