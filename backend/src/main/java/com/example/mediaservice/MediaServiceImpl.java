@@ -142,8 +142,8 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             logger.info("Consumer " + consumerId + " generated preview for: " + safeFilename);
             
             // 2. Skip compression for now - comment this out
-            // compressVideo(filePath, consumerId);
-            // logger.info("Consumer " + consumerId + " compressed video: " + safeFilename);
+            compressVideo(filePath, consumerId);
+            logger.info("Consumer " + consumerId + " compressed video: " + safeFilename);
             
             // Store metadata
             VideoInfo videoInfo = VideoInfo.newBuilder()
