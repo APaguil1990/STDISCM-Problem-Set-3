@@ -6,72 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c3e24139-2325-406d-a563-ded5cd41a771" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/consumer_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/producer_cleanup-client_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/producer_cleanup-client_log.txt.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/producer_producer-1_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/producer_producer-2_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/producer_producer-3_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/15SecMusic(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/30SecondAnimation(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/30_seconds_of_a_spider_animation_that_i_m_working_on(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusic(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/BGMusicBossFight(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/G_Sounds_-_adventure_time_2(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/GhostStories(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/Rainy_Day__short_30_sec_animation_(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/SunsetDrone(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/You_Say_Run_Goes_With_Everything_-_Helldivers_2(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/15SecMusic_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30SecondAnimation_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/30_seconds_of_a_spider_animation_that_i_m_working_on_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusicBossFight_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/BGMusic_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover__preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/G_Sounds_-_adventure_time_2_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/GhostStories_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation_(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation_(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation_(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/Rainy_Day__short_30_sec_animation__preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/SunsetDrone_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/You_Say_Run_Goes_With_Everything_-_Helldivers_2(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/You_Say_Run_Goes_With_Everything_-_Helldivers_2(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/You_Say_Run_Goes_With_Everything_-_Helldivers_2(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/You_Say_Run_Goes_With_Everything_-_Helldivers_2_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short(1)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short(2)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short(3)_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/previews/t_los___30_Second_Animated_Short_preview.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/videos/t_los___30_Second_Animated_Short(1).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/ProducerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/mediaservice/ProducerClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +66,7 @@
       <workItem from="1764495239475" duration="1234000" />
       <workItem from="1764853546251" duration="2811000" />
       <workItem from="1764932578720" duration="596000" />
-      <workItem from="1765014607920" duration="7785000" />
+      <workItem from="1765014607920" duration="11007000" />
     </task>
     <servers />
   </component>
