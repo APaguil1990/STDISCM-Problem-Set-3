@@ -81,6 +81,11 @@ private static final long serialVersionUID = 0L;
             clientId_ = s;
             break;
           }
+          case 48: {
+
+            compressedSize_ = input.readInt64();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -276,6 +281,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int COMPRESSED_SIZE_FIELD_NUMBER = 6;
+  private long compressedSize_;
+  /**
+   * <code>int64 compressed_size = 6;</code>
+   * @return The compressedSize.
+   */
+  @java.lang.Override
+  public long getCompressedSize() {
+    return compressedSize_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -305,6 +321,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, clientId_);
     }
+    if (compressedSize_ != 0L) {
+      output.writeInt64(6, compressedSize_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -329,6 +348,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, clientId_);
+    }
+    if (compressedSize_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(6, compressedSize_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -355,6 +378,8 @@ private static final long serialVersionUID = 0L;
         != other.getSize()) return false;
     if (!getClientId()
         .equals(other.getClientId())) return false;
+    if (getCompressedSize()
+        != other.getCompressedSize()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -377,6 +402,9 @@ private static final long serialVersionUID = 0L;
         getSize());
     hash = (37 * hash) + CLIENT_ID_FIELD_NUMBER;
     hash = (53 * hash) + getClientId().hashCode();
+    hash = (37 * hash) + COMPRESSED_SIZE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getCompressedSize());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -520,6 +548,8 @@ private static final long serialVersionUID = 0L;
 
       clientId_ = "";
 
+      compressedSize_ = 0L;
+
       return this;
     }
 
@@ -551,6 +581,7 @@ private static final long serialVersionUID = 0L;
       result.uploadTime_ = uploadTime_;
       result.size_ = size_;
       result.clientId_ = clientId_;
+      result.compressedSize_ = compressedSize_;
       onBuilt();
       return result;
     }
@@ -617,6 +648,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getClientId().isEmpty()) {
         clientId_ = other.clientId_;
         onChanged();
+      }
+      if (other.getCompressedSize() != 0L) {
+        setCompressedSize(other.getCompressedSize());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -978,6 +1012,37 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       clientId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private long compressedSize_ ;
+    /**
+     * <code>int64 compressed_size = 6;</code>
+     * @return The compressedSize.
+     */
+    @java.lang.Override
+    public long getCompressedSize() {
+      return compressedSize_;
+    }
+    /**
+     * <code>int64 compressed_size = 6;</code>
+     * @param value The compressedSize to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCompressedSize(long value) {
+      
+      compressedSize_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 compressed_size = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCompressedSize() {
+      
+      compressedSize_ = 0L;
       onChanged();
       return this;
     }

@@ -104,6 +104,10 @@ private static final long serialVersionUID = 0L;
   public static final int STATUS_FIELD_NUMBER = 1;
   private volatile java.lang.Object status_;
   /**
+   * <pre>
+   * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+   * </pre>
+   *
    * <code>string status = 1;</code>
    * @return The status.
    */
@@ -121,6 +125,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+   * </pre>
+   *
    * <code>string status = 1;</code>
    * @return The bytes for status.
    */
@@ -553,6 +561,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object status_ = "";
     /**
+     * <pre>
+     * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+     * </pre>
+     *
      * <code>string status = 1;</code>
      * @return The status.
      */
@@ -569,6 +581,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+     * </pre>
+     *
      * <code>string status = 1;</code>
      * @return The bytes for status.
      */
@@ -586,6 +602,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+     * </pre>
+     *
      * <code>string status = 1;</code>
      * @param value The status to set.
      * @return This builder for chaining.
@@ -601,6 +621,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+     * </pre>
+     *
      * <code>string status = 1;</code>
      * @return This builder for chaining.
      */
@@ -611,6 +635,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+     * </pre>
+     *
      * <code>string status = 1;</code>
      * @param value The bytes for status to set.
      * @return This builder for chaining.

@@ -60,4 +60,10 @@ public interface VideoInfoOrBuilder extends
    */
   com.google.protobuf.ByteString
       getClientIdBytes();
+
+  /**
+   * <code>int64 compressed_size = 6;</code>
+   * @return The compressedSize.
+   */
+  long getCompressedSize();
 }

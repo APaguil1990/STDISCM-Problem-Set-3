@@ -88,72 +88,41 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             });
         }
     }
-
-    @Override
+@Override
     public void uploadVideo(VideoChunk request, StreamObserver<UploadResponse> responseObserver) {
-        // Changed to QueuedVideo
+        // Create the internal representation
         QueuedVideo videoItem = new QueuedVideo(
             UUID.randomUUID().toString(),
             request.getFilename(),
             request.getClientId(),
             request.getData().toByteArray()
         );
-        String videoId = UUID.randomUUID().toString();
-        String processedFilename = videoId + "_" + request.getFilename();
 
         try {
-            VideoMetadata metadata = new VideoMetadata(
-                UUID.randomUUID().toString(),
-                request.getFilename(),
-                request.getClientId(),
-                request.getData().toByteArray()
-            );
-
-        boolean queued = videoQueue.enqueue(videoItem);
-
-        if (queued) {
-            responseObserver.onNext(UploadResponse.newBuilder()
-                .setStatus("QUEUED")
-                .setMessage("Video added to queue")
-                .setVideoId(videoItem.getId())
-                .build());
-            logger.info("Video queued: " + videoItem.getFilename());
-        } else {
-            responseObserver.onNext(UploadResponse.newBuilder()
-                .setStatus("DROPPED")
-                .setMessage("Queue is full")
-            boolean queued = videoQueue.enqueue(metadata);
+            boolean queued = videoQueue.enqueue(videoItem);
 
             if (queued) {
-                // Send response BEFORE processing video
                 responseObserver.onNext(UploadResponse.newBuilder()
                     .setStatus("QUEUED")
                     .setMessage("Video added to queue")
-                    .setVideoId(videoId)
+                    .setVideoId(videoItem.getId())
                     .build());
-                responseObserver.onCompleted();
-                logger.info("Video queued: " + request.getFilename() + " from client: " + request.getClientId());
+                logger.info("Video queued: " + videoItem.getFilename());
             } else {
-                // Queue is full - send immediate response
                 responseObserver.onNext(UploadResponse.newBuilder()
                     .setStatus("DROPPED")
                     .setMessage("Queue is full")
                     .build());
-                responseObserver.onCompleted();
-                logger.info("Video dropped (queue full): " + request.getFilename());
+                logger.info("Video dropped (queue full): " + videoItem.getFilename());
             }
         } catch (Exception e) {
-            // Send error response if something goes wrong
             responseObserver.onNext(UploadResponse.newBuilder()
                 .setStatus("ERROR")
                 .setMessage("Server error: " + e.getMessage())
                 .build());
-            logger.info("Video dropped (queue full): " + videoItem.getFilename());
+            logger.severe("Error processing upload: " + e.getMessage());
         }
         responseObserver.onCompleted();
-            responseObserver.onCompleted();
-            logger.severe("Error processing uploads " + e.getMessage());
-        }
     }
 
     // Changed parameter to QueuedVideo

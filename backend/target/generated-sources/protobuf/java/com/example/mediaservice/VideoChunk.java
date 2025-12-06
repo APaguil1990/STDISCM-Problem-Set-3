@@ -4,6 +4,10 @@
 package com.example.mediaservice;
 
 /**
+ * <pre>
+ * Simplified to match ProducerClient.java logic
+ * </pre>
+ *
  * Protobuf type {@code VideoChunk}
  */
 public final class VideoChunk extends
@@ -17,8 +21,8 @@ private static final long serialVersionUID = 0L;
   }
   private VideoChunk() {
     filename_ = "";
-    data_ = com.google.protobuf.ByteString.EMPTY;
     clientId_ = "";
+    data_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -58,14 +62,14 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-
-            data_ = input.readBytes();
-            break;
-          }
-          case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
             clientId_ = s;
+            break;
+          }
+          case 26: {
+
+            data_ = input.readBytes();
             break;
           }
           default: {
@@ -138,21 +142,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DATA_FIELD_NUMBER = 2;
-  private com.google.protobuf.ByteString data_;
-  /**
-   * <code>bytes data = 2;</code>
-   * @return The data.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getData() {
-    return data_;
-  }
-
-  public static final int CLIENT_ID_FIELD_NUMBER = 3;
+  public static final int CLIENT_ID_FIELD_NUMBER = 2;
   private volatile java.lang.Object clientId_;
   /**
-   * <code>string client_id = 3;</code>
+   * <code>string client_id = 2;</code>
    * @return The clientId.
    */
   @java.lang.Override
@@ -169,7 +162,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string client_id = 3;</code>
+   * <code>string client_id = 2;</code>
    * @return The bytes for clientId.
    */
   @java.lang.Override
@@ -185,6 +178,17 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int DATA_FIELD_NUMBER = 3;
+  private com.google.protobuf.ByteString data_;
+  /**
+   * <code>bytes data = 3;</code>
+   * @return The data.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getData() {
+    return data_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -204,11 +208,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(filename_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, filename_);
     }
-    if (!data_.isEmpty()) {
-      output.writeBytes(2, data_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, clientId_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, clientId_);
+    }
+    if (!data_.isEmpty()) {
+      output.writeBytes(3, data_);
     }
     unknownFields.writeTo(output);
   }
@@ -222,12 +226,12 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(filename_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, filename_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, clientId_);
+    }
     if (!data_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(2, data_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(clientId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, clientId_);
+        .computeBytesSize(3, data_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -246,10 +250,10 @@ private static final long serialVersionUID = 0L;
 
     if (!getFilename()
         .equals(other.getFilename())) return false;
-    if (!getData()
-        .equals(other.getData())) return false;
     if (!getClientId()
         .equals(other.getClientId())) return false;
+    if (!getData()
+        .equals(other.getData())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -263,10 +267,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + FILENAME_FIELD_NUMBER;
     hash = (53 * hash) + getFilename().hashCode();
-    hash = (37 * hash) + DATA_FIELD_NUMBER;
-    hash = (53 * hash) + getData().hashCode();
     hash = (37 * hash) + CLIENT_ID_FIELD_NUMBER;
     hash = (53 * hash) + getClientId().hashCode();
+    hash = (37 * hash) + DATA_FIELD_NUMBER;
+    hash = (53 * hash) + getData().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -363,6 +367,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Simplified to match ProducerClient.java logic
+   * </pre>
+   *
    * Protobuf type {@code VideoChunk}
    */
   public static final class Builder extends
@@ -402,9 +410,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       filename_ = "";
 
-      data_ = com.google.protobuf.ByteString.EMPTY;
-
       clientId_ = "";
+
+      data_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
@@ -433,8 +441,8 @@ private static final long serialVersionUID = 0L;
     public com.example.mediaservice.VideoChunk buildPartial() {
       com.example.mediaservice.VideoChunk result = new com.example.mediaservice.VideoChunk(this);
       result.filename_ = filename_;
-      result.data_ = data_;
       result.clientId_ = clientId_;
+      result.data_ = data_;
       onBuilt();
       return result;
     }
@@ -487,12 +495,12 @@ private static final long serialVersionUID = 0L;
         filename_ = other.filename_;
         onChanged();
       }
-      if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
-        setData(other.getData());
-      }
       if (!other.getClientId().isEmpty()) {
         clientId_ = other.clientId_;
         onChanged();
+      }
+      if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
+        setData(other.getData());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -599,43 +607,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>bytes data = 2;</code>
-     * @return The data.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getData() {
-      return data_;
-    }
-    /**
-     * <code>bytes data = 2;</code>
-     * @param value The data to set.
-     * @return This builder for chaining.
-     */
-    public Builder setData(com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      data_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bytes data = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearData() {
-      
-      data_ = getDefaultInstance().getData();
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object clientId_ = "";
     /**
-     * <code>string client_id = 3;</code>
+     * <code>string client_id = 2;</code>
      * @return The clientId.
      */
     public java.lang.String getClientId() {
@@ -651,7 +625,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string client_id = 3;</code>
+     * <code>string client_id = 2;</code>
      * @return The bytes for clientId.
      */
     public com.google.protobuf.ByteString
@@ -668,7 +642,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string client_id = 3;</code>
+     * <code>string client_id = 2;</code>
      * @param value The clientId to set.
      * @return This builder for chaining.
      */
@@ -683,7 +657,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string client_id = 3;</code>
+     * <code>string client_id = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearClientId() {
@@ -693,7 +667,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string client_id = 3;</code>
+     * <code>string client_id = 2;</code>
      * @param value The bytes for clientId to set.
      * @return This builder for chaining.
      */
@@ -705,6 +679,40 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       clientId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes data = 3;</code>
+     * @return The data.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+    /**
+     * <code>bytes data = 3;</code>
+     * @param value The data to set.
+     * @return This builder for chaining.
+     */
+    public Builder setData(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      data_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bytes data = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearData() {
+      
+      data_ = getDefaultInstance().getData();
       onChanged();
       return this;
     }

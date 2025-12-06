@@ -1,74 +1,240 @@
-Dec 06, 2025 10:57:56 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 15SecMusic.mp4 from client: producer-1
-Dec 06, 2025 10:57:56 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4 from client: producer-1
-Dec 06, 2025 10:57:56 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 30SecondAnimation.mp4 from client: producer-1
-Dec 06, 2025 10:57:56 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: BGMusic.mp4 from client: producer-1
-Dec 06, 2025 10:57:56 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: BGMusicBossFight.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: G Sounds - adventure time 2.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: GhostStories.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: Rainy Day [short 30 sec animation].mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: SunsetDrone.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: télos _ 30 Second Animated Short.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: You Say Run Goes With Everything - Helldivers 2.mp4 from client: producer-1
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on(3)_preview.mp4
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 processed: 30_seconds_of_a_spider_animation_that_i_m_working_on(3).mp4
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: 15SecMusic(3)_preview.mp4
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 processed: 15SecMusic(3).mp4
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: 30SecondAnimation(3)_preview.mp4
-Dec 06, 2025 10:57:57 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 processed: 30SecondAnimation(3).mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: BGMusic(3)_preview.mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 processed: BGMusic(3).mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: BGMusicBossFight(3)_preview.mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 processed: BGMusicBossFight(3).mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(3)_preview.mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 processed: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(3).mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: G_Sounds_-_adventure_time_2(3)_preview.mp4
-Dec 06, 2025 10:57:58 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 processed: G_Sounds_-_adventure_time_2(3).mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: GhostStories(3)_preview.mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 processed: GhostStories(3).mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: Rainy_Day__short_30_sec_animation_(3)_preview.mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 processed: Rainy_Day__short_30_sec_animation_(3).mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: SunsetDrone(3)_preview.mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 processed: SunsetDrone(3).mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: t_los___30_Second_Animated_Short(3)_preview.mp4
-Dec 06, 2025 10:57:59 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 processed: t_los___30_Second_Animated_Short(3).mp4
-Dec 06, 2025 10:58:00 AM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: You_Say_Run_Goes_With_Everything_-_Helldivers_2(3)_preview.mp4
-Dec 06, 2025 10:58:00 AM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 processed: You_Say_Run_Goes_With_Everything_-_Helldivers_2(3).mp4
-Dec 06, 2025 10:58:21 AM com.example.mediaservice.MediaServiceImpl lambda$0
-INFO: Shutdown initiated - closing resources
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 15SecMusic.mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 30SecondAnimation.mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusic.mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusicBossFight.mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4
+Dec 06, 2025 3:30:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0901_00-00-41-00-06-38_crop.mp4
+Dec 06, 2025 3:30:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-06-39-00-15-08_crop.mp4
+Dec 06, 2025 3:30:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-15-09-00-17-27_crop.mp4
+Dec 06, 2025 3:30:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-17-28-00-20-11_crop.mp4
+Dec 06, 2025 3:30:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-20-12-00-22-02_crop.mp4
+Dec 06, 2025 3:30:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-22-03-00-25-48_crop.mp4
+Dec 06, 2025 3:30:12 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-25-49-00-29-02_crop.mp4
+Dec 06, 2025 3:30:12 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-29-03-00-32-55_crop.mp4
+Dec 06, 2025 3:30:12 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-32-56-00-36-56_crop.mp4
+Dec 06, 2025 3:30:12 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-36-57-00-39-53_crop.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-39-54-00-44-50_crop.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-44-51-00-49-02_crop.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-49-03-00-57-42_crop.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): G Sounds - adventure time 2.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): GhostStories.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): Rainy Day [short 30 sec animation].mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): SunsetDrone.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): télos _ 30 Second Animated Short.mp4
+Dec 06, 2025 3:30:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): You Say Run Goes With Everything - Helldivers 2.mp4
+Dec 06, 2025 3:30:14 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on(4)_preview.mp4
+Dec 06, 2025 3:30:15 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: 15SecMusic(4)_preview.mp4
+Dec 06, 2025 3:30:17 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_15SecMusic(4).mp4
+Dec 06, 2025 3:30:17 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: 15SecMusic(4).mp4
+Dec 06, 2025 3:30:18 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_30_seconds_of_a_spider_animation_that_i_m_working_on(4).mp4
+Dec 06, 2025 3:30:18 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: 30_seconds_of_a_spider_animation_that_i_m_working_on(4).mp4
+Dec 06, 2025 3:30:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: 30SecondAnimation(4)_preview.mp4
+Dec 06, 2025 3:30:20 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: BGMusic(4)_preview.mp4
+Dec 06, 2025 3:30:23 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_BGMusic(4).mp4
+Dec 06, 2025 3:30:23 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: BGMusic(4).mp4
+Dec 06, 2025 3:30:25 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_30SecondAnimation(4).mp4
+Dec 06, 2025 3:30:25 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: 30SecondAnimation(4).mp4
+Dec 06, 2025 3:30:25 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: BGMusicBossFight(4)_preview.mp4
+Dec 06, 2025 3:30:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(4)_preview.mp4
+Dec 06, 2025 3:30:27 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_BGMusicBossFight(4).mp4
+Dec 06, 2025 3:30:27 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: BGMusicBossFight(4).mp4
+Dec 06, 2025 3:30:28 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0901_00-00-41-00-06-38_crop_preview.mp4
+Dec 06, 2025 3:30:52 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(4).mp4
+Dec 06, 2025 3:30:52 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(4).mp4
+Dec 06, 2025 3:30:57 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_clip0901_00-00-41-00-06-38_crop.mp4
+Dec 06, 2025 3:30:57 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: clip0901_00-00-41-00-06-38_crop.mp4
+Dec 06, 2025 3:31:42 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 15SecMusic.mp4
+Dec 06, 2025 3:31:42 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
+Dec 06, 2025 3:31:42 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 30SecondAnimation.mp4
+Dec 06, 2025 3:31:42 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusic.mp4
+Dec 06, 2025 3:31:42 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusicBossFight.mp4
+Dec 06, 2025 3:31:43 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4
+Dec 06, 2025 3:31:43 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0901_00-00-41-00-06-38_crop.mp4
+Dec 06, 2025 3:31:43 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-06-39-00-15-08_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-15-09-00-17-27_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-17-28-00-20-11_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-20-12-00-22-02_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on(5)_preview.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-22-03-00-25-48_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-25-49-00-29-02_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-29-03-00-32-55_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: 15SecMusic(5)_preview.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-32-56-00-36-56_crop.mp4
+Dec 06, 2025 3:31:44 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-36-57-00-39-53_crop.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-39-54-00-44-50_crop.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-44-51-00-49-02_crop.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-49-03-00-57-42_crop.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): G Sounds - adventure time 2.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): GhostStories.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): Rainy Day [short 30 sec animation].mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): SunsetDrone.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): télos _ 30 Second Animated Short.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): 15SecMusic.mp4
+Dec 06, 2025 3:31:45 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): 30 seconds of a spider animation that i'm working on.mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): You Say Run Goes With Everything - Helldivers 2.mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): 30SecondAnimation.mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): BGMusic.mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): BGMusicBossFight.mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4
+Dec 06, 2025 3:31:46 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-00-41-00-06-38_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-06-39-00-15-08_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-15-09-00-17-27_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-17-28-00-20-11_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-20-12-00-22-02_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-22-03-00-25-48_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-25-49-00-29-02_crop.mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_15SecMusic(5).mp4
+Dec 06, 2025 3:31:47 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: 15SecMusic(5).mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0901_00-29-03-00-32-55_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-32-56-00-36-56_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-36-57-00-39-53_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-39-54-00-44-50_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-44-51-00-49-02_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0901_00-49-03-00-57-42_crop.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): G Sounds - adventure time 2.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): GhostStories.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): Rainy Day [short 30 sec animation].mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): SunsetDrone.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): télos _ 30 Second Animated Short.mp4
+Dec 06, 2025 3:31:48 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): You Say Run Goes With Everything - Helldivers 2.mp4
+Dec 06, 2025 3:31:49 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_30_seconds_of_a_spider_animation_that_i_m_working_on(5).mp4
+Dec 06, 2025 3:31:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: 30_seconds_of_a_spider_animation_that_i_m_working_on(5).mp4
+Dec 06, 2025 3:31:50 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: 30SecondAnimation(5)_preview.mp4
+Dec 06, 2025 3:31:51 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: BGMusic(5)_preview.mp4
+Dec 06, 2025 3:31:54 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_BGMusic(5).mp4
+Dec 06, 2025 3:31:54 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: BGMusic(5).mp4
+Dec 06, 2025 3:31:55 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_30SecondAnimation(5).mp4
+Dec 06, 2025 3:31:55 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: 30SecondAnimation(5).mp4
+Dec 06, 2025 3:31:56 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: BGMusicBossFight(5)_preview.mp4
+Dec 06, 2025 3:31:57 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(5)_preview.mp4
+Dec 06, 2025 3:31:58 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_BGMusicBossFight(5).mp4
+Dec 06, 2025 3:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: BGMusicBossFight(5).mp4
+Dec 06, 2025 3:31:58 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0901_00-00-41-00-06-38_crop(1)_preview.mp4
+Dec 06, 2025 3:32:25 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(5).mp4
+Dec 06, 2025 3:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: Bullet_For_My_Valentine_-_Hearts_Burst_Into_Fire_-_Cole_Rolland__Guitar_Cover_(5).mp4
+Dec 06, 2025 3:32:26 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0901_00-29-03-00-32-55_crop_preview.mp4
+Dec 06, 2025 3:32:32 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 compressed video: compressed_clip0901_00-00-41-00-06-38_crop(1).mp4
+Dec 06, 2025 3:32:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 processed: clip0901_00-00-41-00-06-38_crop(1).mp4
+Dec 06, 2025 3:32:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 compressed video: compressed_clip0901_00-29-03-00-32-55_crop.mp4
+Dec 06, 2025 3:32:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 processed: clip0901_00-29-03-00-32-55_crop.mp4

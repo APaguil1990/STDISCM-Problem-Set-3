@@ -20,20 +20,20 @@ public interface VideoChunkOrBuilder extends
       getFilenameBytes();
 
   /**
-   * <code>bytes data = 2;</code>
-   * @return The data.
-   */
-  com.google.protobuf.ByteString getData();
-
-  /**
-   * <code>string client_id = 3;</code>
+   * <code>string client_id = 2;</code>
    * @return The clientId.
    */
   java.lang.String getClientId();
   /**
-   * <code>string client_id = 3;</code>
+   * <code>string client_id = 2;</code>
    * @return The bytes for clientId.
    */
   com.google.protobuf.ByteString
       getClientIdBytes();
+
+  /**
+   * <code>bytes data = 3;</code>
+   * @return The data.
+   */
+  com.google.protobuf.ByteString getData();
 }

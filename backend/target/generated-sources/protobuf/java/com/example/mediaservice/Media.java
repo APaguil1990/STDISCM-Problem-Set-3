@@ -59,20 +59,20 @@ public final class Media {
   static {
     java.lang.String[] descriptorData = {
       "\n\013media.proto\"?\n\nVideoChunk\022\020\n\010filename\030" +
-      "\001 \001(\t\022\014\n\004data\030\002 \001(\014\022\021\n\tclient_id\030\003 \001(\t\"C" +
+      "\001 \001(\t\022\021\n\tclient_id\030\002 \001(\t\022\014\n\004data\030\003 \001(\014\"C" +
       "\n\016UploadResponse\022\016\n\006status\030\001 \001(\t\022\017\n\007mess" +
       "age\030\002 \001(\t\022\020\n\010video_id\030\003 \001(\t\"\007\n\005Empty\"\'\n\t" +
-      "VideoList\022\032\n\006videos\030\001 \003(\0132\n.VideoInfo\"_\n" +
+      "VideoList\022\032\n\006videos\030\001 \003(\0132\n.VideoInfo\"x\n" +
       "\tVideoInfo\022\n\n\002id\030\001 \001(\t\022\020\n\010filename\030\002 \001(\t" +
       "\022\023\n\013upload_time\030\003 \001(\t\022\014\n\004size\030\004 \001(\003\022\021\n\tc" +
-      "lient_id\030\005 \001(\t\" \n\014VideoRequest\022\020\n\010video_" +
-      "id\030\001 \001(\t\"?\n\rVideoResponse\022\020\n\010filename\030\001 " +
-      "\001(\t\022\014\n\004data\030\002 \001(\014\022\016\n\006status\030\003 \001(\t2\212\001\n\014Me" +
-      "diaService\022+\n\013UploadVideo\022\013.VideoChunk\032\017" +
-      ".UploadResponse\022\"\n\014GetVideoList\022\006.Empty\032" +
-      "\n.VideoList\022)\n\010GetVideo\022\r.VideoRequest\032\016" +
-      ".VideoResponseB\034\n\030com.example.mediaservi" +
-      "ceP\001b\006proto3"
+      "lient_id\030\005 \001(\t\022\027\n\017compressed_size\030\006 \001(\003\"" +
+      " \n\014VideoRequest\022\020\n\010video_id\030\001 \001(\t\"?\n\rVid" +
+      "eoResponse\022\020\n\010filename\030\001 \001(\t\022\014\n\004data\030\002 \001" +
+      "(\014\022\016\n\006status\030\003 \001(\t2\212\001\n\014MediaService\022+\n\013U" +
+      "ploadVideo\022\013.VideoChunk\032\017.UploadResponse" +
+      "\022\"\n\014GetVideoList\022\006.Empty\032\n.VideoList\022)\n\010" +
+      "GetVideo\022\r.VideoRequest\032\016.VideoResponseB" +
+      "\034\n\030com.example.mediaserviceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -83,7 +83,7 @@ public final class Media {
     internal_static_VideoChunk_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VideoChunk_descriptor,
-        new java.lang.String[] { "Filename", "Data", "ClientId", });
+        new java.lang.String[] { "Filename", "ClientId", "Data", });
     internal_static_UploadResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_UploadResponse_fieldAccessorTable = new
@@ -107,7 +107,7 @@ public final class Media {
     internal_static_VideoInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VideoInfo_descriptor,
-        new java.lang.String[] { "Id", "Filename", "UploadTime", "Size", "ClientId", });
+        new java.lang.String[] { "Id", "Filename", "UploadTime", "Size", "ClientId", "CompressedSize", });
     internal_static_VideoRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_VideoRequest_fieldAccessorTable = new

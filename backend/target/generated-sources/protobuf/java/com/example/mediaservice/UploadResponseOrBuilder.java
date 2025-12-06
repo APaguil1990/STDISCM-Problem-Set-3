@@ -8,11 +8,19 @@ public interface UploadResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+   * </pre>
+   *
    * <code>string status = 1;</code>
    * @return The status.
    */
   java.lang.String getStatus();
   /**
+   * <pre>
+   * "SUCCESS", "QUEUED", "DROPPED", "FAILED"
+   * </pre>
+   *
    * <code>string status = 1;</code>
    * @return The bytes for status.
    */

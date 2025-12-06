@@ -24,9 +24,6 @@ public class ProducerClient {
             .keepAliveWithoutCalls(true)
             .idleTimeout(5, TimeUnit.MINUTES)
             .build();
-                    .usePlaintext()
-                    .maxInboundMessageSize(50 * 1024 * 1024)
-                    .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
         this.clientId = clientId;
         this.threadPool = Executors.newFixedThreadPool(producerThreads);
