@@ -58,6 +58,21 @@ public class ProducerClient {
     public void uploadVideo(String filePath) {
         threadPool.submit(() -> {
             String filename = Paths.get(filePath).getFileName().toString();
+
+            while (true) {
+                    try {
+                        QueueStatus status = blockingStub.getQueueStatus(Empty.getDefaultInstance());
+                        if (!status.getIsFull()) {
+                            break; // Queue has space, proceed to upload
+                        }
+                        // If full, wait 2 seconds and try again
+                        logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + "). Waiting to upload: " + filename);
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        logger.warning("Failed to check queue status: " + e.getMessage());
+                        break; // If check fails, try uploading anyway or exit
+                    }
+                }
             logger.info("File: " + filename + " Status: Uploading");
             
             try (FileInputStream fis = new FileInputStream(filePath); BufferedInputStream bis = new BufferedInputStream(fis)) {
@@ -92,7 +107,7 @@ public class ProducerClient {
                     }
                     return;
                 }
-                
+
                 String status = response.getStatus();
                 
                 if ("QUEUED".equals(status)) {
@@ -122,7 +137,7 @@ public class ProducerClient {
             }
 
             Map<String,Path> uniqueFiles = new HashMap<>(); 
-            
+
             Files.walk(folder) 
                 .filter(Files::isRegularFile) 
                 .filter(path -> {
@@ -137,12 +152,12 @@ public class ProducerClient {
                     if (uniqueFiles.containsKey(baseName)) {
                         System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
 
-                        try {
-                            Files.delete(path); 
-                            System.out.println("Deleted duplicate file: " + filename);
-                        } catch (IOException e) {
-                            System.err.println("Failed to delete duplicate: " + filename);
-                        }
+//                         try {
+// //                             Files.delete(path);
+//                             System.out.println("Duplicate file: " + filename);
+//                         } catch (IOException e) {
+//                             System.err.println("Duplicate: " + filename);
+//                         }
                     } else {
                         uniqueFiles.put(baseName, path); 
                         uploadVideo(path.toString());
@@ -231,7 +246,7 @@ public class ProducerClient {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose operation:"); 
-        System.out.println("1 - Upload vidoes with multiple producers"); 
+        System.out.println("1 - Upload videos with multiple producers");
         System.out.println("2 - Clean up duplicate videos in storage");
         System.out.println("3 - Clean up duplicates THEN upload videos");
         System.out.println("Enter choice (1, 2, or 3): "); 
