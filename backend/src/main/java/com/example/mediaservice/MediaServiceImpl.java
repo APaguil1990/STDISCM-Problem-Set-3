@@ -141,35 +141,47 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             generatePreview(filePath, consumerId);
             logger.info("Consumer " + consumerId + " generated preview for: " + safeFilename);
             
-            // 2. Skip compression for now - comment this out
-            compressVideo(filePath, consumerId);
-            logger.info("Consumer " + consumerId + " compressed video: " + safeFilename);
+            // 2. Compress video and get compressed size
+            long compressedSize = compressVideo(filePath, consumerId);
+            logger.info("Consumer " + consumerId + " compressed video: " + safeFilename + 
+                    ", compressed size: " + compressedSize + " bytes");
             
-            // Store metadata
+            // Store metadata with ACTUAL compressed size
             VideoInfo videoInfo = VideoInfo.newBuilder()
                 .setId(videoItem.getId())
                 .setFilename(safeFilename)
                 .setUploadTime(new Date().toString())
                 .setSize(videoItem.getData().length)
                 .setClientId(videoItem.getClientId())
-                .setCompressedSize(0) // Set to 0 since we're not compressing
+                .setCompressedSize(compressedSize) // ACTUAL size, not 0
                 .build();
 
             videoStore.put(videoItem.getId(), videoInfo);
-            logger.info("Consumer " + consumerId + " COMPLETED processing: " + safeFilename + " (ID: " + videoItem.getId() + ")");
+            logger.info("Consumer " + consumerId + " COMPLETED processing: " + safeFilename + 
+                    " (ID: " + videoItem.getId() + ", Original: " + videoItem.getData().length + 
+                    " bytes, Compressed: " + compressedSize + " bytes)");
             
         } catch (Exception e) {
             logger.severe("Consumer " + consumerId + " FAILED to process: " + 
-                         (safeFilename != null ? safeFilename : videoItem.getFilename()) + 
-                         " - Error: " + e.getMessage());
+                        (safeFilename != null ? safeFilename : videoItem.getFilename()) + 
+                        " - Error: " + e.getMessage());
         }
     }
 
-    private void compressVideo(Path inputPath, int consumerId) {
+    private long compressVideo(Path inputPath, int consumerId) {
+        String compressedFilename = null;
         try {
             String filename = inputPath.getFileName().toString();
-            String compressedFilename = "compressed_" + filename;
+            String nameWithoutExt = filename.substring(0, filename.lastIndexOf('.'));
+            String extension = filename.substring(filename.lastIndexOf('.'));
+            compressedFilename = "compressed_" + nameWithoutExt + extension;
             Path compressedPath = storageDir.resolve(compressedFilename);
+
+            // First, check if the file already exists and is valid
+            if (Files.exists(compressedPath)) {
+                logger.info("Consumer " + consumerId + " - Compressed file already exists: " + compressedFilename);
+                return Files.size(compressedPath); // Return existing file size
+            }
 
             List<String> ffmpegCommand = new ArrayList<>();
             ffmpegCommand.add("ffmpeg");
@@ -181,31 +193,49 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
             ffmpegCommand.add("28");
             ffmpegCommand.add("-preset");
             ffmpegCommand.add("fast");
+            ffmpegCommand.add("-acodec");
+            ffmpegCommand.add("aac");
             ffmpegCommand.add("-y");
             ffmpegCommand.add(compressedPath.toAbsolutePath().toString());
 
             ProcessBuilder pb = new ProcessBuilder(ffmpegCommand);
             pb.redirectErrorStream(true);
-
+            
+            logger.info("Consumer " + consumerId + " starting compression: " + filename);
             Process process = pb.start();
 
+            // Read output for debugging
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder output = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
+                // You can log this if needed for debugging
+                // logger.fine("FFmpeg output: " + line);
             }
 
             int exitCode = process.waitFor();
 
             if (exitCode == 0) {
-                logger.info("Consumer " + consumerId + " compressed video: " + compressedFilename);
+                if (Files.exists(compressedPath)) {
+                    long compressedSize = Files.size(compressedPath);
+                    logger.info("Consumer " + consumerId + " successfully compressed: " + 
+                            filename + " -> " + compressedFilename + 
+                            " (" + compressedSize + " bytes)");
+                    return compressedSize;
+                } else {
+                    logger.warning("Consumer " + consumerId + " compression created no output file");
+                    return 0;
+                }
             } else {
-                logger.warning("Consumer " + consumerId + " Compression failed with code " + exitCode);
+                logger.warning("Consumer " + consumerId + " FFmpeg failed with exit code: " + exitCode);
+                return 0;
             }
 
         } catch (Exception e) {
-            logger.warning("Consumer " + consumerId + " compression exception: " + e.getMessage());
+            logger.warning("Consumer " + consumerId + " compression exception for " + 
+                        (compressedFilename != null ? compressedFilename : "unknown") + 
+                        ": " + e.getMessage());
+            e.printStackTrace();
+            return 0;
         }
     }
 

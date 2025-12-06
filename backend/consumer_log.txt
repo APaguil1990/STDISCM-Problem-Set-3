@@ -1,638 +1,912 @@
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-13-33-00-14-21_crop(1).mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-13-33-00-14-21_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-13-33-00-14-21_crop(1).mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-24-55-00-27-29_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0903_00-24-55-00-27-29_crop(1).mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-58-38-00-59-37_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0903_00-24-55-00-27-29_crop(1).mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-41-06-00-42-55_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-50-59-00-54-44_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 30SecondAnimation.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-31-00-00-33-35_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-06-04-00-10-07_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-14-22-00-18-22_crop.mp4
-Dec 06, 2025 9:31:53 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0908_00-58-35-01-04-40_crop.mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-13-33-00-14-21_crop(1)_preview.mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-13-33-00-14-21_crop(1).mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0903_00-24-55-00-27-29_crop(1)_preview.mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0903_00-24-55-00-27-29_crop(1).mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-48-56-00-50-08_crop_preview.mp4
-Dec 06, 2025 9:31:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:55 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-13-33-00-14-21_crop(1).mp4
-Dec 06, 2025 9:31:55 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-13-33-00-14-21_crop(1).mp4
-Dec 06, 2025 9:31:55 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-13-33-00-14-21_crop(1).mp4 (ID: de40afbd-59b1-46a5-85a3-ec081eb53a79)
-Dec 06, 2025 9:31:55 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-58-38-00-59-37_crop(1).mp4
-Dec 06, 2025 9:31:55 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-58-38-00-59-37_crop(1).mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-58-38-00-59-37_crop(1)_preview.mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-58-38-00-59-37_crop(1).mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-48-56-00-50-08_crop.mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-48-56-00-50-08_crop.mp4 (ID: 00765188-14ea-437c-9d84-96ef45e827a2)
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:31:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:31:57 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-55-17-00-57-34_crop_preview.mp4
-Dec 06, 2025 9:31:57 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:31:57 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_01-01-07-01-07-08_crop.mp4
-Dec 06, 2025 9:31:57 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 15SecMusic.mp4
-Dec 06, 2025 9:31:57 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): You Say Run Goes With Everything - Helldivers 2.mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-58-38-00-59-37_crop(1).mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-58-38-00-59-37_crop(1).mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-58-38-00-59-37_crop(1).mp4 (ID: 5319ce0d-e7d7-4cde-9fc3-2d9a65265a6c)
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-41-06-00-42-55_crop(1).mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-41-06-00-42-55_crop(1).mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-41-06-00-42-55_crop(1)_preview.mp4
-Dec 06, 2025 9:31:58 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-41-06-00-42-55_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_00-24-55-00-27-29_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_00-24-55-00-27-29_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_00-24-55-00-27-29_crop(1).mp4 (ID: 6ef1ea8b-1864-4f3e-8255-da2bbe796661)
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0903_00-50-59-00-54-44_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0903_00-50-59-00-54-44_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0903_00-50-59-00-54-44_crop(1)_preview.mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0903_00-50-59-00-54-44_crop(1).mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-40-12-00-41-05_crop.mp4
-Dec 06, 2025 9:31:59 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:00 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-10-08-00-13-32_crop.mp4
-Dec 06, 2025 9:32:00 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0908_00-00-39-00-07-40_crop.mp4
-Dec 06, 2025 9:32:01 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:32:01 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-55-17-00-57-34_crop.mp4
-Dec 06, 2025 9:32:01 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-55-17-00-57-34_crop.mp4 (ID: 07cdf70c-ad6b-4288-b45d-1f7e3619dffa)
-Dec 06, 2025 9:32:01 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:32:01 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:32:02 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: clip0903_01-00-28-01-01-06_crop.mp4
-Dec 06, 2025 9:32:02 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-29-12-00-37-54_crop_preview.mp4
-Dec 06, 2025 9:32:02 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:32:03 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-41-06-00-42-55_crop(1).mp4
-Dec 06, 2025 9:32:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-41-06-00-42-55_crop(1).mp4
-Dec 06, 2025 9:32:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-41-06-00-42-55_crop(1).mp4 (ID: 96079adf-f6bc-4935-97cf-dd14a5bc928e)
-Dec 06, 2025 9:32:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: 30SecondAnimation.mp4
-Dec 06, 2025 9:32:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: 30SecondAnimation.mp4
-Dec 06, 2025 9:32:04 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: SunsetDrone.mp4
-Dec 06, 2025 9:32:04 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-22-07-00-24-54_crop.mp4
-Dec 06, 2025 9:32:04 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: 30SecondAnimation_preview.mp4
-Dec 06, 2025 9:32:04 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: 30SecondAnimation.mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_30SecondAnimation.mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: 30SecondAnimation.mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: 30SecondAnimation.mp4 (ID: eea0dab0-6013-44a4-b028-3571bf9389a2)
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-31-00-00-33-35_crop(1).mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-31-00-00-33-35_crop(1).mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-31-00-00-33-35_crop(1)_preview.mp4
-Dec 06, 2025 9:32:06 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-31-00-00-33-35_crop(1).mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: BGMusic.mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-36-08-00-40-11_crop.mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_00-50-59-00-54-44_crop(1).mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_00-50-59-00-54-44_crop(1).mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_00-50-59-00-54-44_crop(1).mp4 (ID: 83fcac9a-4e95-4695-8b79-56288a078dbf)
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:32:08 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:32:09 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0908_00-37-55-00-38-28_crop_preview.mp4
-Dec 06, 2025 9:32:09 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: télos _ 30 Second Animated Short.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0908_00-53-30-00-55-16_crop.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0908_00-37-55-00-38-28_crop.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0908_00-37-55-00-38-28_crop.mp4 (ID: cfd658e7-ba32-4340-af3d-d12927145217)
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0903_00-06-04-00-10-07_crop(1).mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0903_00-06-04-00-10-07_crop(1).mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0903_00-06-04-00-10-07_crop(1)_preview.mp4
-Dec 06, 2025 9:32:10 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0903_00-06-04-00-10-07_crop(1).mp4
-Dec 06, 2025 9:32:12 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-27-30-00-28-23_crop.mp4
-Dec 06, 2025 9:32:13 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-31-00-00-33-35_crop(1).mp4
-Dec 06, 2025 9:32:13 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-31-00-00-33-35_crop(1).mp4
-Dec 06, 2025 9:32:13 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-31-00-00-33-35_crop(1).mp4 (ID: f8d8db4d-fbaa-421a-a7c2-0f509a1f9dd3)
-Dec 06, 2025 9:32:13 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-14-22-00-18-22_crop(1).mp4
-Dec 06, 2025 9:32:13 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-14-22-00-18-22_crop(1).mp4
-Dec 06, 2025 9:32:14 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-14-22-00-18-22_crop(1)_preview.mp4
-Dec 06, 2025 9:32:14 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-14-22-00-18-22_crop(1).mp4
-Dec 06, 2025 9:32:14 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:14 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-42-56-00-46-48_crop.mp4
-Dec 06, 2025 9:32:14 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0908_00-20-18-00-29-11_crop.mp4
-Dec 06, 2025 9:32:18 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_00-06-04-00-10-07_crop(1).mp4
-Dec 06, 2025 9:32:18 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_00-06-04-00-10-07_crop(1).mp4
-Dec 06, 2025 9:32:18 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_00-06-04-00-10-07_crop(1).mp4 (ID: f5128e98-9169-4223-933c-7c7d4aef9964)
-Dec 06, 2025 9:32:18 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0903_01-01-07-01-07-08_crop(1).mp4
-Dec 06, 2025 9:32:18 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0903_01-01-07-01-07-08_crop(1).mp4
-Dec 06, 2025 9:32:19 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0903_01-01-07-01-07-08_crop(1)_preview.mp4
-Dec 06, 2025 9:32:19 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0903_01-01-07-01-07-08_crop(1).mp4
-Dec 06, 2025 9:32:20 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-29-12-00-37-54_crop.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-29-12-00-37-54_crop.mp4 (ID: 384a80b6-bcd4-4779-9c4c-03b4baa73948)
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: 15SecMusic.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: 15SecMusic.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: 15SecMusic_preview.mp4
-Dec 06, 2025 9:32:21 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: 15SecMusic.mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-14-22-00-18-22_crop(1).mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-14-22-00-18-22_crop(1).mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-14-22-00-18-22_crop(1).mp4 (ID: 9fb34b8f-3c5e-4255-800b-068a427cb24f)
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-40-12-00-41-05_crop(1).mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-40-12-00-41-05_crop(1).mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-18-23-00-19-36_crop.mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-40-12-00-41-05_crop(1)_preview.mp4
-Dec 06, 2025 9:32:22 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-40-12-00-41-05_crop(1).mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_15SecMusic.mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: 15SecMusic.mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: 15SecMusic.mp4 (ID: 6fb30f0f-ba5e-44e0-9a46-edd574cd8779)
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-38-29-00-40-49_crop_preview.mp4
-Dec 06, 2025 9:32:23 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: GhostStories.mp4
-Dec 06, 2025 9:32:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-28-24-00-30-59_crop.mp4
-Dec 06, 2025 9:32:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-40-12-00-41-05_crop(1).mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-40-12-00-41-05_crop(1).mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-40-12-00-41-05_crop(1).mp4 (ID: 62892fa0-100a-4698-b3e1-0899dae5c7ef)
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-55-17-00-57-34_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-24-55-00-27-29_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-55-17-00-57-34_crop(1).mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 START processing: clip0903_01-00-28-01-01-06_crop(1).mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0903_00-24-55-00-27-29_crop(1).mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 wrote file: clip0903_01-00-28-01-01-06_crop(1).mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-55-17-00-57-34_crop(1).mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0903_00-24-55-00-27-29_crop(1).mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-22-07-00-24-54_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-06-04-00-10-07_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusic.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: télos _ 30 Second Animated Short.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-20-18-00-29-11_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-53-30-00-55-16_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: You Say Run Goes With Everything - Helldivers 2.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-29-12-00-37-54_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-51-11-00-52-30_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-14-22-00-18-22_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): 30SecondAnimation.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-45-08-00-49-36_crop.mp4
+Dec 06, 2025 9:51:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-20-56-00-23-15_crop.mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0903_00-24-55-00-27-29_crop(1)_preview.mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0903_00-24-55-00-27-29_crop(1).mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0903_00-24-55-00-27-29_crop(1).mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 1 generated preview: clip0903_01-00-28-01-01-06_crop(1)_preview.mp4
-Dec 06, 2025 9:32:25 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 1 generated preview for: clip0903_01-00-28-01-01-06_crop(1).mp4
-Dec 06, 2025 9:32:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: Rainy Day [short 30 sec animation].mp4
-Dec 06, 2025 9:32:26 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-00-37-00-06-03_crop.mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_01-00-28-01-01-06_crop(1).mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_01-00-28-01-01-06_crop(1).mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_01-00-28-01-01-06_crop(1).mp4 (ID: 0dc0a68b-afe5-4286-8fff-10b290d54562)
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: SunsetDrone.mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: SunsetDrone.mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: SunsetDrone_preview.mp4
-Dec 06, 2025 9:32:27 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: SunsetDrone.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: BGMusicBossFight.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-33-36-00-36-07_crop.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_SunsetDrone.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: SunsetDrone.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: SunsetDrone.mp4 (ID: 289779db-ca07-479e-9dc9-6c8c58c02757)
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: BGMusic.mp4
-Dec 06, 2025 9:32:28 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: BGMusic.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-38-29-00-40-49_crop.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-38-29-00-40-49_crop.mp4 (ID: 8b4eff38-21b9-4ccf-853f-9afabd502f27)
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0903_01-00-28-01-01-06_crop(1).mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-55-17-00-57-34_crop(1)_preview.mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-55-17-00-57-34_crop(1).mp4
+Dec 06, 2025 9:51:27 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-55-17-00-57-34_crop(1).mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0903_01-00-28-01-01-06_crop(1).mp4 -> compressed_clip0903_01-00-28-01-01-06_crop(1).mp4 (1114404 bytes)
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_01-00-28-01-01-06_crop(1).mp4, compressed size: 1114404 bytes
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_01-00-28-01-01-06_crop(1).mp4 (ID: 2a6effa9-6e2b-4a52-9c45-d7e0534775cf, Original: 2816233 bytes, Compressed: 1114404 bytes)
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0903_00-22-07-00-24-54_crop(1).mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0903_00-22-07-00-24-54_crop(1).mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 15SecMusic.mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0903_00-22-07-00-24-54_crop(1)_preview.mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0903_00-22-07-00-24-54_crop(1).mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0903_00-22-07-00-24-54_crop(1).mp4
+Dec 06, 2025 9:51:28 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0908_00-58-35-01-04-40_crop.mp4
+Dec 06, 2025 9:51:31 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-55-17-00-57-34_crop(1).mp4 -> compressed_clip0908_00-55-17-00-57-34_crop(1).mp4 (4069169 bytes)
+Dec 06, 2025 9:51:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-55-17-00-57-34_crop(1).mp4, compressed size: 4069169 bytes
+Dec 06, 2025 9:51:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-55-17-00-57-34_crop(1).mp4 (ID: a3578c61-52fd-4948-8e51-bd76777fe9f9, Original: 9716626 bytes, Compressed: 4069169 bytes)
+Dec 06, 2025 9:51:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0903_00-06-04-00-10-07_crop(1).mp4
+Dec 06, 2025 9:51:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0903_00-06-04-00-10-07_crop(1).mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0903_00-24-55-00-27-29_crop(1).mp4 -> compressed_clip0903_00-24-55-00-27-29_crop(1).mp4 (4485099 bytes)
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0903_00-24-55-00-27-29_crop(1).mp4, compressed size: 4485099 bytes
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0903_00-24-55-00-27-29_crop(1).mp4 (ID: 70315a7f-9c04-4e9f-af51-bdd1ba516f1a, Original: 11226346 bytes, Compressed: 4485099 bytes)
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: BGMusic.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: BGMusic.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0903_00-06-04-00-10-07_crop(1)_preview.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0903_00-06-04-00-10-07_crop(1).mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 - Compressed file already exists: compressed_clip0903_00-06-04-00-10-07_crop(1).mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0903_00-06-04-00-10-07_crop(1).mp4, compressed size: 6397092 bytes
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0903_00-06-04-00-10-07_crop(1).mp4 (ID: dd302d84-c4b4-4a08-abbb-c02f6f109763, Original: 14545910 bytes, Compressed: 6397092 bytes)
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 START processing: t_los___30_Second_Animated_Short.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 wrote file: t_los___30_Second_Animated_Short.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: BGMusic_preview.mp4
-Dec 06, 2025 9:32:29 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: BGMusic.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-27-30-00-28-23_crop.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-37-04-00-41-01_crop.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-10-08-00-13-32_crop.mp4
+Dec 06, 2025 9:51:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-52-31-00-53-24_crop.mp4
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-50-59-00-54-44_crop.mp4
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 0 generated preview: t_los___30_Second_Animated_Short_preview.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 0 generated preview for: t_los___30_Second_Animated_Short.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_01-01-07-01-07-08_crop(1).mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_01-01-07-01-07-08_crop(1).mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_01-01-07-01-07-08_crop(1).mp4 (ID: 9728c762-b237-4213-b45b-9605ce7e28e0)
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: t_los___30_Second_Animated_Short.mp4
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: BGMusic_preview.mp4
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: BGMusic.mp4
+Dec 06, 2025 9:51:33 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: BGMusic.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: BGMusic.mp4 -> compressed_BGMusic.mp4 (924237 bytes)
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: BGMusic.mp4, compressed size: 924237 bytes
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: BGMusic.mp4 (ID: 88f397a9-bd67-40df-836f-e5d1e67285d7, Original: 1140088 bytes, Compressed: 924237 bytes)
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0908_00-20-18-00-29-11_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0908_00-20-18-00-29-11_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: t_los___30_Second_Animated_Short.mp4 -> compressed_t_los___30_Second_Animated_Short.mp4 (1124386 bytes)
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: t_los___30_Second_Animated_Short.mp4, compressed size: 1124386 bytes
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: t_los___30_Second_Animated_Short.mp4 (ID: bf660c9e-ab4f-473e-a942-a2d39ecbc214, Original: 2036845 bytes, Compressed: 1124386 bytes)
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-53-30-00-55-16_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-53-30-00-55-16_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0908_00-20-18-00-29-11_crop_preview.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0908_00-20-18-00-29-11_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0908_00-20-18-00-29-11_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-19-01-00-20-55_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-53-30-00-55-16_crop_preview.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-53-30-00-55-16_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-53-30-00-55-16_crop.mp4
+Dec 06, 2025 9:51:34 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-53-25-00-54-14_crop.mp4
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-07-13-00-11-02_crop.mp4
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0903_00-22-07-00-24-54_crop(1).mp4 -> compressed_clip0903_00-22-07-00-24-54_crop(1).mp4 (4932130 bytes)
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_00-22-07-00-24-54_crop(1).mp4, compressed size: 4932130 bytes
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_00-22-07-00-24-54_crop(1).mp4 (ID: 36a90947-2df0-4db9-8da1-124d41e89536, Original: 12535094 bytes, Compressed: 4932130 bytes)
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4
+Dec 06, 2025 9:51:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4
+Dec 06, 2025 9:51:36 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: You_Say_Run_Goes_With_Everything_-_Helldivers_2_preview.mp4
+Dec 06, 2025 9:51:36 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4
+Dec 06, 2025 9:51:36 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4
+Dec 06, 2025 9:51:37 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-42-01-00-45-07_crop.mp4
+Dec 06, 2025 9:51:39 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-53-30-00-55-16_crop.mp4 -> compressed_clip0908_00-53-30-00-55-16_crop.mp4 (3074095 bytes)
+Dec 06, 2025 9:51:39 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-53-30-00-55-16_crop.mp4, compressed size: 3074095 bytes
+Dec 06, 2025 9:51:39 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-53-30-00-55-16_crop.mp4 (ID: 5811ef83-18c5-463a-b2d9-8ea14f3593bc, Original: 7299387 bytes, Compressed: 3074095 bytes)
+Dec 06, 2025 9:51:39 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-29-12-00-37-54_crop(1).mp4
+Dec 06, 2025 9:51:39 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-29-12-00-37-54_crop(1).mp4
+Dec 06, 2025 9:51:40 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-29-12-00-37-54_crop(1)_preview.mp4
+Dec 06, 2025 9:51:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-29-12-00-37-54_crop(1).mp4
+Dec 06, 2025 9:51:40 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-29-12-00-37-54_crop(1).mp4
+Dec 06, 2025 9:51:41 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: 30 seconds of a spider animation that i'm working on.mp4
+Dec 06, 2025 9:51:41 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0908_00-38-29-00-40-49_crop.mp4
+Dec 06, 2025 9:51:41 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-49-37-00-51-10_crop.mp4
+Dec 06, 2025 9:51:41 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-15-13-00-19-00_crop.mp4
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4 -> compressed_You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4 (18286027 bytes)
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4, compressed size: 18286027 bytes
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: You_Say_Run_Goes_With_Everything_-_Helldivers_2.mp4 (ID: 557ec6e6-911a-4888-9ca5-2785f7420289, Original: 18754411 bytes, Compressed: 18286027 bytes)
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0905_00-51-11-00-52-30_crop.mp4
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0905_00-51-11-00-52-30_crop.mp4
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0905_00-51-11-00-52-30_crop_preview.mp4
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0905_00-51-11-00-52-30_crop.mp4
+Dec 06, 2025 9:51:46 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0905_00-51-11-00-52-30_crop.mp4
+Dec 06, 2025 9:51:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-23-16-00-24-53_crop.mp4
+Dec 06, 2025 9:51:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-18-23-00-19-36_crop.mp4
+Dec 06, 2025 9:51:47 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-40-12-00-41-05_crop.mp4
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0905_00-51-11-00-52-30_crop.mp4 -> compressed_clip0905_00-51-11-00-52-30_crop.mp4 (1902466 bytes)
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0905_00-51-11-00-52-30_crop.mp4, compressed size: 1902466 bytes
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0905_00-51-11-00-52-30_crop.mp4 (ID: 38b3f764-3f96-4677-8212-e6698b39f6d7, Original: 4239954 bytes, Compressed: 1902466 bytes)
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0903_00-14-22-00-18-22_crop(1).mp4
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0903_00-14-22-00-18-22_crop(1).mp4
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0903_00-14-22-00-18-22_crop(1)_preview.mp4
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0903_00-14-22-00-18-22_crop(1).mp4
+Dec 06, 2025 9:51:49 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0903_00-14-22-00-18-22_crop(1).mp4
+Dec 06, 2025 9:51:51 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-06-11-00-07-12_crop.mp4
+Dec 06, 2025 9:51:51 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-24-54-00-27-11_crop.mp4
+Dec 06, 2025 9:51:51 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-54-15-00-57-29_crop.mp4
+Dec 06, 2025 9:51:51 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-36-08-00-40-11_crop.mp4
+Dec 06, 2025 9:51:57 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0903_00-14-22-00-18-22_crop(1).mp4 -> compressed_clip0903_00-14-22-00-18-22_crop(1).mp4 (6232807 bytes)
+Dec 06, 2025 9:51:57 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_00-14-22-00-18-22_crop(1).mp4, compressed size: 6232807 bytes
+Dec 06, 2025 9:51:57 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_00-14-22-00-18-22_crop(1).mp4 (ID: d0c8d131-88c7-49a1-9666-3558fa05ff21, Original: 14286072 bytes, Compressed: 6232807 bytes)
+Dec 06, 2025 9:51:57 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: 15SecMusic.mp4
+Dec 06, 2025 9:51:57 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: 15SecMusic.mp4
+Dec 06, 2025 9:51:58 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: 15SecMusic_preview.mp4
+Dec 06, 2025 9:51:58 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: 15SecMusic.mp4
+Dec 06, 2025 9:51:58 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: 15SecMusic.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0908_00-20-18-00-29-11_crop.mp4 -> compressed_clip0908_00-20-18-00-29-11_crop.mp4 (13955021 bytes)
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0908_00-20-18-00-29-11_crop.mp4, compressed size: 13955021 bytes
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0908_00-20-18-00-29-11_crop.mp4 (ID: c07ff756-20c6-4336-8660-38a1c47f6b80, Original: 34065798 bytes, Compressed: 13955021 bytes)
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 START processing: clip0903_00-27-30-00-28-23_crop(1).mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 wrote file: clip0903_00-27-30-00-28-23_crop(1).mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-59-38-01-00-27_crop.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video dropped (queue full): clip0903_00-46-49-00-50-58_crop.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_BGMusic.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: BGMusic.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: BGMusic.mp4 (ID: ea078ec2-12b4-426b-9fba-4ef14fc81c55)
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl generatePreview
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: SunsetDrone.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-41-02-00-42-00_crop.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-11-03-00-15-12_crop.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: 15SecMusic.mp4 -> compressed_15SecMusic.mp4 (932580 bytes)
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: 15SecMusic.mp4, compressed size: 932580 bytes
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: 15SecMusic.mp4 (ID: e846595e-08dd-4afa-8517-02397c7ae1df, Original: 1291396 bytes, Compressed: 932580 bytes)
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0905_00-37-04-00-41-01_crop.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0905_00-37-04-00-41-01_crop.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl generatePreview
 INFO: Consumer 2 generated preview: clip0903_00-27-30-00-28-23_crop(1)_preview.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
 INFO: Consumer 2 generated preview for: clip0903_00-27-30-00-28-23_crop(1).mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_t_los___30_Second_Animated_Short.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: t_los___30_Second_Animated_Short.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: t_los___30_Second_Animated_Short.mp4 (ID: bc05d73d-4e91-4e10-8733-fc0abdadee2a)
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0908_00-43-31-00-48-55_crop_preview.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on_preview.mp4
-Dec 06, 2025 9:32:31 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Dec 06, 2025 9:32:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-19-37-00-22-06_crop.mp4
-Dec 06, 2025 9:32:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-57-12-00-58-37_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_00-27-30-00-28-23_crop(1).mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_00-27-30-00-28-23_crop(1).mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_00-27-30-00-28-23_crop(1).mp4 (ID: b7f99434-9346-4e45-adfb-ec112c2ad1f9)
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4 (ID: 5b157601-fe9d-4785-a152-1ea2838a0b37)
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0908_00-40-50-00-43-30_crop_preview.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-57-35-00-58-34_crop_preview.mp4
-Dec 06, 2025 9:32:33 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:35 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0903_00-54-45-00-57-11_crop.mp4
-Dec 06, 2025 9:32:35 PM com.example.mediaservice.MediaServiceImpl uploadVideo
-INFO: Video queued: clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-57-35-00-58-34_crop.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-57-35-00-58-34_crop.mp4 (ID: f11c0cb0-08a0-45ff-a4cc-28552638a7bc)
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: GhostStories.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: GhostStories.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: GhostStories_preview.mp4
-Dec 06, 2025 9:32:36 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: GhostStories.mp4
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0903_00-27-30-00-28-23_crop(1).mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0905_00-37-04-00-41-01_crop_preview.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0905_00-37-04-00-41-01_crop.mp4
+Dec 06, 2025 9:51:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0905_00-37-04-00-41-01_crop.mp4
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-29-12-00-37-54_crop(1).mp4 -> compressed_clip0908_00-29-12-00-37-54_crop(1).mp4 (14717747 bytes)
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-29-12-00-37-54_crop(1).mp4, compressed size: 14717747 bytes
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-29-12-00-37-54_crop(1).mp4 (ID: 584ebc97-b190-4d99-b67f-54b339a52cf8, Original: 34795112 bytes, Compressed: 14717747 bytes)
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0903_00-10-08-00-13-32_crop(1).mp4
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0903_00-10-08-00-13-32_crop(1).mp4
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0903_00-10-08-00-13-32_crop(1)_preview.mp4
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0903_00-10-08-00-13-32_crop(1).mp4
+Dec 06, 2025 9:52:00 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0903_00-10-08-00-13-32_crop(1).mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: GhostStories.mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-28-24-00-30-59_crop.mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-42-56-00-46-48_crop.mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0908_00-00-39-00-07-40_crop.mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0903_00-27-30-00-28-23_crop(1).mp4 -> compressed_clip0903_00-27-30-00-28-23_crop(1).mp4 (1548090 bytes)
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0903_00-27-30-00-28-23_crop(1).mp4, compressed size: 1548090 bytes
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0903_00-27-30-00-28-23_crop(1).mp4 (ID: d2f46928-ca91-4bf0-9718-9ce93f350a1f, Original: 3877970 bytes, Compressed: 1548090 bytes)
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0905_00-19-01-00-20-55_crop.mp4
+Dec 06, 2025 9:52:01 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0905_00-19-01-00-20-55_crop.mp4
+Dec 06, 2025 9:52:02 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0905_00-19-01-00-20-55_crop_preview.mp4
+Dec 06, 2025 9:52:02 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0905_00-19-01-00-20-55_crop.mp4
+Dec 06, 2025 9:52:02 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0905_00-19-01-00-20-55_crop.mp4
+Dec 06, 2025 9:52:03 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-41-06-00-42-55_crop.mp4
+Dec 06, 2025 9:52:06 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0905_00-19-01-00-20-55_crop.mp4 -> compressed_clip0905_00-19-01-00-20-55_crop.mp4 (2859952 bytes)
+Dec 06, 2025 9:52:06 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0905_00-19-01-00-20-55_crop.mp4, compressed size: 2859952 bytes
+Dec 06, 2025 9:52:06 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0905_00-19-01-00-20-55_crop.mp4 (ID: 831f5076-2ee2-4009-8127-89762d7b9b82, Original: 6559229 bytes, Compressed: 2859952 bytes)
+Dec 06, 2025 9:52:06 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0905_00-53-25-00-54-14_crop.mp4
+Dec 06, 2025 9:52:06 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0905_00-53-25-00-54-14_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0903_00-10-08-00-13-32_crop(1).mp4 -> compressed_clip0903_00-10-08-00-13-32_crop(1).mp4 (5173396 bytes)
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0903_00-10-08-00-13-32_crop(1).mp4, compressed size: 5173396 bytes
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0903_00-10-08-00-13-32_crop(1).mp4 (ID: e3213373-225c-4ef4-bd46-eb310b08525f, Original: 11671188 bytes, Compressed: 5173396 bytes)
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0905_00-42-01-00-45-07_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0905_00-42-01-00-45-07_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0905_00-53-25-00-54-14_crop_preview.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0905_00-53-25-00-54-14_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0905_00-53-25-00-54-14_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: Rainy Day [short 30 sec animation].mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-13-33-00-14-21_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-57-12-00-58-37_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0905_00-42-01-00-45-07_crop_preview.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0905_00-42-01-00-45-07_crop.mp4
+Dec 06, 2025 9:52:07 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0905_00-42-01-00-45-07_crop.mp4
+Dec 06, 2025 9:52:08 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0905_00-37-04-00-41-01_crop.mp4 -> compressed_clip0905_00-37-04-00-41-01_crop.mp4 (7173773 bytes)
+Dec 06, 2025 9:52:08 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0905_00-37-04-00-41-01_crop.mp4, compressed size: 7173773 bytes
+Dec 06, 2025 9:52:08 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0905_00-37-04-00-41-01_crop.mp4 (ID: 7feac145-4775-4a05-8cf1-c00b32eee978, Original: 18807715 bytes, Compressed: 7173773 bytes)
+Dec 06, 2025 9:52:08 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
+Dec 06, 2025 9:52:08 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0905_00-53-25-00-54-14_crop.mp4 -> compressed_clip0905_00-53-25-00-54-14_crop.mp4 (1215627 bytes)
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0905_00-53-25-00-54-14_crop.mp4, compressed size: 1215627 bytes
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0905_00-53-25-00-54-14_crop.mp4 (ID: ff4675c8-2faf-49da-a86a-055878017403, Original: 2816801 bytes, Compressed: 1215627 bytes)
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0905_00-23-16-00-24-53_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0905_00-23-16-00-24-53_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: 30_seconds_of_a_spider_animation_that_i_m_working_on_preview.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0905_00-23-16-00-24-53_crop_preview.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0905_00-23-16-00-24-53_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0905_00-23-16-00-24-53_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-57-35-00-58-34_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_GhostStories.mp4
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: GhostStories.mp4
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: GhostStories.mp4 (ID: 85635125-3b97-4732-b61d-4d746461ba8b)
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: Rainy_Day__short_30_sec_animation_.mp4
-Dec 06, 2025 9:32:37 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: Rainy_Day__short_30_sec_animation_.mp4
-Dec 06, 2025 9:32:38 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: Rainy_Day__short_30_sec_animation__preview.mp4
-Dec 06, 2025 9:32:38 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: Rainy_Day__short_30_sec_animation_.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_Rainy_Day__short_30_sec_animation_.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: Rainy_Day__short_30_sec_animation_.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: Rainy_Day__short_30_sec_animation_.mp4 (ID: 3047ac9b-f4f3-4a4a-9a6c-e1597d9c26d7)
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: BGMusicBossFight.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: BGMusicBossFight.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0908_00-43-31-00-48-55_crop.mp4
+Dec 06, 2025 9:52:09 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4 -> compressed_30_seconds_of_a_spider_animation_that_i_m_working_on.mp4 (950074 bytes)
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4, compressed size: 950074 bytes
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: 30_seconds_of_a_spider_animation_that_i_m_working_on.mp4 (ID: e5120d28-96ea-42c2-847b-edd73d43ed30, Original: 1180134 bytes, Compressed: 950074 bytes)
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0905_00-06-11-00-07-12_crop.mp4
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0905_00-06-11-00-07-12_crop.mp4
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0905_00-06-11-00-07-12_crop_preview.mp4
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0905_00-06-11-00-07-12_crop.mp4
+Dec 06, 2025 9:52:10 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0905_00-06-11-00-07-12_crop.mp4
+Dec 06, 2025 9:52:11 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_01-01-07-01-07-08_crop.mp4
+Dec 06, 2025 9:52:12 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0905_00-23-16-00-24-53_crop.mp4 -> compressed_clip0905_00-23-16-00-24-53_crop.mp4 (2418312 bytes)
+Dec 06, 2025 9:52:12 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0905_00-23-16-00-24-53_crop.mp4, compressed size: 2418312 bytes
+Dec 06, 2025 9:52:12 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0905_00-23-16-00-24-53_crop.mp4 (ID: 5f3e1c6e-0295-433d-9f70-8ac25788c213, Original: 5544345 bytes, Compressed: 2418312 bytes)
+Dec 06, 2025 9:52:12 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: SunsetDrone.mp4
+Dec 06, 2025 9:52:12 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: SunsetDrone.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0905_00-06-11-00-07-12_crop.mp4 -> compressed_clip0905_00-06-11-00-07-12_crop.mp4 (1867217 bytes)
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0905_00-06-11-00-07-12_crop.mp4, compressed size: 1867217 bytes
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0905_00-06-11-00-07-12_crop.mp4 (ID: f2559f74-bc19-42d1-b067-9004c0f36b45, Original: 4959130 bytes, Compressed: 1867217 bytes)
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0905_00-41-02-00-42-00_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0905_00-41-02-00-42-00_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-27-12-00-29-49_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-29-50-00-33-39_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: SunsetDrone_preview.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: SunsetDrone.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: SunsetDrone.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0905_00-33-40-00-37-03_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-00-37-00-06-03_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0905_00-41-02-00-42-00_crop_preview.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0905_00-41-02-00-42-00_crop.mp4
+Dec 06, 2025 9:52:13 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0905_00-41-02-00-42-00_crop.mp4
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0905_00-42-01-00-45-07_crop.mp4 -> compressed_clip0905_00-42-01-00-45-07_crop.mp4 (4493572 bytes)
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0905_00-42-01-00-45-07_crop.mp4, compressed size: 4493572 bytes
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0905_00-42-01-00-45-07_crop.mp4 (ID: 13a4f4a9-c110-4670-beda-e93aba9a5e0c, Original: 10172230 bytes, Compressed: 4493572 bytes)
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: GhostStories.mp4
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: GhostStories.mp4
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: SunsetDrone.mp4 -> compressed_SunsetDrone.mp4 (634094 bytes)
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: SunsetDrone.mp4, compressed size: 634094 bytes
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: SunsetDrone.mp4 (ID: 93e0c5ef-4f95-4e5d-9d94-0c4208be5b2e, Original: 808000 bytes, Compressed: 634094 bytes)
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0903_00-28-24-00-30-59_crop(1).mp4
+Dec 06, 2025 9:52:14 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0903_00-28-24-00-30-59_crop(1).mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: GhostStories_preview.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: GhostStories.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: GhostStories.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0903_00-28-24-00-30-59_crop(1)_preview.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0903_00-28-24-00-30-59_crop(1).mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0903_00-28-24-00-30-59_crop(1).mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: GhostStories.mp4 -> compressed_GhostStories.mp4 (448889 bytes)
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: GhostStories.mp4, compressed size: 448889 bytes
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: GhostStories.mp4 (ID: 25e40092-ba4c-426e-869b-afba9a828645, Original: 702595 bytes, Compressed: 448889 bytes)
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0903_00-41-06-00-42-55_crop(1).mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0903_00-41-06-00-42-55_crop(1).mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0905_00-00-43-00-06-10_crop.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-40-50-00-43-30_crop.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-59-38-01-00-27_crop.mp4
+Dec 06, 2025 9:52:15 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0908_00-14-18-00-20-17_crop.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0905_00-41-02-00-42-00_crop.mp4 -> compressed_clip0905_00-41-02-00-42-00_crop.mp4 (1647264 bytes)
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0905_00-41-02-00-42-00_crop.mp4, compressed size: 1647264 bytes
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0905_00-41-02-00-42-00_crop.mp4 (ID: 055f5cce-f93b-4271-8cdc-00a9495a13f8, Original: 4385507 bytes, Compressed: 1647264 bytes)
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: Rainy_Day__short_30_sec_animation_.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: Rainy_Day__short_30_sec_animation_.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0903_00-41-06-00-42-55_crop(1)_preview.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0903_00-41-06-00-42-55_crop(1).mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0903_00-41-06-00-42-55_crop(1).mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: Rainy_Day__short_30_sec_animation__preview.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: Rainy_Day__short_30_sec_animation_.mp4
+Dec 06, 2025 9:52:16 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: Rainy_Day__short_30_sec_animation_.mp4
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: Rainy_Day__short_30_sec_animation_.mp4 -> compressed_Rainy_Day__short_30_sec_animation_.mp4 (1368641 bytes)
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: Rainy_Day__short_30_sec_animation_.mp4, compressed size: 1368641 bytes
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: Rainy_Day__short_30_sec_animation_.mp4 (ID: 396445dd-d2f8-4860-97d1-ed1d70784923, Original: 1202708 bytes, Compressed: 1368641 bytes)
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0903_00-13-33-00-14-21_crop(1).mp4
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0903_00-13-33-00-14-21_crop(1).mp4
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-48-56-00-50-08_crop.mp4
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-33-36-00-36-07_crop.mp4
+Dec 06, 2025 9:52:17 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-54-45-00-57-11_crop.mp4
+Dec 06, 2025 9:52:18 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0903_00-13-33-00-14-21_crop(1)_preview.mp4
+Dec 06, 2025 9:52:18 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0903_00-13-33-00-14-21_crop(1).mp4
+Dec 06, 2025 9:52:18 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0903_00-13-33-00-14-21_crop(1).mp4
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0903_00-13-33-00-14-21_crop(1).mp4 -> compressed_clip0903_00-13-33-00-14-21_crop(1).mp4 (1250980 bytes)
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_00-13-33-00-14-21_crop(1).mp4, compressed size: 1250980 bytes
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_00-13-33-00-14-21_crop(1).mp4 (ID: e04e651a-0ec1-4d9d-a76e-3520f095bfb4, Original: 2865973 bytes, Compressed: 1250980 bytes)
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0908_00-57-35-00-58-34_crop(1).mp4
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0908_00-57-35-00-58-34_crop(1).mp4
+Dec 06, 2025 9:52:19 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-37-55-00-38-28_crop.mp4
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0908_00-57-35-00-58-34_crop(1)_preview.mp4
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0908_00-57-35-00-58-34_crop(1).mp4
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0908_00-57-35-00-58-34_crop(1).mp4
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0903_00-41-06-00-42-55_crop(1).mp4 -> compressed_clip0903_00-41-06-00-42-55_crop(1).mp4 (2923790 bytes)
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0903_00-41-06-00-42-55_crop(1).mp4, compressed size: 2923790 bytes
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0903_00-41-06-00-42-55_crop(1).mp4 (ID: 7105a77e-9e2e-4eda-bb50-3a9fb8459c13, Original: 6806094 bytes, Compressed: 2923790 bytes)
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-50-09-00-53-29_crop(1).mp4
+Dec 06, 2025 9:52:20 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-50-09-00-53-29_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0903_00-28-24-00-30-59_crop(1).mp4 -> compressed_clip0903_00-28-24-00-30-59_crop(1).mp4 (4775819 bytes)
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0903_00-28-24-00-30-59_crop(1).mp4, compressed size: 4775819 bytes
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0903_00-28-24-00-30-59_crop(1).mp4 (ID: fed0adf9-ced5-47b7-8411-091c919e2a8a, Original: 12015151 bytes, Compressed: 4775819 bytes)
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0903_01-01-07-01-07-08_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0903_01-01-07-01-07-08_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-50-09-00-53-29_crop(1)_preview.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-50-09-00-53-29_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-50-09-00-53-29_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0903_01-01-07-01-07-08_crop(1)_preview.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0903_01-01-07-01-07-08_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 - Compressed file already exists: compressed_clip0903_01-01-07-01-07-08_crop(1).mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0903_01-01-07-01-07-08_crop(1).mp4, compressed size: 6950463 bytes
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0903_01-01-07-01-07-08_crop(1).mp4 (ID: 258ef9fe-dd04-4098-ac3a-dd97f476acb6, Original: 14713282 bytes, Compressed: 6950463 bytes)
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0905_00-27-12-00-29-49_crop.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0905_00-27-12-00-29-49_crop.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-58-38-00-59-37_crop.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-31-00-00-33-35_crop.mp4
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl uploadVideo
 INFO: Video queued: G Sounds - adventure time 2.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: BGMusicBossFight_preview.mp4
-Dec 06, 2025 9:32:39 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: BGMusicBossFight.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_BGMusicBossFight.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: BGMusicBossFight.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: BGMusicBossFight.mp4 (ID: 24869131-7734-489f-873f-a284c6e13610)
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0903_00-59-38-01-00-27_crop(1).mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0903_00-59-38-01-00-27_crop(1).mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0908_00-40-50-00-43-30_crop.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0908_00-40-50-00-43-30_crop.mp4 (ID: c9c1f1e0-1ffe-4fac-bc58-e81a8da8a409)
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:40 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:41 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0903_00-59-38-01-00-27_crop(1)_preview.mp4
-Dec 06, 2025 9:32:41 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0903_00-59-38-01-00-27_crop(1).mp4
-Dec 06, 2025 9:32:41 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0908_00-14-18-00-20-17_crop_preview.mp4
-Dec 06, 2025 9:32:41 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0903_00-59-38-01-00-27_crop(1).mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0903_00-59-38-01-00-27_crop(1).mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0903_00-59-38-01-00-27_crop(1).mp4 (ID: d240365e-d1b8-48da-9b74-f4445a4c3fa6)
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-07-41-00-14-17_crop_preview.mp4
-Dec 06, 2025 9:32:43 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0908_00-43-31-00-48-55_crop.mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0908_00-43-31-00-48-55_crop.mp4 (ID: 570cfd0c-8f95-412a-88f3-1005fb5b40e3)
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-19-37-00-22-06_crop(1).mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-19-37-00-22-06_crop(1).mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-19-37-00-22-06_crop(1)_preview.mp4
-Dec 06, 2025 9:32:44 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-19-37-00-22-06_crop(1).mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-19-37-00-22-06_crop(1).mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-19-37-00-22-06_crop(1).mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-19-37-00-22-06_crop(1).mp4 (ID: 00dc1b4e-ff4f-4278-9f47-675e8cc0efb7)
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0903_00-57-12-00-58-37_crop(1).mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0903_00-57-12-00-58-37_crop(1).mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0903_00-57-12-00-58-37_crop(1)_preview.mp4
-Dec 06, 2025 9:32:50 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0903_00-57-12-00-58-37_crop(1).mp4
-Dec 06, 2025 9:32:53 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0908_00-14-18-00-20-17_crop.mp4
-Dec 06, 2025 9:32:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0908_00-14-18-00-20-17_crop.mp4 (ID: f3e5a297-b631-44d4-9459-591a0469e6f1)
-Dec 06, 2025 9:32:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: clip0903_00-54-45-00-57-11_crop(1).mp4
-Dec 06, 2025 9:32:53 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: clip0903_00-54-45-00-57-11_crop(1).mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0903_00-57-12-00-58-37_crop(1).mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0903_00-57-12-00-58-37_crop(1).mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0903_00-57-12-00-58-37_crop(1).mp4 (ID: f6395e40-08c5-46b3-b08e-7b66d7ee4131)
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 START processing: clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 wrote file: clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: clip0903_00-54-45-00-57-11_crop(1)_preview.mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: clip0903_00-54-45-00-57-11_crop(1).mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 1 generated preview: clip0908_01-04-41-01-07-33_crop_preview.mp4
-Dec 06, 2025 9:32:54 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 generated preview for: clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:32:56 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-07-41-00-14-17_crop.mp4
-Dec 06, 2025 9:32:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-07-41-00-14-17_crop.mp4 (ID: ddd51441-9df1-4bf3-be1f-4446e02b9546)
-Dec 06, 2025 9:32:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 START processing: clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:32:56 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 wrote file: clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:32:57 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 0 generated preview: clip0908_00-50-09-00-53-29_crop_preview.mp4
-Dec 06, 2025 9:32:57 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 generated preview for: clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:32:59 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_clip0903_00-54-45-00-57-11_crop(1).mp4
-Dec 06, 2025 9:32:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: clip0903_00-54-45-00-57-11_crop(1).mp4
-Dec 06, 2025 9:32:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: clip0903_00-54-45-00-57-11_crop(1).mp4 (ID: 7c53510f-1d77-46de-a3f7-fc2eb81d1f21)
-Dec 06, 2025 9:32:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 START processing: G_Sounds_-_adventure_time_2.mp4
-Dec 06, 2025 9:32:59 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 wrote file: G_Sounds_-_adventure_time_2.mp4
-Dec 06, 2025 9:33:00 PM com.example.mediaservice.MediaServiceImpl generatePreview
-INFO: Consumer 2 generated preview: G_Sounds_-_adventure_time_2_preview.mp4
-Dec 06, 2025 9:33:00 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 generated preview for: G_Sounds_-_adventure_time_2.mp4
-Dec 06, 2025 9:33:02 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 1 compressed video: compressed_clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:33:02 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 compressed video: clip0908_01-04-41-01-07-33_crop.mp4
-Dec 06, 2025 9:33:02 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 1 COMPLETED processing: clip0908_01-04-41-01-07-33_crop.mp4 (ID: e6fc3ac8-2fdc-4d0a-914c-035d1208e91a)
-Dec 06, 2025 9:33:03 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 2 compressed video: compressed_G_Sounds_-_adventure_time_2.mp4
-Dec 06, 2025 9:33:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 compressed video: G_Sounds_-_adventure_time_2.mp4
-Dec 06, 2025 9:33:03 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 2 COMPLETED processing: G_Sounds_-_adventure_time_2.mp4 (ID: 3f9d4a8d-db32-4575-88c0-92c293dd3d94)
-Dec 06, 2025 9:33:05 PM com.example.mediaservice.MediaServiceImpl compressVideo
-INFO: Consumer 0 compressed video: compressed_clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:33:05 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 compressed video: clip0908_00-50-09-00-53-29_crop.mp4
-Dec 06, 2025 9:33:05 PM com.example.mediaservice.MediaServiceImpl processVideo
-INFO: Consumer 0 COMPLETED processing: clip0908_00-50-09-00-53-29_crop.mp4 (ID: 567e368b-65c1-4793-b2e4-c9b75bbe96a6)
+Dec 06, 2025 9:52:21 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video dropped (queue full): clip0903_00-46-49-00-50-58_crop.mp4
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0905_00-27-12-00-29-49_crop_preview.mp4
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0905_00-27-12-00-29-49_crop.mp4
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0905_00-27-12-00-29-49_crop.mp4
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0908_00-57-35-00-58-34_crop(1).mp4 -> compressed_clip0908_00-57-35-00-58-34_crop(1).mp4 (1710523 bytes)
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0908_00-57-35-00-58-34_crop(1).mp4, compressed size: 1710523 bytes
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0908_00-57-35-00-58-34_crop(1).mp4 (ID: 4902b58a-714e-48e0-ac23-ad1554424f0b, Original: 4039231 bytes, Compressed: 1710523 bytes)
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0905_00-29-50-00-33-39_crop.mp4
+Dec 06, 2025 9:52:22 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0905_00-29-50-00-33-39_crop.mp4
+Dec 06, 2025 9:52:23 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0905_00-29-50-00-33-39_crop_preview.mp4
+Dec 06, 2025 9:52:23 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0905_00-29-50-00-33-39_crop.mp4
+Dec 06, 2025 9:52:23 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0905_00-29-50-00-33-39_crop.mp4
+Dec 06, 2025 9:52:24 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_00-07-41-00-14-17_crop.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0905_00-27-12-00-29-49_crop.mp4 -> compressed_clip0905_00-27-12-00-29-49_crop.mp4 (4733090 bytes)
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0905_00-27-12-00-29-49_crop.mp4, compressed size: 4733090 bytes
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0905_00-27-12-00-29-49_crop.mp4 (ID: 40de32ff-68f6-4be2-88df-9906e284a27a, Original: 12542124 bytes, Compressed: 4733090 bytes)
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0905_00-00-43-00-06-10_crop.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0905_00-00-43-00-06-10_crop.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0905_00-00-43-00-06-10_crop_preview.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0905_00-00-43-00-06-10_crop.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0905_00-00-43-00-06-10_crop.mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-50-09-00-53-29_crop(1).mp4 -> compressed_clip0908_00-50-09-00-53-29_crop(1).mp4 (5954695 bytes)
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-50-09-00-53-29_crop(1).mp4, compressed size: 5954695 bytes
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-50-09-00-53-29_crop(1).mp4 (ID: 0bddde30-eab4-44db-9fa0-5ef733bbc517, Original: 14089240 bytes, Compressed: 5954695 bytes)
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-40-50-00-43-30_crop(1).mp4
+Dec 06, 2025 9:52:28 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-40-50-00-43-30_crop(1).mp4
+Dec 06, 2025 9:52:29 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-40-50-00-43-30_crop(1)_preview.mp4
+Dec 06, 2025 9:52:29 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-40-50-00-43-30_crop(1).mp4
+Dec 06, 2025 9:52:29 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-40-50-00-43-30_crop(1).mp4
+Dec 06, 2025 9:52:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0908_01-04-41-01-07-33_crop.mp4
+Dec 06, 2025 9:52:30 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: clip0903_00-19-37-00-22-06_crop.mp4
+Dec 06, 2025 9:52:31 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0905_00-29-50-00-33-39_crop.mp4 -> compressed_clip0905_00-29-50-00-33-39_crop.mp4 (6734086 bytes)
+Dec 06, 2025 9:52:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0905_00-29-50-00-33-39_crop.mp4, compressed size: 6734086 bytes
+Dec 06, 2025 9:52:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0905_00-29-50-00-33-39_crop.mp4 (ID: a7aabeed-f030-4766-8b89-7e8fc201b451, Original: 18100242 bytes, Compressed: 6734086 bytes)
+Dec 06, 2025 9:52:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0903_00-59-38-01-00-27_crop(1).mp4
+Dec 06, 2025 9:52:31 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0903_00-59-38-01-00-27_crop(1).mp4
+Dec 06, 2025 9:52:32 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0903_00-59-38-01-00-27_crop(1)_preview.mp4
+Dec 06, 2025 9:52:32 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0903_00-59-38-01-00-27_crop(1).mp4
+Dec 06, 2025 9:52:32 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0903_00-59-38-01-00-27_crop(1).mp4
+Dec 06, 2025 9:52:32 PM com.example.mediaservice.MediaServiceImpl uploadVideo
+INFO: Video queued: BGMusicBossFight.mp4
+Dec 06, 2025 9:52:33 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0903_00-59-38-01-00-27_crop(1).mp4 -> compressed_clip0903_00-59-38-01-00-27_crop(1).mp4 (1339240 bytes)
+Dec 06, 2025 9:52:33 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_00-59-38-01-00-27_crop(1).mp4, compressed size: 1339240 bytes
+Dec 06, 2025 9:52:33 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_00-59-38-01-00-27_crop(1).mp4 (ID: 7f51b355-0bd2-4e6a-bf9f-494453eb7295, Original: 3251536 bytes, Compressed: 1339240 bytes)
+Dec 06, 2025 9:52:33 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0908_00-48-56-00-50-08_crop(1).mp4
+Dec 06, 2025 9:52:33 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0908_00-48-56-00-50-08_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0905_00-00-43-00-06-10_crop.mp4 -> compressed_clip0905_00-00-43-00-06-10_crop.mp4 (4681418 bytes)
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0905_00-00-43-00-06-10_crop.mp4, compressed size: 4681418 bytes
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0905_00-00-43-00-06-10_crop.mp4 (ID: ad4fa8f9-5bca-409e-9517-0f2f64a1bab2, Original: 11727983 bytes, Compressed: 4681418 bytes)
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0903_00-33-36-00-36-07_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0903_00-33-36-00-36-07_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0908_00-48-56-00-50-08_crop(1)_preview.mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0908_00-48-56-00-50-08_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0908_00-48-56-00-50-08_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0903_00-33-36-00-36-07_crop(1)_preview.mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0903_00-33-36-00-36-07_crop(1).mp4
+Dec 06, 2025 9:52:34 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0903_00-33-36-00-36-07_crop(1).mp4
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-40-50-00-43-30_crop(1).mp4 -> compressed_clip0908_00-40-50-00-43-30_crop(1).mp4 (4138881 bytes)
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-40-50-00-43-30_crop(1).mp4, compressed size: 4138881 bytes
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-40-50-00-43-30_crop(1).mp4 (ID: 0888f678-b15e-4dd4-9933-be3623aa6323, Original: 10088719 bytes, Compressed: 4138881 bytes)
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0908_00-37-55-00-38-28_crop(1).mp4
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0908_00-37-55-00-38-28_crop(1).mp4
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0908_00-37-55-00-38-28_crop(1)_preview.mp4
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0908_00-37-55-00-38-28_crop(1).mp4
+Dec 06, 2025 9:52:35 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0908_00-37-55-00-38-28_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0908_00-48-56-00-50-08_crop(1).mp4 -> compressed_clip0908_00-48-56-00-50-08_crop(1).mp4 (1872526 bytes)
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0908_00-48-56-00-50-08_crop(1).mp4, compressed size: 1872526 bytes
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0908_00-48-56-00-50-08_crop(1).mp4 (ID: d1278963-887a-4e5c-ba7c-d14de1fcf5a1, Original: 4471173 bytes, Compressed: 1872526 bytes)
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0903_00-58-38-00-59-37_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0903_00-58-38-00-59-37_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0908_00-37-55-00-38-28_crop(1).mp4 -> compressed_clip0908_00-37-55-00-38-28_crop(1).mp4 (946958 bytes)
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0908_00-37-55-00-38-28_crop(1).mp4, compressed size: 946958 bytes
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0908_00-37-55-00-38-28_crop(1).mp4 (ID: 99aac46d-535d-4863-a3bb-bbea6c15951b, Original: 2233274 bytes, Compressed: 946958 bytes)
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0903_00-31-00-00-33-35_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0903_00-31-00-00-33-35_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0903_00-58-38-00-59-37_crop(1)_preview.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0903_00-58-38-00-59-37_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 - Compressed file already exists: compressed_clip0903_00-58-38-00-59-37_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0903_00-58-38-00-59-37_crop(1).mp4, compressed size: 1820785 bytes
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0903_00-58-38-00-59-37_crop(1).mp4 (ID: 8e954cad-d927-4aac-8282-691e3fe1657e, Original: 4484855 bytes, Compressed: 1820785 bytes)
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: G_Sounds_-_adventure_time_2.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: G_Sounds_-_adventure_time_2.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0903_00-31-00-00-33-35_crop(1)_preview.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0903_00-31-00-00-33-35_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0903_00-31-00-00-33-35_crop(1).mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: G_Sounds_-_adventure_time_2_preview.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: G_Sounds_-_adventure_time_2.mp4
+Dec 06, 2025 9:52:37 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: G_Sounds_-_adventure_time_2.mp4
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0903_00-33-36-00-36-07_crop(1).mp4 -> compressed_clip0903_00-33-36-00-36-07_crop(1).mp4 (4093045 bytes)
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0903_00-33-36-00-36-07_crop(1).mp4, compressed size: 4093045 bytes
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0903_00-33-36-00-36-07_crop(1).mp4 (ID: 12be4564-7d14-4f0a-bc40-9b1f6c4878bf, Original: 9499234 bytes, Compressed: 4093045 bytes)
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 START processing: clip0908_00-07-41-00-14-17_crop(1).mp4
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 wrote file: clip0908_00-07-41-00-14-17_crop(1).mp4
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: G_Sounds_-_adventure_time_2.mp4 -> compressed_G_Sounds_-_adventure_time_2.mp4 (1889241 bytes)
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: G_Sounds_-_adventure_time_2.mp4, compressed size: 1889241 bytes
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: G_Sounds_-_adventure_time_2.mp4 (ID: 8772e4ba-040c-4f3d-ad47-d84478b79163, Original: 2332400 bytes, Compressed: 1889241 bytes)
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: clip0908_01-04-41-01-07-33_crop(1).mp4
+Dec 06, 2025 9:52:40 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: clip0908_01-04-41-01-07-33_crop(1).mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 2 generated preview: clip0908_00-07-41-00-14-17_crop(1)_preview.mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 generated preview for: clip0908_00-07-41-00-14-17_crop(1).mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 starting compression: clip0908_00-07-41-00-14-17_crop(1).mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: clip0908_01-04-41-01-07-33_crop(1)_preview.mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: clip0908_01-04-41-01-07-33_crop(1).mp4
+Dec 06, 2025 9:52:41 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: clip0908_01-04-41-01-07-33_crop(1).mp4
+Dec 06, 2025 9:52:44 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0903_00-31-00-00-33-35_crop(1).mp4 -> compressed_clip0903_00-31-00-00-33-35_crop(1).mp4 (4165827 bytes)
+Dec 06, 2025 9:52:44 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0903_00-31-00-00-33-35_crop(1).mp4, compressed size: 4165827 bytes
+Dec 06, 2025 9:52:44 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0903_00-31-00-00-33-35_crop(1).mp4 (ID: dbbed5b8-56f3-4036-9bdc-213b72f3cd5a, Original: 9934452 bytes, Compressed: 4165827 bytes)
+Dec 06, 2025 9:52:44 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 START processing: clip0903_00-19-37-00-22-06_crop(1).mp4
+Dec 06, 2025 9:52:44 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 wrote file: clip0903_00-19-37-00-22-06_crop(1).mp4
+Dec 06, 2025 9:52:45 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 0 generated preview: clip0903_00-19-37-00-22-06_crop(1)_preview.mp4
+Dec 06, 2025 9:52:45 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 generated preview for: clip0903_00-19-37-00-22-06_crop(1).mp4
+Dec 06, 2025 9:52:45 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 starting compression: clip0903_00-19-37-00-22-06_crop(1).mp4
+Dec 06, 2025 9:52:48 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: clip0908_01-04-41-01-07-33_crop(1).mp4 -> compressed_clip0908_01-04-41-01-07-33_crop(1).mp4 (4991255 bytes)
+Dec 06, 2025 9:52:48 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: clip0908_01-04-41-01-07-33_crop(1).mp4, compressed size: 4991255 bytes
+Dec 06, 2025 9:52:48 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: clip0908_01-04-41-01-07-33_crop(1).mp4 (ID: 35bd6a77-13d4-4008-8128-95d0306f4e16, Original: 11686521 bytes, Compressed: 4991255 bytes)
+Dec 06, 2025 9:52:48 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 START processing: BGMusicBossFight.mp4
+Dec 06, 2025 9:52:48 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 wrote file: BGMusicBossFight.mp4
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl generatePreview
+INFO: Consumer 1 generated preview: BGMusicBossFight_preview.mp4
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 generated preview for: BGMusicBossFight.mp4
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 starting compression: BGMusicBossFight.mp4
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 1 successfully compressed: BGMusicBossFight.mp4 -> compressed_BGMusicBossFight.mp4 (957130 bytes)
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 compressed video: BGMusicBossFight.mp4, compressed size: 957130 bytes
+Dec 06, 2025 9:52:49 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 1 COMPLETED processing: BGMusicBossFight.mp4 (ID: 17e26448-595b-44de-9a7b-3f7b3bfa64d3, Original: 1274163 bytes, Compressed: 957130 bytes)
+Dec 06, 2025 9:52:50 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 0 successfully compressed: clip0903_00-19-37-00-22-06_crop(1).mp4 -> compressed_clip0903_00-19-37-00-22-06_crop(1).mp4 (3845094 bytes)
+Dec 06, 2025 9:52:50 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 compressed video: clip0903_00-19-37-00-22-06_crop(1).mp4, compressed size: 3845094 bytes
+Dec 06, 2025 9:52:50 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 0 COMPLETED processing: clip0903_00-19-37-00-22-06_crop(1).mp4 (ID: d754cba3-9ba1-49ff-a6bd-b0902b5f8d80, Original: 8673882 bytes, Compressed: 3845094 bytes)
+Dec 06, 2025 9:52:52 PM com.example.mediaservice.MediaServiceImpl compressVideo
+INFO: Consumer 2 successfully compressed: clip0908_00-07-41-00-14-17_crop(1).mp4 -> compressed_clip0908_00-07-41-00-14-17_crop(1).mp4 (10470231 bytes)
+Dec 06, 2025 9:52:52 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 compressed video: clip0908_00-07-41-00-14-17_crop(1).mp4, compressed size: 10470231 bytes
+Dec 06, 2025 9:52:52 PM com.example.mediaservice.MediaServiceImpl processVideo
+INFO: Consumer 2 COMPLETED processing: clip0908_00-07-41-00-14-17_crop(1).mp4 (ID: afca6f00-7acc-46f5-83f5-b3151063abba, Original: 25232812 bytes, Compressed: 10470231 bytes)
+Dec 06, 2025 9:54:28 PM com.example.mediaservice.MediaServiceImpl lambda$setupShutdownHook$0
+INFO: Shutdown initiated - closing resources
