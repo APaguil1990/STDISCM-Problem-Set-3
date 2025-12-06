@@ -5,6 +5,7 @@ option java_package = "com.example.mediaservice";
 
 service MediaService {
   rpc UploadVideo (VideoChunk) returns (UploadResponse);
+  rpc StreamUploadVideo (stream VideoChunk) returns (UploadResponse);
   rpc GetVideoList (Empty) returns (VideoList);
   rpc GetVideo (VideoRequest) returns (VideoResponse);
   rpc GetQueueStatus (Empty) returns (QueueStatus);

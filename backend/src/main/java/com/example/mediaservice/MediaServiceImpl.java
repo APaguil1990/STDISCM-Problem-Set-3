@@ -125,6 +125,94 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public StreamObserver<VideoChunk> streamUploadVideo(StreamObserver<UploadResponse> responseObserver) {
+        return new StreamObserver<VideoChunk>() {
+            private ByteArrayOutputStream fileData = new ByteArrayOutputStream();
+            private String filename = null;
+            private String clientId = null;
+            private boolean firstChunk = true;
+
+            @Override
+            public void onNext(VideoChunk chunk) {
+                try {
+                    if (firstChunk) {
+                        // Extract metadata from first chunk
+                        filename = chunk.getFilename();
+                        clientId = chunk.getClientId();
+                        firstChunk = false;
+                        logger.info("Streaming upload started: " + filename + " from client: " + clientId);
+                    }
+
+                    // Accumulate data chunks
+                    if (chunk.getData() != null && chunk.getData().size() > 0) {
+                        chunk.getData().writeTo(fileData);
+                    }
+                } catch (IOException e) {
+                    logger.severe("Error accumulating stream chunks: " + e.getMessage());
+                    responseObserver.onError(io.grpc.Status.INTERNAL.withDescription("Error processing stream: " + e.getMessage()).asRuntimeException());
+                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                logger.warning("Stream upload error for " + (filename != null ? filename : "unknown") + ": " + t.getMessage());
+                responseObserver.onError(t);
+            }
+
+            @Override
+            public void onCompleted() {
+                try {
+                    if (filename == null || clientId == null) {
+                        logger.warning("Stream completed without filename or client_id");
+                        responseObserver.onNext(UploadResponse.newBuilder()
+                            .setStatus("ERROR")
+                            .setMessage("Missing filename or client_id")
+                            .build());
+                        responseObserver.onCompleted();
+                        return;
+                    }
+
+                    byte[] completeData = fileData.toByteArray();
+                    logger.info("Stream upload completed: " + filename + " (" + completeData.length + " bytes)");
+
+                    // Create the internal representation
+                    QueuedVideo videoItem = new QueuedVideo(
+                        UUID.randomUUID().toString(),
+                        filename,
+                        clientId,
+                        completeData
+                    );
+
+                    boolean queued = videoQueue.enqueue(videoItem);
+
+                    if (queued) {
+                        responseObserver.onNext(UploadResponse.newBuilder()
+                            .setStatus("QUEUED")
+                            .setMessage("Video added to queue via streaming")
+                            .setVideoId(videoItem.getId())
+                            .build());
+                        logger.info("Video queued via streaming: " + videoItem.getFilename());
+                    } else {
+                        responseObserver.onNext(UploadResponse.newBuilder()
+                            .setStatus("DROPPED")
+                            .setMessage("Queue is full")
+                            .build());
+                        logger.info("Video dropped (queue full) via streaming: " + videoItem.getFilename());
+                    }
+                } catch (Exception e) {
+                    logger.severe("Error processing stream completion: " + e.getMessage());
+                    responseObserver.onNext(UploadResponse.newBuilder()
+                        .setStatus("ERROR")
+                        .setMessage("Server error: " + e.getMessage())
+                        .build());
+                } finally {
+                    responseObserver.onCompleted();
+                }
+            }
+        };
+    }
+
     private void processVideo(QueuedVideo videoItem, int consumerId) {
         String safeFilename = null;
         try {

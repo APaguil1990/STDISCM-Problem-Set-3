@@ -2,19 +2,31 @@ package com.example.mediaservice;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 import java.io.*;
 import java.nio.file.*;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.*;
 import java.util.Properties;
 
 public class ProducerClient {
     private final ManagedChannel channel;
     private final MediaServiceGrpc.MediaServiceBlockingStub blockingStub;
+    private final MediaServiceGrpc.MediaServiceStub asyncStub;
     private final Logger logger;
     private final String clientId;
     private final ExecutorService threadPool;
+    private final int streamingChunkSize;
+    private final long fileStabilityCheckInterval;
+    private final long fileStabilityCheckDuration;
+    private final Set<Path> processedFiles;
+    private final Set<Path> filesInProgress;
 
     public ProducerClient(String host, int port, String clientId, int producerThreads) {
         this.channel = ManagedChannelBuilder.forAddress(host, port)
@@ -23,11 +35,35 @@ public class ProducerClient {
             // REMOVE keepalive settings to avoid warnings
             .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
+        this.asyncStub = MediaServiceGrpc.newStub(channel);
         this.clientId = clientId;
         this.threadPool = Executors.newFixedThreadPool(producerThreads);
+        this.processedFiles = ConcurrentHashMap.newKeySet();
+        this.filesInProgress = ConcurrentHashMap.newKeySet();
+        
+        // Load configuration
+        Properties config = loadConfig();
+        this.streamingChunkSize = Integer.parseInt(config.getProperty("streaming.chunk.size", "1048576"));
+        this.fileStabilityCheckInterval = Long.parseLong(config.getProperty("file.stability.check.interval", "500"));
+        this.fileStabilityCheckDuration = Long.parseLong(config.getProperty("file.stability.check.duration", "2000"));
         
         // Setup file logging
         this.logger = setupLogger(clientId);
+    }
+
+    private Properties loadConfig() {
+        Properties config = new Properties();
+        try {
+            String configPath = "./producer-config.properties";
+            if (Files.exists(Paths.get(configPath))) {
+                try (FileInputStream fis = new FileInputStream(configPath)) {
+                    config.load(fis);
+                }
+            }
+        } catch (Exception e) {
+            // Use defaults if config file not found
+        }
+        return config;
     }
 
     private Logger setupLogger(String clientId) {
@@ -124,6 +160,257 @@ public class ProducerClient {
                 logger.info("File: " + filename + " Status: Failed to read file - " + e.getMessage());
             } catch (Exception e) {
                 logger.info("File: " + filename + " Status: Unexpected error - " + e.getClass().getSimpleName() + ": " + e.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Wait for file to be completely written by checking if file size stabilizes
+     */
+    private boolean waitForFileComplete(Path filePath) {
+        try {
+            if (!Files.exists(filePath)) {
+                return false;
+            }
+
+            long lastSize = Files.size(filePath);
+            long stableStartTime = System.currentTimeMillis();
+            long checkInterval = fileStabilityCheckInterval;
+            long requiredStableDuration = fileStabilityCheckDuration;
+
+            while (true) {
+                Thread.sleep(checkInterval);
+
+                if (!Files.exists(filePath)) {
+                    logger.warning("File disappeared during stability check: " + filePath);
+                    return false;
+                }
+
+                long currentSize = Files.size(filePath);
+
+                if (currentSize != lastSize) {
+                    // Size changed, reset stability timer
+                    lastSize = currentSize;
+                    stableStartTime = System.currentTimeMillis();
+                } else {
+                    // Size unchanged, check if stable long enough
+                    long stableDuration = System.currentTimeMillis() - stableStartTime;
+                    if (stableDuration >= requiredStableDuration) {
+                        logger.info("File size stabilized: " + filePath.getFileName() + " (" + currentSize + " bytes)");
+                        return true;
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return false;
+        } catch (IOException e) {
+            logger.warning("Error checking file stability: " + filePath + " - " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Upload video using gRPC client-side streaming
+     */
+    public void uploadVideoStreaming(String filePath) {
+        threadPool.submit(() -> {
+            Path path = Paths.get(filePath);
+            String filename = path.getFileName().toString();
+
+            // Check if already processed
+            if (processedFiles.contains(path.toAbsolutePath())) {
+                logger.info("File already processed, skipping: " + filename);
+                return;
+            }
+
+            // Check queue status before uploading
+            while (true) {
+                try {
+                    QueueStatus status = blockingStub.getQueueStatus(Empty.getDefaultInstance());
+                    if (!status.getIsFull()) {
+                        break; // Queue has space, proceed to upload
+                    }
+                    logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + "). Waiting to upload: " + filename);
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                    logger.warning("Failed to check queue status: " + e.getMessage());
+                    break;
+                }
+            }
+
+            logger.info("File: " + filename + " Status: Streaming upload started");
+
+            final CountDownLatch finishLatch = new CountDownLatch(1);
+            final AtomicReference<String> uploadStatus = new AtomicReference<>("UNKNOWN");
+            final AtomicReference<String> uploadMessage = new AtomicReference<>("");
+
+            StreamObserver<VideoChunk> requestObserver = asyncStub
+                .withDeadlineAfter(300, TimeUnit.SECONDS)
+                .streamUploadVideo(new StreamObserver<UploadResponse>() {
+                    @Override
+                    public void onNext(UploadResponse response) {
+                        uploadStatus.set(response.getStatus());
+                        uploadMessage.set(response.getMessage());
+                        logger.info("File: " + filename + " Status: " + response.getStatus() + " - " + response.getMessage());
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        logger.warning("File: " + filename + " Streaming error: " + t.getMessage());
+                        uploadStatus.set("ERROR");
+                        uploadMessage.set(t.getMessage());
+                        finishLatch.countDown();
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        finishLatch.countDown();
+                    }
+                });
+
+            try (FileInputStream fis = new FileInputStream(filePath);
+                 BufferedInputStream bis = new BufferedInputStream(fis)) {
+
+                byte[] buffer = new byte[streamingChunkSize];
+                int bytesRead;
+                boolean firstChunk = true;
+
+                while ((bytesRead = bis.read(buffer)) != -1) {
+                    VideoChunk.Builder chunkBuilder = VideoChunk.newBuilder();
+
+                    if (firstChunk) {
+                        // First chunk includes metadata
+                        chunkBuilder.setFilename(filename)
+                                   .setClientId(clientId)
+                                   .setData(com.google.protobuf.ByteString.copyFrom(buffer, 0, bytesRead));
+                        firstChunk = false;
+                    } else {
+                        // Subsequent chunks only have data
+                        chunkBuilder.setData(com.google.protobuf.ByteString.copyFrom(buffer, 0, bytesRead));
+                    }
+
+                    requestObserver.onNext(chunkBuilder.build());
+                }
+
+                requestObserver.onCompleted();
+
+                // Wait for response
+                if (!finishLatch.await(60, TimeUnit.SECONDS)) {
+                    logger.warning("File: " + filename + " Streaming upload timeout");
+                } else {
+                    Path absolutePath = path.toAbsolutePath();
+                    filesInProgress.remove(absolutePath); // Remove from in-progress set
+                    
+                    if ("QUEUED".equals(uploadStatus.get())) {
+                        processedFiles.add(absolutePath);
+                        logger.info("File: " + filename + " Status: Successfully queued via streaming");
+                    } else if ("DROPPED".equals(uploadStatus.get())) {
+                        logger.info("File: " + filename + " Status: Dropped - " + uploadMessage.get());
+                    } else {
+                        logger.info("File: " + filename + " Status: " + uploadStatus.get() + " - " + uploadMessage.get());
+                    }
+                }
+
+            } catch (IOException e) {
+                logger.warning("File: " + filename + " Status: Failed to read file - " + e.getMessage());
+                filesInProgress.remove(path.toAbsolutePath());
+                requestObserver.onError(io.grpc.Status.INTERNAL.withDescription("File read error: " + e.getMessage()).asException());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                logger.warning("File: " + filename + " Status: Upload interrupted");
+                filesInProgress.remove(path.toAbsolutePath());
+                requestObserver.onError(io.grpc.Status.CANCELLED.withDescription("Upload interrupted").asException());
+            } catch (Exception e) {
+                logger.warning("File: " + filename + " Status: Unexpected error - " + e.getClass().getSimpleName() + ": " + e.getMessage());
+                filesInProgress.remove(path.toAbsolutePath());
+                requestObserver.onError(io.grpc.Status.INTERNAL.withDescription("Unexpected error: " + e.getMessage()).asException());
+            }
+        });
+    }
+
+    /**
+     * Watch a folder for new files and upload them using streaming
+     */
+    public void watchFolder(String folderPath, String[] extensions) {
+        Path folder = Paths.get(folderPath);
+        if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+            logger.warning("Invalid folder for watching: " + folderPath);
+            return;
+        }
+
+        threadPool.submit(() -> {
+            try {
+                WatchService watchService = FileSystems.getDefault().newWatchService();
+                folder.register(watchService, 
+                    StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_MODIFY);
+
+                logger.info("Started watching folder: " + folderPath);
+
+                while (!Thread.currentThread().isInterrupted()) {
+                    WatchKey key;
+                    try {
+                        key = watchService.take();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+
+                    for (WatchEvent<?> event : key.pollEvents()) {
+                        WatchEvent.Kind<?> kind = event.kind();
+
+                        if (kind == StandardWatchEventKinds.OVERFLOW) {
+                            logger.warning("WatchService overflow for folder: " + folderPath);
+                            continue;
+                        }
+
+                        @SuppressWarnings("unchecked")
+                        WatchEvent<Path> ev = (WatchEvent<Path>) event;
+                        Path fileName = ev.context();
+                        Path fullPath = folder.resolve(fileName);
+
+                        // Check if it's a video file
+                        String filename = fileName.toString().toLowerCase();
+                        boolean isVideoFile = Arrays.stream(extensions)
+                            .anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
+
+                        if (isVideoFile && Files.isRegularFile(fullPath)) {
+                            Path absolutePath = fullPath.toAbsolutePath();
+                            
+                            // Skip if already processed or in progress
+                            if (processedFiles.contains(absolutePath) || filesInProgress.contains(absolutePath)) {
+                                logger.info("File already processed or in progress, skipping: " + fileName);
+                                continue;
+                            }
+                            
+                            // Wait for file to be complete
+                            if (waitForFileComplete(fullPath)) {
+                                // Double-check after waiting (file might have been processed by another event)
+                                if (!processedFiles.contains(absolutePath) && !filesInProgress.contains(absolutePath)) {
+                                    filesInProgress.add(absolutePath);
+                                    logger.info("New file detected: " + fileName);
+                                    uploadVideoStreaming(fullPath.toString());
+                                } else {
+                                    logger.info("File was processed while waiting, skipping: " + fileName);
+                                }
+                            } else {
+                                logger.warning("File did not stabilize, skipping: " + fileName);
+                            }
+                        }
+                    }
+
+                    boolean valid = key.reset();
+                    if (!valid) {
+                        logger.warning("Watch key no longer valid for: " + folderPath);
+                        break;
+                    }
+                }
+
+                watchService.close();
+                logger.info("Stopped watching folder: " + folderPath);
+            } catch (IOException e) {
+                logger.severe("Error watching folder " + folderPath + ": " + e.getMessage());
             }
         });
     }
@@ -340,9 +627,84 @@ public class ProducerClient {
         System.out.println("1 - Upload videos with multiple producers");
         System.out.println("2 - Clean up duplicate videos in storage");
         System.out.println("3 - Clean up duplicates THEN upload videos");
-        System.out.println("Enter choice (1, 2, or 3): "); 
+        System.out.println("4 - Continuous folder monitoring with streaming upload");
+        System.out.println("Enter choice (1, 2, 3, or 4): "); 
 
         String choice = scanner.nextLine().trim();
+
+        // Handle option 4 - Continuous monitoring
+        if ("4".equals(choice)) {
+            System.out.println("Enter target IP address (default: " + defaultTargetIp + "):");
+            String targetIp = scanner.nextLine().trim();
+            if (targetIp.isEmpty()) {
+                targetIp = defaultTargetIp;
+            }
+
+            System.out.println("\n=== CONTINUOUS MONITORING MODE ===");
+            System.out.println("Enter folder paths to monitor (comma separated, e.g., test-videos1, test-videos2):");
+            System.out.println("Note: Use '../folder' to go up one level, or full path like 'C:\\path\\to\\folder'");
+            
+            String foldersInput = scanner.nextLine().trim();
+            String[] folderPaths = foldersInput.split(",");
+            
+            List<String> validFolders = new ArrayList<>();
+            for (String folderPath : folderPaths) {
+                folderPath = folderPath.trim();
+                Path folder = Paths.get(folderPath);
+                if (Files.exists(folder) && Files.isDirectory(folder)) {
+                    validFolders.add(folderPath);
+                    System.out.println("Valid folder: " + folderPath);
+                } else {
+                    System.out.println("Invalid folder (skipping): " + folderPath);
+                }
+            }
+            
+            if (validFolders.isEmpty()) {
+                System.out.println("No valid folders found. Exiting.");
+                scanner.close();
+                return;
+            }
+            
+            String[] videoExtensions = {".mp4", ".avi", ".mov", ".mkv"};
+            // Create producer with enough threads for watching folders + uploads
+            // Each folder needs 1 thread for watching, plus some for concurrent uploads
+            int threadsNeeded = validFolders.size() + 2; // folders + 2 upload threads
+            ProducerClient producer = new ProducerClient(targetIp, defaultTargetPort, "monitor-client", threadsNeeded);
+            
+            System.out.println("\n=== STARTING CONTINUOUS MONITORING ===");
+            System.out.println("Monitoring " + validFolders.size() + " folder(s) for new video files...");
+            System.out.println("Press 'q' and Enter to stop monitoring");
+            
+            // Start watching each folder
+            for (String folderPath : validFolders) {
+                producer.watchFolder(folderPath, videoExtensions);
+            }
+            
+            // Wait for user to quit
+            Thread monitorThread = new Thread(() -> {
+                Scanner inputScanner = new Scanner(System.in);
+                while (true) {
+                    String input = inputScanner.nextLine().trim();
+                    if ("q".equalsIgnoreCase(input)) {
+                        System.out.println("Stopping monitoring...");
+                        producer.shutdown();
+                        System.exit(0);
+                    }
+                }
+            });
+            monitorThread.setDaemon(true);
+            monitorThread.start();
+            
+            // Keep main thread alive
+            try {
+                monitorThread.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            
+            scanner.close();
+            return;
+        }
 
         // Handle cleanup operations first 
         if ("2".equals(choice) || "3".equals(choice)) {
