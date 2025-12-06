@@ -318,4 +318,7 @@ Configuration is managed via `frontend/config.json`:
 
 3. Frontend dependency issues 
 - rm -rf node_modules package-lock.json 
-- npm install 
+- npm install
+- 
+
+Gdrive: https://drive.google.com/drive/folders/118i-NymoNC5RS-OXoTZzu0zjVZPIy_vH?usp=drive_link
