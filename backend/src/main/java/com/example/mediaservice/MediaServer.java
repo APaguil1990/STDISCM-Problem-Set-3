@@ -10,6 +10,7 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,13 +124,13 @@ public class MediaServer {
                     exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
                     exchange.getResponseHeaders().set("Content-Type", "application/json");
                     
-                    // Get videos and filter out previews
+                    // Get videos and filter out previews ONLY
                     List<VideoInfo> videoList = new ArrayList<>(mediaService.getVideoStore().values());
                     
-                    // Remove any video entries that are actually previews
+                    // Remove only previews (keep compressed videos)
                     videoList.removeIf(video -> 
-                        video.getFilename().contains("_preview") || 
-                        video.getFilename().startsWith("compressed_")
+                        video.getFilename().contains("_preview")
+                        // REMOVE this line: || video.getFilename().startsWith("compressed_")
                     );
                     
                     String response = convertVideoListToJson(videoList);
@@ -149,6 +150,21 @@ public class MediaServer {
             for (int i = 0; i < videos.size(); i++) {
                 VideoInfo video = videos.get(i);
                 
+                // Get compressed size, but if it's 0, check if there's a compressed file
+                long compressedSize = video.getCompressedSize();
+                if (compressedSize == 0) {
+                    // Check if compressed file exists
+                    String compressedFilename = "compressed_" + video.getFilename();
+                    Path compressedPath = Paths.get("./videos", compressedFilename);
+                    if (Files.exists(compressedPath)) {
+                        try {
+                            compressedSize = Files.size(compressedPath);
+                        } catch (IOException e) {
+                            // Keep as 0
+                        }
+                    }
+                }
+                
                 String jsonEntry = String.format(
                     "{\"id\":\"%s\",\"filename\":\"%s\",\"upload_time\":\"%s\",\"size\":%d,\"client_id\":\"%s\",\"compressed_size\":%d}",
                     video.getId(),
@@ -156,7 +172,7 @@ public class MediaServer {
                     video.getUploadTime(),
                     video.getSize(),
                     video.getClientId(),
-                    video.getCompressedSize()
+                    compressedSize  // Use actual compressed size
                 );
                 
                 json.append(jsonEntry);
@@ -173,9 +189,11 @@ public class MediaServer {
             try {
                 String path = exchange.getRequestURI().getPath();
                 
-                // Only serve files under specific paths
-                if (!path.startsWith("/content/videos/") && !path.startsWith("/content/previews/")) {
-                    String response = "Invalid path. Use /content/videos/ or /content/previews/";
+                // Allow three paths now
+                if (!path.startsWith("/content/videos/") && 
+                    !path.startsWith("/content/previews/") &&
+                    !path.startsWith("/content/compressed/")) {
+                    String response = "Invalid path. Use /content/videos/, /content/previews/, or /content/compressed/";
                     exchange.getResponseHeaders().set("Content-Type", "text/plain");
                     exchange.sendResponseHeaders(400, response.getBytes().length);
                     exchange.getResponseBody().write(response.getBytes());
@@ -183,20 +201,26 @@ public class MediaServer {
                     return;
                 }
                 
-                String filename = path.replace("/content/videos/", "").replace("/content/previews/", "");
+                String filename = path.replace("/content/videos/", "")
+                                    .replace("/content/previews/", "")
+                                    .replace("/content/compressed/", "");
                 
                 java.nio.file.Path filePath;
                 
                 if (path.startsWith("/content/previews/")) {
                     // Serve previews
                     filePath = Paths.get("./videos/previews", filename);
+                } else if (path.startsWith("/content/compressed/")) {
+                    // Serve compressed videos
+                    filePath = Paths.get("./videos", filename);
+                    // Don't block compressed files anymore
                 } else {
-                    // Serve regular videos - EXCLUDE previews and compressed files
+                    // Serve regular videos
                     filePath = Paths.get("./videos", filename);
                     
-                    // Don't serve previews or compressed files from main videos directory
-                    if (filename.contains("_preview") || filename.startsWith("compressed_")) {
-                        String response = "Access denied - this is a preview or compressed file";
+                    // Only block previews from main videos directory
+                    if (filename.contains("_preview")) {
+                        String response = "Access denied - this is a preview file";
                         exchange.getResponseHeaders().set("Content-Type", "text/plain");
                         exchange.sendResponseHeaders(403, response.getBytes().length);
                         exchange.getResponseBody().write(response.getBytes());
@@ -205,6 +229,7 @@ public class MediaServer {
                     }
                 }
                 
+                // Rest of the method remains the same...
                 if (Files.exists(filePath)) {
                     exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
                     exchange.getResponseHeaders().set("Content-Type", getContentType(filename));
@@ -234,6 +259,7 @@ public class MediaServer {
                 exchange.close();
             }
         }
+    
         
         private String getContentType(String filename) {
             if (filename.endsWith(".mp4")) return "video/mp4";

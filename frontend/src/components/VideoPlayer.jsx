@@ -2,6 +2,7 @@ import React from 'react'
 
 const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
     const videoUrl = `http://${serverIp}:${serverPort}/content/videos/${video.filename}`;
+    const compressedVideoUrl = `http://${serverIp}:${serverPort}/content/compressed/compressed_${video.filename}`;
 
     return (
         <div className="video-player">
@@ -36,7 +37,7 @@ const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
                                     Saved: {((1 - (video.compressed_size / video.size)) * 100).toFixed(1)}% space
                                 </p>
                                 <a
-                                    href={`http://${serverIp}:${serverPort}/content/compressed_${video.filename}`}
+                                    href={compressedVideoUrl}
                                     target="_blank"
                                     rel="noreferrer"
                                     style={{display: 'inline-block', marginTop: '10px', color: '#2196f3'}}
@@ -45,7 +46,7 @@ const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
                                 </a>
                             </>
                         ) : (
-                            <p><em>Compression pending or failed...</em></p>
+                            <p><em>Compression pending or not available...</em></p>
                         )}
                     </div>
                 </div>
