@@ -24,6 +24,9 @@ public class ProducerClient {
             .keepAliveWithoutCalls(true)
             .idleTimeout(5, TimeUnit.MINUTES)
             .build();
+                    .usePlaintext()
+                    .maxInboundMessageSize(50 * 1024 * 1024)
+                    .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
         this.clientId = clientId;
         this.threadPool = Executors.newFixedThreadPool(producerThreads);
@@ -92,7 +95,7 @@ public class ProducerClient {
                     }
                     return;
                 }
-                
+
                 String status = response.getStatus();
                 
                 if ("QUEUED".equals(status)) {
@@ -122,7 +125,7 @@ public class ProducerClient {
             }
 
             Map<String,Path> uniqueFiles = new HashMap<>(); 
-            
+
             Files.walk(folder) 
                 .filter(Files::isRegularFile) 
                 .filter(path -> {
@@ -137,12 +140,12 @@ public class ProducerClient {
                     if (uniqueFiles.containsKey(baseName)) {
                         System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
 
-                        try {
-                            Files.delete(path); 
-                            System.out.println("Deleted duplicate file: " + filename);
-                        } catch (IOException e) {
-                            System.err.println("Failed to delete duplicate: " + filename);
-                        }
+//                         try {
+// //                             Files.delete(path);
+//                             System.out.println("Duplicate file: " + filename);
+//                         } catch (IOException e) {
+//                             System.err.println("Duplicate: " + filename);
+//                         }
                     } else {
                         uniqueFiles.put(baseName, path); 
                         uploadVideo(path.toString());
@@ -231,7 +234,7 @@ public class ProducerClient {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose operation:"); 
-        System.out.println("1 - Upload vidoes with multiple producers"); 
+        System.out.println("1 - Upload videos with multiple producers");
         System.out.println("2 - Clean up duplicate videos in storage");
         System.out.println("3 - Clean up duplicates THEN upload videos");
         System.out.println("Enter choice (1, 2, or 3): "); 

@@ -321,3 +321,103 @@ body {
         width: 300px;
     }
 }
+
+/* --- IMPROVED CARD STYLES --- */
+
+/* 1. Make sure the card handles absolute positioning correctly */
+.video-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure uniform height */
+}
+
+/* 2. The Green Badge - Floating on top of the thumbnail */
+.savings-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #10b981; /* Modern Emerald Green */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    letter-spacing: 0.5px;
+}
+
+/* 3. Container for the file info */
+.video-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Adds space between elements */
+    flex-grow: 1;
+}
+
+.video-info h4 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* 4. The Compression Stats Box */
+.size-info {
+    background: #f0fdf4; /* Very light green background */
+    border: 1px solid #dcfce7;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: auto; /* Pushes it down if there's extra space */
+    width: fit-content; /* Makes the box only as wide as the text */
+
+}
+
+.compression-row {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* <--- ADD THIS LINE */
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.old-size {
+    text-decoration: line-through;
+    color: #9ca3af; /* Light gray */
+}
+
+.arrow {
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+.new-size {
+    color: #059669; /* Darker Green */
+    font-weight: 700;
+    background: #d1fae5;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 5. Metadata (Date, Client) */
+.meta-text {
+    font-size: 0.75rem !important;
+    color: #6b7280;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 6. Standard size text (for uncompressed videos) */
+.normal-size {
+    background: #f3f4f6;
+    color: #4b5563;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-block;
+    font-weight: 500;
+}
