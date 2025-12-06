@@ -19,10 +19,10 @@ public class ProducerClient {
         this.channel = ManagedChannelBuilder.forAddress(host, port)
             .usePlaintext()
             .maxInboundMessageSize(100 * 1024 * 1024)
-            .keepAliveTime(30, TimeUnit.SECONDS)
-            .keepAliveTimeout(10, TimeUnit.SECONDS)
-            .keepAliveWithoutCalls(true)
-            .idleTimeout(5, TimeUnit.MINUTES)
+            // .keepAliveTime(30, TimeUnit.SECONDS)
+            // .keepAliveTimeout(10, TimeUnit.SECONDS)
+            // .keepAliveWithoutCalls(true)
+            // .idleTimeout(5, TimeUnit.MINUTES)
             .build();
         this.blockingStub = MediaServiceGrpc.newBlockingStub(channel);
         this.clientId = clientId;
@@ -151,13 +151,6 @@ public class ProducerClient {
                     // Check if we already have file with base name 
                     if (uniqueFiles.containsKey(baseName)) {
                         System.out.println("Skipping duplicate: " + filename + " (duplicate of " + uniqueFiles.get(baseName).getFileName() + ")"); 
-
-//                         try {
-// //                             Files.delete(path);
-//                             System.out.println("Duplicate file: " + filename);
-//                         } catch (IOException e) {
-//                             System.err.println("Duplicate: " + filename);
-//                         }
                     } else {
                         uniqueFiles.put(baseName, path); 
                         uploadVideo(path.toString());
@@ -224,10 +217,46 @@ public class ProducerClient {
     }
 
     // Get base filename 
-    private String getBaseFileName(String filename) {
+    private static String getBaseFileName(String filename) {
         String nameWithoutExt = filename.replaceFirst("[.][^.]+$", ""); 
         String baseName = nameWithoutExt.replaceAll("\\s*\\(\\d+\\)$", ""); 
         return baseName.toLowerCase();
+    }
+
+    // Helper method to scan a single folder
+    private static List<Path> scanFolderForVideos(String folderPath, String[] extensions) throws IOException {
+        List<Path> videoFiles = new ArrayList<>();
+        Path folder = Paths.get(folderPath);
+        
+        if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+            throw new IOException("Invalid folder: " + folderPath);
+        }
+        
+        Files.walk(folder)
+            .filter(Files::isRegularFile)
+            .filter(path -> {
+                String filename = path.getFileName().toString().toLowerCase();
+                return Arrays.stream(extensions).anyMatch(ext -> filename.endsWith(ext.toLowerCase()));
+            })
+            .forEach(videoFiles::add);
+        
+        return videoFiles;
+    }
+
+    // Helper method to remove duplicates across multiple folders
+    private static List<Path> removeDuplicatesByBaseName(List<Path> files) {
+        Map<String, Path> uniqueFiles = new HashMap<>();
+        
+        for (Path file : files) {
+            String baseName = getBaseFileName(file.getFileName().toString());
+            if (!uniqueFiles.containsKey(baseName)) {
+                uniqueFiles.put(baseName, file);
+            } else {
+                System.out.println("Skipping duplicate across folders: " + file.getFileName());
+            }
+        }
+        
+        return new ArrayList<>(uniqueFiles.values());
     }
 
     public void shutdown() {
@@ -277,30 +306,91 @@ public class ProducerClient {
             targetIp = "localhost";
         }
         
-        // Create producer instances
-        List<ProducerClient> producers = new ArrayList<>();
+        // *** CHANGED: Ask for MULTIPLE folders ***
+        System.out.println("Enter folder paths (comma separated, e.g., folder1, folder2, folder3):");
+        scanner.nextLine(); // Clear buffer
+        String foldersInput = scanner.nextLine().trim();
+        String[] folderPaths = foldersInput.split(",");
+        
+        // *** CHANGED: Use shared queue approach ***
+        List<Path> allFiles = new ArrayList<>();
         String[] videoExtensions = {".mp4", ".avi", ".mov", ".mkv"};
         
+        // Scan ALL folders once
+        for (String folderPath : folderPaths) {
+            folderPath = folderPath.trim();
+            try {
+                List<Path> folderFiles = scanFolderForVideos(folderPath, videoExtensions);
+                allFiles.addAll(folderFiles);
+                System.out.println("Found " + folderFiles.size() + " videos in " + folderPath);
+            } catch (IOException e) {
+                System.err.println("Error scanning " + folderPath + ": " + e.getMessage());
+            }
+        }
+        
+        // Remove duplicates across ALL folders
+        allFiles = removeDuplicatesByBaseName(allFiles);
+        System.out.println("Total unique videos to upload: " + allFiles.size());
+        
+        if (allFiles.isEmpty()) {
+            System.out.println("No videos found. Exiting.");
+            scanner.close();
+            return;
+        }
+        
+        // Create shared queue
+        BlockingQueue<Path> fileQueue = new LinkedBlockingQueue<>(allFiles);
+        
+        // Create producers with shared queue
+        List<ProducerClient> producers = new ArrayList<>();
+        List<Thread> producerThreadsList = new ArrayList<>();
+        CountDownLatch completionLatch = new CountDownLatch(producerThreads);
+        
         for (int i = 0; i < producerThreads; i++) {
-            System.out.println("Enter folder path for producer thread " + (i + 1) + ":");
-            String folderPath = scanner.nextLine().trim();
-            
             ProducerClient producer = new ProducerClient(targetIp, 9090, "producer-" + (i + 1), 1);
             producers.add(producer);
             
-            // Start scanning in background
-            final int threadNum = i;
-            new Thread(() -> {
-                producer.scanAndUploadFolder(folderPath, videoExtensions);
-            }).start();
+            Thread producerThread = new Thread(() -> {
+                try {
+                    while (true) {
+                        // Get file from shared queue (waits if empty)
+                        Path file = fileQueue.poll(1, TimeUnit.SECONDS);
+                        if (file == null) {
+                            // No more files
+                            break;
+                        }
+                        System.out.println(Thread.currentThread().getName() + 
+                                        " uploading: " + file.getFileName());
+                        producer.uploadVideo(file.toString());
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                } finally {
+                    completionLatch.countDown();
+                }
+            }, "Producer-" + (i + 1));
+            
+            producerThreadsList.add(producerThread);
+            producerThread.start();
         }
         
-        System.out.println("Producers started. Press 'q' to quit.");
-        while (!scanner.nextLine().equalsIgnoreCase("q")) {
-            // Keep running until user quits
+        System.out.println("\nProducers started. Uploading " + allFiles.size() + " videos...");
+        System.out.println("Press Enter to quit or wait for completion.");
+        
+        // Wait for user input or completion
+        try {
+            // Wait for all producers to finish OR user presses Enter
+            boolean completed = completionLatch.await(30, TimeUnit.SECONDS);
+            if (completed) {
+                System.out.println("All uploads completed!");
+            } else {
+                System.out.println("Timeout or user interruption.");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         
-        // Shutdown
+        // Cleanup
         producers.forEach(ProducerClient::shutdown);
         scanner.close();
         System.out.println("All producers stopped.");
