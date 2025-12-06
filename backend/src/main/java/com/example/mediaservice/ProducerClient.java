@@ -359,9 +359,7 @@ public class ProducerClient {
         
         // Input validation
         int producerThreads = getValidatedInput(scanner, "Enter number of producer threads (p): ", 1);
-        int consumerThreads = getValidatedInput(scanner, "Enter number of consumer threads (c): ", 1);
-        int queueSize = getValidatedInput(scanner, "Enter queue size (q): ", 1);
-        
+
         System.out.println("Enter target IP address (default: " + defaultTargetIp + "):");
         String targetIp = scanner.nextLine().trim();
         if (targetIp.isEmpty()) {

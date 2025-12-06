@@ -298,19 +298,34 @@ public class MediaServer {
         // Read from config file with defaults
         grpcPort = Integer.parseInt(config.getProperty("grpc.port", String.valueOf(grpcPort)));
         httpPort = Integer.parseInt(config.getProperty("http.port", String.valueOf(httpPort)));
-        maxQueueSize = Integer.parseInt(config.getProperty("queue.size", String.valueOf(maxQueueSize)));
-        consumerThreads = Integer.parseInt(config.getProperty("consumer.threads", String.valueOf(consumerThreads)));
         bindAddress = config.getProperty("bind.address", bindAddress);
 
-        // Command-line arguments override config file values
-        if (args.length >= 1) grpcPort = Integer.parseInt(args[0]);
-        if (args.length >= 2) httpPort = Integer.parseInt(args[1]);
-        if (args.length >= 3) maxQueueSize = Integer.parseInt(args[2]);
-        if (args.length >= 4) consumerThreads = Integer.parseInt(args[3]);
-        if (args.length >= 5) bindAddress = args[4];
+        if (args.length >= 4) {
+            // Use Command Line Arguments if provided
+            grpcPort = Integer.parseInt(args[0]);
+            httpPort = Integer.parseInt(args[1]);
+            maxQueueSize = Integer.parseInt(args[2]);
+            consumerThreads = Integer.parseInt(args[3]);
+            if (args.length >= 5) bindAddress = args[4];
+        } else {
+            // Interactive Mode (Best for Demo)
+            java.util.Scanner scanner = new java.util.Scanner(System.in);
+            System.out.println("=== Media Server Configuration ===");
+
+            System.out.print("Enter Queue Size (q) [default " + maxQueueSize + "]: ");
+            String qInput = scanner.nextLine().trim();
+            if (!qInput.isEmpty()) maxQueueSize = Integer.parseInt(qInput);
+
+            System.out.print("Enter Consumer Threads (c) [default " + consumerThreads + "]: ");
+            String cInput = scanner.nextLine().trim();
+            if (!cInput.isEmpty()) consumerThreads = Integer.parseInt(cInput);
+
+            System.out.println("Starting server with Queue=" + maxQueueSize + ", Consumers=" + consumerThreads);
+        }
 
         MediaServer server = new MediaServer(grpcPort, httpPort, maxQueueSize, consumerThreads, bindAddress);
         server.start();
         server.blockUntilShutdown();
+
     }
 }
