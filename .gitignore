@@ -16,3 +16,4 @@ backend/producer_producer-1_log.txt.lck
 /backend/target
 /backend/videos
 /backend/target/protoc-dependencies/33e2ac1b65a57fd212f0f90eb4dbc793/google/type
+.idea/workspace.xml

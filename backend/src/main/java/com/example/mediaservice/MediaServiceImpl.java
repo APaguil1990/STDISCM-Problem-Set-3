@@ -288,6 +288,22 @@ public class MediaServiceImpl extends MediaServiceGrpc.MediaServiceImplBase {
         }
     }
 
+@Override
+    public void getQueueStatus(Empty request, StreamObserver<QueueStatus> responseObserver) {
+        // Check if queue is full (capacity - size <= 0)
+        boolean isFull = getQueueSize() >= getMaxQueueSize();
+
+        QueueStatus status = QueueStatus.newBuilder()
+            .setIsFull(isFull)
+            .setCurrentSize(videoQueue.size())
+            .setMaxCapacity(videoQueue.getCapacity())
+            .build();
+
+        responseObserver.onNext(status);
+        responseObserver.onCompleted();
+    }
+
+
     public int getQueueSize() { return videoQueue.size(); }
     public int getMaxQueueSize() { return videoQueue.getCapacity(); }
     public int getDroppedCount() { return videoQueue.getDroppedCount(); }

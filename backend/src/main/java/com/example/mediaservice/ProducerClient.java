@@ -58,6 +58,21 @@ public class ProducerClient {
     public void uploadVideo(String filePath) {
         threadPool.submit(() -> {
             String filename = Paths.get(filePath).getFileName().toString();
+
+            while (true) {
+                    try {
+                        QueueStatus status = blockingStub.getQueueStatus(Empty.getDefaultInstance());
+                        if (!status.getIsFull()) {
+                            break; // Queue has space, proceed to upload
+                        }
+                        // If full, wait 2 seconds and try again
+                        logger.info("Queue is full (" + status.getCurrentSize() + "/" + status.getMaxCapacity() + "). Waiting to upload: " + filename);
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        logger.warning("Failed to check queue status: " + e.getMessage());
+                        break; // If check fails, try uploading anyway or exit
+                    }
+                }
             logger.info("File: " + filename + " Status: Uploading");
             
             try (FileInputStream fis = new FileInputStream(filePath); BufferedInputStream bis = new BufferedInputStream(fis)) {

@@ -7,6 +7,7 @@ service MediaService {
   rpc UploadVideo (VideoChunk) returns (UploadResponse);
   rpc GetVideoList (Empty) returns (VideoList);
   rpc GetVideo (VideoRequest) returns (VideoResponse);
+  rpc GetQueueStatus (Empty) returns (QueueStatus);
 }
 
 // Simplified to match ProducerClient.java logic
@@ -14,6 +15,12 @@ message VideoChunk {
   string filename = 1;
   string client_id = 2;
   bytes data = 3;
+}
+
+message QueueStatus {
+  bool is_full = 1;
+  int32 current_size = 2;
+  int32 max_capacity = 3;
 }
 
 message UploadResponse {
