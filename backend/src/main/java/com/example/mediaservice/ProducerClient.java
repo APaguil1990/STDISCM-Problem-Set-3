@@ -306,11 +306,25 @@ public class ProducerClient {
             targetIp = "localhost";
         }
         
-        // *** CHANGED: Ask for MULTIPLE folders ***
-        System.out.println("Enter folder paths (comma separated, e.g., folder1, folder2, folder3):");
-        scanner.nextLine(); // Clear buffer
+        // *** FIXED: Better input handling for multiple folders ***
+        System.out.println("Enter folder paths (comma separated, e.g., test-videos1, test-videos2, test-videos3):");
+        
+        // Clear the scanner buffer
+        if (scanner.hasNextLine()) {
+            scanner.nextLine(); // Clear any leftover input
+        }
+        
         String foldersInput = scanner.nextLine().trim();
+        
+        // Debug: Print what we received
+        System.out.println("DEBUG: Received folders input: '" + foldersInput + "'");
+        
+        // Split by comma and trim each folder path
         String[] folderPaths = foldersInput.split(",");
+        for (int i = 0; i < folderPaths.length; i++) {
+            folderPaths[i] = folderPaths[i].trim();
+            System.out.println("DEBUG: Folder " + (i+1) + ": '" + folderPaths[i] + "'");
+        }
         
         // *** CHANGED: Use shared queue approach ***
         List<Path> allFiles = new ArrayList<>();
@@ -318,24 +332,41 @@ public class ProducerClient {
         
         // Scan ALL folders once
         for (String folderPath : folderPaths) {
-            folderPath = folderPath.trim();
+            if (folderPath.isEmpty()) {
+                continue; // Skip empty entries
+            }
+            
             try {
+                System.out.println("Scanning folder: " + folderPath);
                 List<Path> folderFiles = scanFolderForVideos(folderPath, videoExtensions);
                 allFiles.addAll(folderFiles);
                 System.out.println("Found " + folderFiles.size() + " videos in " + folderPath);
+                
+                // Debug: List the files found
+                for (Path file : folderFiles) {
+                    System.out.println("  - " + file.getFileName());
+                }
             } catch (IOException e) {
                 System.err.println("Error scanning " + folderPath + ": " + e.getMessage());
+                // Show current directory to help debug
+                System.err.println("Current working directory: " + System.getProperty("user.dir"));
             }
+        }
+        
+        if (allFiles.isEmpty()) {
+            System.out.println("No videos found in any folder. Exiting.");
+            scanner.close();
+            return;
         }
         
         // Remove duplicates across ALL folders
         allFiles = removeDuplicatesByBaseName(allFiles);
         System.out.println("Total unique videos to upload: " + allFiles.size());
         
-        if (allFiles.isEmpty()) {
-            System.out.println("No videos found. Exiting.");
-            scanner.close();
-            return;
+        // Debug: Show final list
+        System.out.println("Files to upload:");
+        for (Path file : allFiles) {
+            System.out.println("  - " + file);
         }
         
         // Create shared queue
@@ -374,18 +405,13 @@ public class ProducerClient {
             producerThread.start();
         }
         
-        System.out.println("\nProducers started. Uploading " + allFiles.size() + " videos...");
-        System.out.println("Press Enter to quit or wait for completion.");
+        System.out.println("\n" + producerThreads + " producers started. Uploading " + allFiles.size() + " videos...");
+        System.out.println("Waiting for uploads to complete...");
         
-        // Wait for user input or completion
+        // Wait for all producers to finish
         try {
-            // Wait for all producers to finish OR user presses Enter
-            boolean completed = completionLatch.await(30, TimeUnit.SECONDS);
-            if (completed) {
-                System.out.println("All uploads completed!");
-            } else {
-                System.out.println("Timeout or user interruption.");
-            }
+            completionLatch.await();
+            System.out.println("All uploads completed!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
