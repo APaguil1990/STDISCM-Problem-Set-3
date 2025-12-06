@@ -1,33 +1,28 @@
-[2025-12-06 20:04:05] [pool-7-thread-1] File: clip0901_00-49-03-00-57-42_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0901_00-49-03-00-57-42_crop.mp4 Status: Successfully queued (ID: 63ab1f2e-1194-4704-891a-54da534bf65e) 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0901_00-20-12-00-22-02_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0901_00-20-12-00-22-02_crop.mp4 Status: Successfully queued (ID: 347a6f12-9835-4fee-b505-9692b8932ba7) 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-28-00-00-28-34_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-28-00-00-28-34_crop.mp4 Status: Successfully queued (ID: c8e6e610-8e5a-444f-ad1e-ce572ae6def6) 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0901_00-44-51-00-49-02_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0901_00-44-51-00-49-02_crop.mp4 Status: Successfully queued (ID: 5217636c-9021-4316-92d6-ed7ba8103a70) 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-42-32-00-43-35_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-42-32-00-43-35_crop.mp4 Status: Successfully queued (ID: 540f23f4-f8d1-428c-9085-8999cd1bc60f) 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-28-35-00-33-40_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:06] [pool-7-thread-1] File: clip0902_00-28-35-00-33-40_crop.mp4 Status: Dropped - Queue is full 
-[2025-12-06 20:04:06] [pool-7-thread-1] Queue is full (10/10). Waiting to upload: clip0902_00-51-24-00-54-50_crop.mp4 
-[2025-12-06 20:04:08] [pool-7-thread-1] File: clip0902_00-51-24-00-54-50_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:08] [pool-7-thread-1] File: clip0902_00-51-24-00-54-50_crop.mp4 Status: Successfully queued (ID: 8546214d-8fa2-4068-ab09-456b29a3bb5c) 
-[2025-12-06 20:04:08] [pool-7-thread-1] File: clip0902_00-37-25-00-40-56_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:08] [pool-7-thread-1] File: clip0902_00-37-25-00-40-56_crop.mp4 Status: Dropped - Queue is full 
-[2025-12-06 20:04:08] [pool-7-thread-1] Queue is full (10/10). Waiting to upload: clip0902_00-58-19-01-00-46_crop.mp4 
-[2025-12-06 20:04:10] [pool-7-thread-1] File: clip0902_00-58-19-01-00-46_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:10] [pool-7-thread-1] File: clip0902_00-58-19-01-00-46_crop.mp4 Status: Successfully queued (ID: 5c8df7e0-56c3-482a-8bf8-bf510aa69dc5) 
-[2025-12-06 20:04:10] [pool-7-thread-1] File: clip0902_00-43-36-00-44-59_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:10] [pool-7-thread-1] File: clip0902_00-43-36-00-44-59_crop.mp4 Status: Successfully queued (ID: e215333f-5452-4882-9343-34cbbb8c8d9d) 
-[2025-12-06 20:04:10] [pool-7-thread-1] File: clip0902_00-05-50-00-12-19_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:11] [pool-7-thread-1] File: clip0902_00-05-50-00-12-19_crop.mp4 Status: Successfully queued (ID: aae1c6e0-b7d1-4af3-9820-51328f7f84d9) 
-[2025-12-06 20:04:11] [pool-7-thread-1] File: clip0902_00-19-00-00-20-56_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:11] [pool-7-thread-1] File: clip0902_00-19-00-00-20-56_crop.mp4 Status: Successfully queued (ID: e0feedc8-507b-4d1c-8c9d-7af63f70138b) 
-[2025-12-06 20:04:11] [pool-7-thread-1] Queue is full (10/10). Waiting to upload: clip0901_00-17-28-00-20-11_crop.mp4 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: clip0901_00-17-28-00-20-11_crop.mp4 Status: Uploading 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: clip0901_00-17-28-00-20-11_crop.mp4 Status: Successfully queued (ID: 290b33cc-738f-4a59-8fc5-b3e0c3060214) 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: BGMusicBossFight.mp4 Status: Uploading 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: BGMusicBossFight.mp4 Status: Successfully queued (ID: 27b3c52f-a0a8-4f09-aaca-32f1c4030394) 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Uploading 
-[2025-12-06 20:04:13] [pool-7-thread-1] File: 30 seconds of a spider animation that i'm working on.mp4 Status: Successfully queued (ID: c4284e09-8f05-46a4-b9ba-504fcc32f1aa) 
+[2025-12-06 21:01:58] [pool-7-thread-1] File: SunsetDrone.mp4 Status: Uploading 
+[2025-12-06 21:01:58] [pool-7-thread-1] File: SunsetDrone.mp4 Status: Successfully queued (ID: 32c9adb6-f883-4c2e-93e7-9d42c1d2e702) 
+[2025-12-06 21:01:58] [pool-7-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: Bullet For My Valentine - Hearts Burst Into Fire - Cole Rolland (Guitar Cover).mp4 Status: Successfully queued (ID: 62fb15fc-f22d-4250-b202-0882f9e89832) 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: télos _ 30 Second Animated Short.mp4 Status: Successfully queued (ID: 35493d0b-29cc-4503-9ea3-a014f2f26162) 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0901_00-36-57-00-39-53_crop.mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0901_00-36-57-00-39-53_crop.mp4 Status: Successfully queued (ID: c2be08c4-ff8d-487c-a608-f03604be0cab) 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0902_00-56-19-00-58-18_crop.mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0902_00-56-19-00-58-18_crop.mp4 Status: Successfully queued (ID: afb94537-70b8-4394-82ab-755bccdba360) 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0901_00-15-09-00-17-27_crop.mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0901_00-15-09-00-17-27_crop.mp4 Status: Successfully queued (ID: 8c00e2d3-5414-4943-8a9c-55cf733a393b) 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0902_00-50-10-00-51-23_crop.mp4 Status: Uploading 
+[2025-12-06 21:01:59] [pool-7-thread-1] File: clip0902_00-50-10-00-51-23_crop.mp4 Status: Dropped - Queue is full 
+[2025-12-06 21:01:59] [pool-7-thread-1] Queue is full (10/10). Waiting to upload: clip0902_00-00-39-00-05-49_crop.mp4 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-00-39-00-05-49_crop.mp4 Status: Uploading 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-00-39-00-05-49_crop.mp4 Status: Successfully queued (ID: 71fe6310-bb26-4bc5-8c6a-bf3a3d52d035) 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0901_00-32-56-00-36-56_crop.mp4 Status: Uploading 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0901_00-32-56-00-36-56_crop.mp4 Status: Successfully queued (ID: 8383943e-1433-44d2-b689-5bfae07837af) 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-20-57-00-23-48_crop.mp4 Status: Uploading 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-20-57-00-23-48_crop.mp4 Status: Successfully queued (ID: 6611c790-c020-4d7c-8b55-e1eef4be3603) 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Uploading 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: Rainy Day [short 30 sec animation].mp4 Status: Successfully queued (ID: abf76666-ca68-4156-8b6c-7e0ccd4470ac) 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-19-00-00-20-56_crop.mp4 Status: Uploading 
+[2025-12-06 21:02:01] [pool-7-thread-1] File: clip0902_00-19-00-00-20-56_crop.mp4 Status: Successfully queued (ID: 4495a502-54aa-4377-af5e-2aabee79c670) 
+[2025-12-06 21:02:01] [pool-7-thread-1] Queue is full (10/10). Waiting to upload: BGMusicBossFight.mp4 
+[2025-12-06 21:02:03] [pool-7-thread-1] File: BGMusicBossFight.mp4 Status: Uploading 
+[2025-12-06 21:02:03] [pool-7-thread-1] File: BGMusicBossFight.mp4 Status: Successfully queued (ID: d8b8bfb7-1edf-4d9a-91eb-68e7198aea19) 
