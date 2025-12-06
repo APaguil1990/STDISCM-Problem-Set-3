@@ -2,14 +2,16 @@
 A distributed media upload platform that streams videos between producers and consumers with queue management and video previews. This project is built with Java gRPC for the backend and React for the frontend web application. 
 
 ## System Architecture 
-┌─────────────────┐    gRPC     ┌─────────────────┐    HTTP     ┌─────────────────┐<br>
-│   Producer      │ ──────────→ │   Media Server  │ ──────────→ │  React Frontend │<br>
-│  (Java Client)  │             │   (Java gRPC)   │             │    (Web GUI)    │<br>
-└─────────────────┘             └─────────────────┘             └─────────────────┘<br>
-       ↑                               ↓                               ↓        <br>
-  Video Files                    Queue Management                Video Display <br>
-  Folder Scanning                Preview Generation              Real-time Stats<br>
-  Duplicate Prevention           File Storage                   Hover Previews <br>
+```
+┌─────────────────┐    gRPC     ┌─────────────────┐    HTTP     ┌─────────────────┐
+│   Producer      │ ──────────→ │   Media Server  │ ──────────→ │  React Frontend │
+│  (Java Client)  │             │   (Java gRPC)   │             │    (Web GUI)    │
+└─────────────────┘             └─────────────────┘             └─────────────────┘
+       ↑                               ↓                               ↓        
+  Video Files                    Queue Management                Video Display 
+  Folder Scanning                Preview Generation              Real-time Stats
+  Duplicate Prevention           File Storage                   Hover Previews 
+```
 
 ## Prerequisites 
 ### **Backend Dependencies** 
