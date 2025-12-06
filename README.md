@@ -13,6 +13,7 @@ A distributed media upload platform that streams videos between producers and co
   Duplicate Prevention           File Storage                   Hover Previews 
 ```
 
+
 ## Prerequisites 
 ### **Backend Dependencies** 
 - Java 20 or higher 
