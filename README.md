@@ -94,6 +94,7 @@ Producers started. Press 'q' to quit.
 - npm run dev 
 
 ## Project Structure 
+```
 Problem Set 3/
 ├── backend/
 │   ├── pom.xml                          # Maven dependencies
@@ -118,6 +119,7 @@ Problem Set 3/
 │       └── styles/
 │           └── App.css                  # Styling
 └── test-videos/                         # Test videos storage
+```
 
 ## Configurations 
 ### Backend Configuration (MediaServer) 
