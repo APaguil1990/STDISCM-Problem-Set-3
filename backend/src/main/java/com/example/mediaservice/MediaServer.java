@@ -13,6 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.net.InetAddress;
 
 public class MediaServer {
     private final int grpcPort;
@@ -20,21 +23,24 @@ public class MediaServer {
     private final Server grpcServer;
     private final HttpServer httpServer;
     private final MediaServiceImpl mediaService;
+    private final String bindAddress;
 
-    public MediaServer(int grpcPort, int httpPort, int maxQueueSize, int consumerThreads) {
+    public MediaServer(int grpcPort, int httpPort, int maxQueueSize, int consumerThreads, String bindAddress) {
         this.grpcPort = grpcPort;
         this.httpPort = httpPort;
+        this.bindAddress = bindAddress;
         this.mediaService = new MediaServiceImpl(maxQueueSize, consumerThreads, "./videos");
         this.grpcServer = ServerBuilder.forPort(grpcPort)
                     .addService(mediaService)
                     .maxInboundMessageSize(50 * 1024 * 1024) // Allow 50MB uploads
                     .build();
-        this.httpServer = createHttpServer();
+        this.httpServer = createHttpServer(bindAddress);
     }
 
-    private HttpServer createHttpServer() {
+    private HttpServer createHttpServer(String bindAddress) {
         try {
-            HttpServer server = HttpServer.create(new InetSocketAddress(httpPort), 0);
+            InetAddress address = InetAddress.getByName(bindAddress);
+            HttpServer server = HttpServer.create(new InetSocketAddress(address, httpPort), 0);
 
             // API endpoints
             server.createContext("/api/stats", new StatsHandler());
@@ -55,8 +61,8 @@ public class MediaServer {
         httpServer.start();
 
         System.out.println("Media Server started:");
-        System.out.println("gRPC Server on port: " + grpcPort + " (0.0.0.0)");
-        System.out.println("HTTP Server on port: " + httpPort);
+        System.out.println("gRPC Server on port: " + grpcPort + " (" + bindAddress + ")");
+        System.out.println("HTTP Server on port: " + httpPort + " (" + bindAddress + ")");
         System.out.println("Static content available at: http://[SERVER_IP]:" + httpPort + "/content/");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -239,17 +245,45 @@ public class MediaServer {
     }
 
     public static void main(String[] args) throws Exception {
+        // Default values
         int grpcPort = 9090;
         int httpPort = 8080;
         int maxQueueSize = 10;
         int consumerThreads = 3;
+        String bindAddress = "0.0.0.0";
 
+        // Load configuration from config.properties
+        Properties config = new Properties();
+        try {
+            String configPath = "./config.properties";
+            if (Files.exists(Paths.get(configPath))) {
+                try (FileInputStream fis = new FileInputStream(configPath)) {
+                    config.load(fis);
+                    System.out.println("Loaded configuration from config.properties");
+                }
+            } else {
+                System.out.println("config.properties not found, using defaults");
+            }
+        } catch (Exception e) {
+            System.err.println("Warning: Could not load config.properties: " + e.getMessage());
+            System.err.println("Using default values");
+        }
+
+        // Read from config file with defaults
+        grpcPort = Integer.parseInt(config.getProperty("grpc.port", String.valueOf(grpcPort)));
+        httpPort = Integer.parseInt(config.getProperty("http.port", String.valueOf(httpPort)));
+        maxQueueSize = Integer.parseInt(config.getProperty("queue.size", String.valueOf(maxQueueSize)));
+        consumerThreads = Integer.parseInt(config.getProperty("consumer.threads", String.valueOf(consumerThreads)));
+        bindAddress = config.getProperty("bind.address", bindAddress);
+
+        // Command-line arguments override config file values
         if (args.length >= 1) grpcPort = Integer.parseInt(args[0]);
         if (args.length >= 2) httpPort = Integer.parseInt(args[1]);
         if (args.length >= 3) maxQueueSize = Integer.parseInt(args[2]);
         if (args.length >= 4) consumerThreads = Integer.parseInt(args[3]);
+        if (args.length >= 5) bindAddress = args[4];
 
-        MediaServer server = new MediaServer(grpcPort, httpPort, maxQueueSize, consumerThreads);
+        MediaServer server = new MediaServer(grpcPort, httpPort, maxQueueSize, consumerThreads, bindAddress);
         server.start();
         server.blockUntilShutdown();
     }

@@ -7,6 +7,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.logging.*;
+import java.util.Properties;
 
 public class ProducerClient {
     private final ManagedChannel channel;
@@ -272,6 +273,30 @@ public class ProducerClient {
     }
 
     public static void main(String[] args) {
+        // Load configuration from producer-config.properties
+        String defaultTargetIp = "localhost";
+        int defaultTargetPort = 9090;
+        
+        Properties config = new Properties();
+        try {
+            String configPath = "./producer-config.properties";
+            if (Files.exists(Paths.get(configPath))) {
+                try (FileInputStream fis = new FileInputStream(configPath)) {
+                    config.load(fis);
+                    System.out.println("Loaded configuration from producer-config.properties");
+                }
+            } else {
+                System.out.println("producer-config.properties not found, using defaults");
+            }
+        } catch (Exception e) {
+            System.err.println("Warning: Could not load producer-config.properties: " + e.getMessage());
+            System.err.println("Using default values");
+        }
+        
+        // Read from config file with defaults
+        defaultTargetIp = config.getProperty("target.server.ip", defaultTargetIp);
+        defaultTargetPort = Integer.parseInt(config.getProperty("target.server.port", String.valueOf(defaultTargetPort)));
+        
         Scanner scanner = new Scanner(System.in);
         
         // ========== DEBUG INFO ==========
@@ -321,7 +346,7 @@ public class ProducerClient {
 
         // Handle cleanup operations first 
         if ("2".equals(choice) || "3".equals(choice)) {
-            ProducerClient cleanupClient = new ProducerClient("localhost", 9090, "cleanup-client", 1); 
+            ProducerClient cleanupClient = new ProducerClient(defaultTargetIp, defaultTargetPort, "cleanup-client", 1); 
             cleanupClient.cleanupDuplicateVideos(); 
 
             if ("2".equals(choice)) {
@@ -337,10 +362,10 @@ public class ProducerClient {
         int consumerThreads = getValidatedInput(scanner, "Enter number of consumer threads (c): ", 1);
         int queueSize = getValidatedInput(scanner, "Enter queue size (q): ", 1);
         
-        System.out.println("Enter target IP address:");
+        System.out.println("Enter target IP address (default: " + defaultTargetIp + "):");
         String targetIp = scanner.nextLine().trim();
         if (targetIp.isEmpty()) {
-            targetIp = "localhost";
+            targetIp = defaultTargetIp;
         }
         
         // *** ENHANCED INPUT HANDLING WITH DEBUGGING ***
@@ -470,7 +495,7 @@ public class ProducerClient {
         System.out.println("Creating " + producerThreads + " producer threads...");
         
         for (int i = 0; i < producerThreads; i++) {
-            ProducerClient producer = new ProducerClient(targetIp, 9090, "producer-" + (i + 1), 1);
+            ProducerClient producer = new ProducerClient(targetIp, defaultTargetPort, "producer-" + (i + 1), 1);
             producers.add(producer);
             
             Thread producerThread = new Thread(() -> {

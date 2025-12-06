@@ -94,11 +94,147 @@ Producers started. Press 'q' to quit.
 - npm install 
 - npm run dev 
 
+## Multi-VM Deployment
+
+The system can be deployed across multiple virtual machines for distributed operation. Each component can run on a separate VM.
+
+### VM Setup Overview
+- **VM 1**: MediaServer (gRPC + HTTP server)
+- **VM 2**: ProducerClient (video upload client)
+- **VM 3**: React Frontend (web application)
+
+### Configuration Files
+
+The system uses configuration files to specify IP addresses and ports for multi-VM deployment:
+
+#### 1. MediaServer Configuration (`backend/config.properties`)
+```properties
+# gRPC server port (default: 9090)
+grpc.port=9090
+
+# HTTP server port (default: 8080)
+http.port=8080
+
+# Maximum queue size (default: 10)
+queue.size=10
+
+# Number of consumer threads (default: 3)
+consumer.threads=3
+
+# Bind address - use 0.0.0.0 to accept connections from any IP
+bind.address=0.0.0.0
+```
+
+**Important**: Set `bind.address=0.0.0.0` to allow connections from other VMs. For security, you can restrict to specific IPs.
+
+#### 2. ProducerClient Configuration (`backend/producer-config.properties`)
+```properties
+# Target MediaServer IP address
+# Replace with the IP address of the VM running MediaServer
+target.server.ip=192.168.1.100
+
+# Target MediaServer gRPC port (default: 9090)
+target.server.port=9090
+```
+
+**Important**: Replace `192.168.1.100` with the actual IP address of the VM running MediaServer.
+
+#### 3. Frontend Configuration (`frontend/config.json`)
+```json
+{
+  "SERVER_IP": "192.168.1.100",
+  "SERVER_PORT": "8080"
+}
+```
+
+**Important**: Replace `192.168.1.100` with the actual IP address of the VM running MediaServer.
+
+### Multi-VM Deployment Steps
+
+#### Step 1: Setup MediaServer VM
+1. Copy the entire project to VM 1
+2. Edit `backend/config.properties`:
+   - Set `bind.address=0.0.0.0` (to accept connections from other VMs)
+   - Configure ports as needed
+3. Start MediaServer:
+   ```bash
+   cd backend
+   mvn clean compile
+   mvn exec:java -D"exec.mainClass=com.example.mediaservice.MediaServer"
+   ```
+4. Note the VM's IP address (e.g., `192.168.1.100`)
+
+#### Step 2: Setup ProducerClient VM
+1. Copy the entire project to VM 2
+2. Edit `backend/producer-config.properties`:
+   - Set `target.server.ip` to the MediaServer VM's IP address
+   - Set `target.server.port` to match MediaServer's gRPC port
+3. Start ProducerClient:
+   ```bash
+   cd backend
+   mvn clean compile
+   mvn exec:java -D"exec.mainClass=com.example.mediaservice.ProducerClient"
+   ```
+4. When prompted for target IP, you can press Enter to use the config file value, or override it
+
+#### Step 3: Setup Frontend VM
+1. Copy the entire project to VM 3
+2. Edit `frontend/config.json`:
+   - Set `SERVER_IP` to the MediaServer VM's IP address
+   - Set `SERVER_PORT` to match MediaServer's HTTP port
+3. Start the frontend:
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+4. Access the web application from any browser
+
+### Command-Line Overrides
+
+All components support command-line arguments that override configuration file values:
+
+**MediaServer**:
+```bash
+mvn exec:java -D"exec.mainClass=com.example.mediaservice.MediaServer" -Dexec.args="9090 8080 10 3 0.0.0.0"
+# Arguments: [grpcPort] [httpPort] [queueSize] [consumerThreads] [bindAddress]
+```
+
+**ProducerClient**: The target IP can be overridden when prompted during execution.
+
+### Network Requirements
+
+- All VMs must be on the same network or have network connectivity
+- Firewall rules must allow:
+  - MediaServer VM: Incoming connections on gRPC port (default: 9090) and HTTP port (default: 8080)
+  - ProducerClient VM: Outgoing connections to MediaServer gRPC port
+  - Frontend VM: Outgoing connections to MediaServer HTTP port
+- For cloud deployments, ensure security groups/network rules are configured appropriately
+
+### Testing Multi-VM Setup
+
+1. Verify MediaServer is accessible:
+   ```bash
+   # From ProducerClient VM or Frontend VM
+   curl http://[MEDIA_SERVER_IP]:8080/api/stats
+   ```
+
+2. Check network connectivity:
+   ```bash
+   # From ProducerClient VM
+   ping [MEDIA_SERVER_IP]
+   
+   # Test gRPC port (if netcat/telnet available)
+   telnet [MEDIA_SERVER_IP] 9090
+   ```
+
 ## Project Structure 
 ```
 Problem Set 3/
 ├── backend/
 │   ├── pom.xml                          # Maven dependencies
+│   ├── config.properties                # MediaServer configuration
+│   ├── producer-config.properties       # ProducerClient configuration
 │   ├── src/main/
 │   │   ├── proto/media.proto            # gRPC service definition
 │   │   └── java/com/example/mediaservice/
@@ -111,6 +247,7 @@ Problem Set 3/
 ├── frontend/
 │   ├── package.json                     # React dependencies
 │   ├── vite.config.js                   # Vite configuration
+│   ├── config.json                      # Frontend configuration
 │   └── src/
 │       ├── App.jsx                      # Main React component
 │       ├── main.jsx                     # React entry point
@@ -124,16 +261,33 @@ Problem Set 3/
 
 ## Configurations 
 ### Backend Configuration (MediaServer) 
-- **Port 1**: gRPC port (default: 9090) 
-- **Port 2**: HTTP port (defautl: 8080) 
-- **Queue Size**: Max queue capacity (default: 10) 
-- **Consumer Threads**: Number of processing threads (default: 3) 
+Configuration is managed via `backend/config.properties`:
+- **grpc.port**: gRPC port (default: 9090) 
+- **http.port**: HTTP port (default: 8080) 
+- **queue.size**: Max queue capacity (default: 10) 
+- **consumer.threads**: Number of processing threads (default: 3)
+- **bind.address**: Bind address for servers (default: 0.0.0.0 for multi-VM)
+
+Command-line arguments can override config file values:
+```bash
+mvn exec:java -D"exec.mainClass=com.example.mediaservice.MediaServer" -Dexec.args="[grpcPort] [httpPort] [queueSize] [consumerThreads] [bindAddress]"
+```
 
 ### Producer Configuration 
-- **Producer Threads**: Number of parallel uploaders 
-- **Consumer Threads**: Server-side processing threads 
-- **Queue Size**: Server queue capacity 
-- **Target IP**: Server address (use localhost for local testing) 
+Configuration is managed via `backend/producer-config.properties`:
+- **target.server.ip**: Target MediaServer IP address (default: localhost)
+- **target.server.port**: Target MediaServer gRPC port (default: 9090)
+
+Runtime configuration:
+- **Producer Threads**: Number of parallel uploaders (entered at runtime)
+- **Consumer Threads**: Server-side processing threads (entered at runtime)
+- **Queue Size**: Server queue capacity (entered at runtime)
+- **Target IP**: Can be overridden when prompted (uses config file as default)
+
+### Frontend Configuration
+Configuration is managed via `frontend/config.json`:
+- **SERVER_IP**: MediaServer IP address (default: localhost)
+- **SERVER_PORT**: MediaServer HTTP port (default: 8080) 
 
 ## Key Features 
 ### Backend Features 

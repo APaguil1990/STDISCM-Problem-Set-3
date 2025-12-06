@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import VideoGrid from './components/VideoGrid'
 import VideoPlayer from './components/VideoPlayer'
 import './styles/App.css'
+import configData from '../config.json'
 
-const SERVER_IP = 'localhost';
-const SERVER_PORT = '8080';
+// Load server configuration from config.json with fallback to defaults
+const SERVER_IP = configData?.SERVER_IP || 'localhost';
+const SERVER_PORT = configData?.SERVER_PORT || '8080';
 
 function App() {
   const [videos, setVideos] = useState([])
