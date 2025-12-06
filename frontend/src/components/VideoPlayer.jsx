@@ -1,7 +1,7 @@
 import React from 'react'
 
 const VideoPlayer = ({ video, onBack, serverIp, serverPort }) => {
-    const videoUrl = `http://${serverIp}:${serverPort}/content/${video.filename}`;
+    const videoUrl = `http://${serverIp}:${serverPort}/content/videos/${video.filename}`;
 
     return (
         <div className="video-player">
