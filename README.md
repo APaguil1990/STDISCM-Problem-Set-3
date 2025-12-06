@@ -54,7 +54,7 @@ Verify installation:
 - npm --version 
 
 ## Running Application 
-### **Important: ** Run in Separate Terminals
+### **Important:** Run in Separate Terminals
 3 separate terminals will be needed for proper operation
 
 #### Terminal 1: Backend Media Server 
